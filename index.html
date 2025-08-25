@@ -2,146 +2,229 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Unite — OUA Scores, Schedules, Standings</title>
-  <meta name="description" content="Follow OUA scores, schedules, and standings in one clean app. Unite keeps you dialed in." />
-  <meta property="og:title" content="Unite — OUA Scores, Schedules, Standings" />
-  <meta property="og:description" content="Clean scores. Fast updates. Your teams, united." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#06402B" />
-  <link rel="icon" href="unite-logo.png" type="image/png" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Unite — OUA Sports</title>
+  <meta name="description" content="OUA Sports. One elegant home." />
+  <link rel="icon" href="unite-logo.png">
+
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
     :root{
-      --bg:#323231;         /* background */
-      --fg:#ffffff;         /* foreground text */
-      --muted:#c9c9c7;      /* secondary text */
-      --brand:#06402B;      /* Unite green */
-      --accent:#625F5F;     /* accent gray */
-      --card:rgba(255,255,255,.06);
-      --border:rgba(255,255,255,.10);
-      --radius:18px;
-      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --brand-green:#06402B;
+      --brand-text:#0A0A0A;
+      --brand-bg:#F7F7F7;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%;}
-    body{
-      margin:0;
-      color:var(--fg);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background:
-        radial-gradient(1200px 600px at 80% -10%, rgba(6,64,43,.30), transparent 60%),
-        radial-gradient(900px 500px at -10% 90%, rgba(98,95,95,.30), transparent 55%),
-        var(--bg);
-      overflow-x:hidden;
+    body{background:var(--brand-bg); color:var(--brand-text);}
+    /* Phone mock */
+    .phone-wrap{
+      width:360px; height:720px; border-radius:56px;
+      background:linear-gradient(145deg,#b0b4b8,#d9dddf);
+      box-shadow:0 30px 120px rgba(0,0,0,.35);
+      transform-style:preserve-3d; perspective:1000px;
+      transition:transform .2s ease-out;
+      position:relative; isolation:isolate;
     }
-    a{color:inherit;text-decoration:none}
-
-    /* Header */
-    .header{
-      position:fixed;inset:0 0 auto 0;height:64px;display:flex;align-items:center;justify-content:center;z-index:20;
-      background:linear-gradient(180deg, rgba(50,50,49,.75), rgba(50,50,49,.45));
-      backdrop-filter: blur(8px);
-      border-bottom:1px solid var(--border);
+    .frame{
+      position:absolute; inset:0; border-radius:56px; z-index:10;
+      border:3px solid #b0b4b8;
+      box-shadow:inset 0 0 4px rgba(255,255,255,.4), inset 0 0 8px rgba(0,0,0,.25);
     }
-    .header .inner{max-width:1100px;width:100%;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
-    .logo-wrap{display:flex;align-items:center;gap:10px}
-    .logo{width:42px;height:42px;border-radius:12px;overflow:hidden;display:grid;place-items:center;background:#000;border:1px solid var(--border)}
-    .logo img{width:100%;height:100%;object-fit:contain}
-    .brand{font-weight:800;letter-spacing:.4px}
-    .nav{display:flex;gap:10px}
-    nav a{white-space:nowrap}
-    .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);padding:8px 14px;border-radius:999px;color:var(--muted);font-size:14px}
-    .cta{display:inline-flex;align-items:center;gap:10px;background:var(--brand);padding:10px 16px;border-radius:12px;font-weight:750}
-
- @media (max-width:600px){
-      .header{height:auto;padding:8px 0}
-      .header .inner{flex-direction:column;gap:8px}
-      .nav{width:100%;justify-content:center;flex-wrap:wrap}
+    .bezel{
+      position:absolute; inset:4px; border-radius:52px; background:#000; z-index:20;
+      box-shadow:inset 0 0 6px rgba(0,0,0,.6);
     }
-
-    /* Hero */
-    main{min-height:100dvh;display:grid;place-items:center;padding:90px 18px 28px}
-    .hero{max-width:1100px;width:100%;display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center}
-    @media (max-width:900px){.hero{grid-template-columns:1fr}}
-
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      padding:28px;box-shadow:var(--shadow)
+    .screen{
+      position:absolute; inset:10px; border-radius:48px; overflow:hidden; z-index:30;
+      background:var(--brand-green);
     }
-    .kicker{color:var(--muted);text-transform:uppercase;letter-spacing:.14em;font-size:12px}
-    .title{font-size:40px;line-height:1.05;margin:8px 0 12px}
-    .subtitle{color:var(--muted);font-size:18px;margin:0 0 18px}
+    .island{
+      position:absolute; left:50%; transform:translateX(-50%);
+      top:.75rem; width:7rem; height:2.25rem; border-radius:999px;
+      background:rgba(0,0,0,.9); border:1px solid rgba(255,255,255,.1);
+    }
+    /* Static gloss that does NOT move off-screen */
+    .screen-gloss{
+      position:absolute; inset:0; border-radius:48px; z-index:40; pointer-events:none;
+      mix-blend-mode:screen;
+      background-image:
+        linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,.05) 30%, rgba(255,255,255,.02) 55%, rgba(255,255,255,0) 70%),
+        radial-gradient(100% 60% at 0% 0%, rgba(255,255,255,.20) 0%, rgba(255,255,255,0) 60%);
+      opacity:.2;
+    }
+    /* Subtle frame speculars */
+    .frame-spec{
+      position:absolute; inset:0; border-radius:56px; z-index:15; pointer-events:none;
+      box-shadow:inset 0 2px 8px rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.25);
+      opacity:.35;
+    }
+    /* Side buttons */
+    .btn-side{
+      position:absolute; width:4px; border-radius:6px; background:linear-gradient(#5e6a78,#3c4654);
+      z-index:20;
+      box-shadow:0 0 0 1px rgba(0,0,0,.35), 0 1px 1px rgba(255,255,255,.25) inset;
+    }
+    .btn-power{ right:-6px; top:200px; height:80px; }
+    .btn-vol-up{ left:-6px; top:160px; height:56px; }
+    .btn-vol-down{ left:-6px; top:240px; height:56px; }
 
-    .buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .btn{display:inline-flex;align-items:center;gap:10px;background:var(--brand);padding:12px 16px;border-radius:12px;font-weight:750}
-    .btn.secondary{background:transparent;border:1px solid var(--border)}
-
-    /* Game of the Day preview */
-    .gday{display:grid;gap:10px}
-    .row{display:flex;gap:10px;flex-wrap:wrap}
-    .chip{background:var(--card);border:1px solid var(--border);padding:8px 12px;border-radius:999px;font-size:12px;color:#eee}
-    .teams{font-weight:800;font-size:22px}
-    .meta{color:var(--muted)}
-
-    /* Footer */
-    footer{padding:22px;opacity:.8;text-align:center;color:var(--muted)}
-
-    /* Animations */
-    .fade-up{opacity:0;transform:translateY(10px);animation:in .7s ease .05s forwards}
-    .fade-up2{opacity:0;transform:translateY(10px);animation:in .8s ease .12s forwards}
-    .fade-up3{opacity:0;transform:translateY(10px);animation:in .85s ease .18s forwards}
-    @keyframes in{to{opacity:1;transform:none}}
+    /* Simple hover “parallax tilt” */
+    .tilt:hover{ transition:transform .06s linear; }
   </style>
 </head>
 <body>
   <!-- Header -->
-  <header class="header">
-    <div class="inner">
-      <div class="logo-wrap">
-        <div class="logo"><img src="unite-logo.png" alt="Unite logo" onerror="this.style.display='none'" /></div>
-        <div class="brand">Unite</div>
+  <header class="sticky top-0 z-30 backdrop-blur-md bg-white/70 border-b border-black/5">
+    <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img
+          src="data:image/webp;base64,UklGRlEAAABXRUJQVlA4WAoAAAAQAAAAEwAAEwAAQUxQSDIAAAABY0AkQABADgAAgAAgAABpAABpAAABe1qv4l5d3oS0kqU9XgAA/1t6t0k9m6Ww8f7QyF0s0G3Yhhlz8C4O1cM1dO8K3Sx2Q+5lq7+q8m3Y8u4vHc5q5V4K5mL7ZbY2e0b8f0Q6Rz9QXlYl7r0u2G8tE0Qm1c5wJf7K4v3wE7yCw0uQwE3m4Zk4mPq2pYwYQqgFQe1mQmXo2w3KqfZb6o0Kp9m6n4qf9T3iI7WlVQOFgKAAAASAAAAAEAAABQAAABAFBJTlQAAABQd2VicCBieXRlcw=="
+          alt="Unite" width="28" height="28" class="rounded" />
+        <span class="font-semibold tracking-tight">Unite</span>
       </div>
-      <nav class="nav">
-        <a class="pill" href="#about">About</a>
-        <a class="pill" href="#download">Download</a>
-        <a class="cta" href="#download">Get the App</a>
-      </nav>
+      <div class="flex items-center gap-2">
+        <a href="mailto:noahxwalker@icloud.com?subject=Unite%20Inquiry" class="hidden sm:block">
+          <button class="rounded-full border border-black/10 px-4 py-2 text-sm">Contact</button>
+        </a>
+        <a href="#" class="inline-flex">
+          <button class="rounded-full bg-black text-white hover:bg-neutral-800 px-4 py-2 text-sm flex items-center gap-2">
+            <span></span> Download
+          </button>
+        </a>
+      </div>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="card fade-up">
-        <div class="kicker">Now Live</div>
-        <h1 class="title">Follow OUA scores in one clean app.</h1>
-        <p class="subtitle">Fast updates. Smart design. Your teams, united all season.</p>
-        <div class="buttons" id="download">
-          <a class="btn" href="#">  Download on iOS</a>
-          <a class="btn secondary" href="#">▢ Get it on Android</a>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-white">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[120vw] h-[120vw] rounded-full
+                  bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.08),transparent_60%)]"></div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6 py-24 sm:py-32 text-center">
+      <h1 class="text-black text-5xl sm:text-6xl font-semibold tracking-tight">
+        OUA Sports. One elegant home.
+      </h1>
+      <p class="mt-5 text-neutral-700 text-lg sm:text-xl max-w-2xl mx-auto">
+        Live scores, full schedules, and favourites—crafted for clarity. Unite brings everything together so fans can focus on the game.
+      </p>
+
+      <div class="mt-12 flex justify-center">
+        <div class="phone-wrap tilt" id="phone">
+          <div class="frame"></div>
+          <div class="bezel"></div>
+
+          <div class="screen">
+            <div class="island"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <img src="unite-logo.png" alt="Unite Logo" width="96" height="96"
+                   class="opacity-95" style="filter:brightness(0) invert(1)" />
+            </div>
+            <div class="screen-gloss"></div>
+          </div>
+
+          <div class="frame-spec"></div>
+
+          <!-- Buttons -->
+          <div class="btn-side btn-power"></div>
+          <div class="btn-side btn-vol-up"></div>
+          <div class="btn-side btn-vol-down"></div>
         </div>
       </div>
 
-      <div class="card fade-up2">
-        <div class="kicker">Today’s Feature</div>
-        <div class="gday">
-          <div class="teams" id="teams">Gryphons vs Warriors</div>
-          <div class="meta" id="league">OUA Hockey</div>
-          <div class="row"><span class="chip" id="time">3:00 PM ET</span><span class="chip" id="venue">Gryphon Centre</span></div>
-          <div class="buttons"><a class="btn" href="#">Open in Unite</a><a class="btn secondary" href="#">Match Details</a></div>
+      <div class="mt-10 flex items-center justify-center gap-3">
+        <a href="#" class="inline-flex">
+          <button class="rounded-full bg-black text-white hover:bg-neutral-800 px-5 py-3 text-sm flex items-center gap-2">
+            <span></span> Download on the App Store
+          </button>
+        </a>
+        <a href="mailto:noahxwalker@icloud.com?subject=Unite%20Inquiry">
+          <button class="rounded-full border border-black/15 text-black hover:bg-neutral-50 px-5 py-3 text-sm">
+            Contact
+          </button>
+        </a>
+      </div>
+    </div>
+
+    <div class="h-px w-full" style="background:linear-gradient(90deg,transparent,rgba(0,0,0,.08),transparent)"></div>
+  </section>
+
+  <!-- Features -->
+  <section class="bg-white">
+    <div class="max-w-6xl mx-auto px-6 py-24">
+      <div class="text-center">
+        <h2 class="text-3xl font-bold">Why fans love Unite</h2>
+        <p class="mt-3 text-neutral-600">Clean, fast, and focused—no clutter, no confusion.</p>
+      </div>
+      <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="rounded-2xl bg-white border border-black/5 p-6 shadow-sm hover:-translate-y-1 hover:shadow-xl transition">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center mb-4" style="background-color:#06402B11;color:#06402B">🏆</div>
+          <h4 class="font-semibold text-lg">Live Scores</h4>
+          <p class="mt-2 text-neutral-600 text-sm leading-relaxed">Track every play with instant updates and crisp, readable design.</p>
+        </div>
+        <div class="rounded-2xl bg-white border border-black/5 p-6 shadow-sm hover:-translate-y-1 hover:shadow-xl transition">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center mb-4" style="background-color:#06402B11;color:#06402B">📅</div>
+          <h4 class="font-semibold text-lg">Full Schedules</h4>
+          <p class="mt-2 text-neutral-600 text-sm leading-relaxed">See the entire season at a glance and plan your week in seconds.</p>
+        </div>
+        <div class="rounded-2xl bg-white border border-black/5 p-6 shadow-sm hover:-translate-y-1 hover:shadow-xl transition">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center mb-4" style="background-color:#06402B11;color:#06402B">⭐</div>
+          <h4 class="font-semibold text-lg">Favourites</h4>
+          <p class="mt-2 text-neutral-600 text-sm leading-relaxed">Follow your teams and get a lightning-fast personalized feed.</p>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer class="fade-up3">
-    © <span id="year"></span> Unite. All rights reserved.
+  <!-- About -->
+  <section class="bg-[#F6F7F6]">
+    <div class="max-w-4xl mx-auto px-6 py-24 text-center">
+      <h3 class="text-3xl font-bold">About Unite</h3>
+      <p class="mt-4 text-lg text-neutral-700 leading-relaxed">
+        Unite brings OUA scores, schedules, and teams into one refined experience. It’s intentionally simple—focused on the essentials so fans can get in, get info, and get back to the action. Designed with care to feel sharp, modern, and fast.
+      </p>
+      <div class="mt-8 flex items-center justify-center gap-3">
+        <a href="#" class="inline-flex">
+          <button class="rounded-full bg-black text-white hover:bg-neutral-800 px-5 py-3 text-sm flex items-center gap-2">
+            <span></span> Download on the App Store
+          </button>
+        </a>
+        <a href="mailto:noahxwalker@icloud.com?subject=Unite%20Inquiry">
+          <button class="rounded-full border border-black/10 px-5 py-3 text-sm">Contact</button>
+        </a>
+      </div>
+      <div class="mt-6 text-neutral-600 italic text-sm">Coming to Android soon</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-black/10">
+    <div class="max-w-6xl mx-auto px-6 py-10 text-center text-sm text-neutral-500">
+      <div class="mb-2">Logos will be displayed only with permission from each institution.</div>
+      © <span id="year"></span> Unite. All rights reserved.
+    </div>
   </footer>
 
   <script>
-    // Minimal runtime sugar for year and future dynamic hooks
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple parallax tilt (no moving gloss)
+    const phone = document.getElementById('phone');
+    phone.addEventListener('mousemove', (e) => {
+      const r = phone.getBoundingClientRect();
+      const cx = r.left + r.width/2;
+      const cy = r.top + r.height/2;
+      const nx = (e.clientX - cx) / (r.width/2);
+      const ny = (e.clientY - cy) / (r.height/2);
+      phone.style.transform = `rotateX(${-ny*8}deg) rotateY(${nx*8}deg)`;
+    });
+    phone.addEventListener('mouseleave', () => {
+      phone.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    });
   </script>
 </body>
 </html>
+
