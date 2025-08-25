@@ -4,62 +4,26 @@
   <meta charset="utf-8" />
   <title>Unite</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Unite — clean OUA scores, schedules, and standings." />
-
-  <!-- Favicon / icons (uses your real logo) -->
+  <!-- Use your REAL file name from /assets below -->
   <link rel="icon" href="assets/unite-logo.png" type="image/png" />
-  <link rel="apple-touch-icon" href="assets/unite-logo.png" />
-
-  <meta name="theme-color" content="#000000" />
-
   <style>
-    :root {
-      --bg: #000;      /* black background */
-      --fg: #fff;      /* white text */
-      --muted: #aaaaaa;
-    }
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0;
-      height: 100%;
-      background: var(--bg);
-      color: var(--fg);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-    }
-    .wrap {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 24px;
-      gap: 14px;
-    }
-    img.logo {
-      width: 200px;     /* adjust as needed */
-      height: auto;
-      display: block;
-      user-select: none;
-    }
-    h1 {
-      margin: 0;
-      font-size: 2rem;
-      letter-spacing: .5px;
-    }
-    p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 1.1rem;
-    }
+    body{margin:0;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:#000;color:#fff;font-family:system-ui,sans-serif;text-align:center}
+    img{width:220px;height:auto;margin-bottom:18px}
+    h1{margin:0;font-size:2rem}
+    p{margin-top:8px;color:#9aa0a6}
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <!-- Update the src if your file name differs -->
-    <img class="logo" src="assets/unite-logo.png" alt="Unite logo" />
-    <h1>Unite</h1>
-    <p>Coming Soon</p>
-  </main>
+  <!-- Use the EXACT filename (case-sensitive) -->
+  <img id="logo" src="assets/unite-logo.png" alt="Unite logo">
+  <h1>Unite</h1>
+  <p>Coming Soon</p>
+
+  <script>
+    // If the path is wrong, hide the broken icon so the page still looks clean
+    document.getElementById('logo').addEventListener('error', () => {
+      document.getElementById('logo').style.display = 'none';
+    });
+  </script>
 </body>
 </html>
