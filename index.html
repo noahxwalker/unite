@@ -4,26 +4,39 @@
   <meta charset="utf-8" />
   <title>Unite</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Use your REAL file name from /assets below -->
-  <link rel="icon" href="assets/unite-logo.png" type="image/png" />
+  <!-- Favicon set to your real logo -->
+  <link rel="icon" href="unite-logo.png" type="image/png" />
   <style>
-    body{margin:0;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:#000;color:#fff;font-family:system-ui,sans-serif;text-align:center}
-    img{width:220px;height:auto;margin-bottom:18px}
-    h1{margin:0;font-size:2rem}
-    p{margin-top:8px;color:#9aa0a6}
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+      color: #fff;
+      font-family: system-ui, sans-serif;
+      text-align: center;
+    }
+    img {
+      width: 220px;
+      height: auto;
+      margin-bottom: 18px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    p {
+      margin-top: 8px;
+      color: #9aa0a6;
+    }
   </style>
 </head>
 <body>
-  <!-- Use the EXACT filename (case-sensitive) -->
-  <img id="logo" src="assets/unite-logo.png" alt="Unite logo">
+  <img src="unite-logo.png" alt="Unite logo">
   <h1>Unite</h1>
   <p>Coming Soon</p>
-
-  <script>
-    // If the path is wrong, hide the broken icon so the page still looks clean
-    document.getElementById('logo').addEventListener('error', () => {
-      document.getElementById('logo').style.display = 'none';
-    });
-  </script>
 </body>
 </html>
