@@ -2,177 +2,80 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Unite — College Sports Unleashed</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Unite — College Mascot Energy</title>
 <link rel="icon" href="unite-logo.png" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
   theme: {
     extend: {
-      colors: {
-        unite: {
-          green: '#19E68C',
-          blue: '#0094FF',
-          pink: '#FF58D6',
-          yellow: '#FFD447',
-          dark: '#060606',
-          card: '#101010'
-        }
+      colors:{
+        unite:{green:'#2CE59B',blue:'#4DA3FF',yellow:'#FFE766',red:'#FF5A5A',dark:'#0A0A0F',card:'#15151D'}
       },
-      fontFamily: {
-        display: ['Poppins','Inter','ui-sans-serif']
-      },
-      keyframes: {
-        bounceUp: {
-          '0%': { transform:'translateY(40px)', opacity:0 },
-          '100%': { transform:'translateY(0)', opacity:1 }
-        },
-        float: {
-          '0%,100%': { transform:'translateY(0)' },
-          '50%': { transform:'translateY(-12px)' }
-        },
-        pulseGlow: {
-          '0%,100%': { boxShadow:'0 0 0 rgba(25,230,140,0.0)' },
-          '50%': { boxShadow:'0 0 25px rgba(25,230,140,0.4)' }
-        }
-      },
-      animation: {
-        bounceUp:'bounceUp .7s cubic-bezier(.25,.8,.25,1) both',
-        float:'float 4s ease-in-out infinite',
-        pulseGlow:'pulseGlow 2.8s infinite'
-      }
+      fontFamily:{display:['Quicksand','Poppins','ui-rounded','sans-serif']},
+      keyframes:{bubble:{'0%,100%':{transform:'translateY(0)'},'50%':{transform:'translateY(-8px)'}}},
+      animation:{bubble:'bubble 3s ease-in-out infinite'}
     }
   }
 }
 </script>
 <style>
-  .hero-bg {
-    background-image: url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1400&q=80');
-    background-size: cover;
-    background-position: center;
-    filter: brightness(0.4);
-  }
-  .noise:before {
-    content: "";
-    position:absolute;
-    inset:0;
-    opacity:.05;
-    pointer-events:none;
-    background-image:url('https://i.imgur.com/o9Y8H9Z.png');
-  }
+  body{background:#0A0A0F;color:white;font-family:'Quicksand',sans-serif;}
+  .mascot-bg{background:url('https://i.imgur.com/iTg2p8m.png');background-size:140%;opacity:.06;}
 </style>
 </head>
-<body class="bg-unite-dark text-white font-display overflow-x-hidden">
+<body class="overflow-x-hidden">
 
-<!-- HERO NEW CONCEPT: SPORTS POSTER + ENERGY BLAST -->
-<section class="relative h-[90vh] flex items-center justify-center text-center overflow-hidden">
-  <div class="absolute inset-0 hero-bg"></div>
-  <div class="absolute inset-0 noise"></div>
-  <div class="absolute -top-20 -left-20 w-[500px] h-[500px] bg-unite-blue/40 blur-[140px] rounded-full"></div>
-  <div class="absolute top-10 right-0 w-[450px] h-[450px] bg-unite-pink/40 blur-[130px] rounded-full"></div>
-  <div class="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-unite-green/40 blur-[150px] rounded-full"></div>
+<header class="py-4 px-6 flex justify-between items-center bg-black/40 backdrop-blur border-b border-white/10">
+  <div class="flex gap-3 items-center">
+    <img src="unite-logo.png" class="w-10 h-10 rounded" />
+    <span class="font-bold text-lg tracking-tight">Unite</span>
+  </div>
+  <button class="bg-unite-green text-black px-5 py-2 rounded-full font-semibold"> Coming Soon</button>
+</header>
 
-  <div class="relative z-10 px-6">
-    <h1 class="text-6xl sm:text-7xl font-extrabold leading-[1] mb-4 animate-bounceUp">
-      COLLEGE SPORTS.
-      <span class="block text-unite-green">UNLEASHED.</span>
-    </h1>
-    <p class="text-lg sm:text-xl text-neutral-300 max-w-2xl mx-auto animate-bounceUp" style="animation-delay:.15s">
-      The loudest, hypest, most energetic way to follow your school.
-      All teams. All scores. All fire.
-    </p>
+<section class="relative pt-20 pb-24 px-6">
+  <div class="absolute inset-0 mascot-bg"></div>
 
-    <div class="mt-10 flex justify-center gap-4 animate-bounceUp" style="animation-delay:.3s">
-      <a href="#app" class="px-8 py-4 bg-unite-green text-black font-bold text-lg rounded-full shadow-xl hover:bg-unite-green/80">See the App</a>
-      <a href="#about" class="px-8 py-4 border border-white/30 text-white text-lg rounded-full hover:bg-white/10">About Unite</a>
+  <div class="max-w-5xl mx-auto text-center relative z-10">
+    <h1 class="text-5xl sm:text-6xl font-bold mb-4 text-unite-yellow drop-shadow">Mascot Energy.<br/>College Pride.<br/><span class="text-unite-green">Unite Sports.</span></h1>
+    <p class="text-neutral-300 text-lg max-w-2xl mx-auto">A fun, vibrant, mascot‑driven sports hub for every Canadian school.</p>
+  </div>
+
+  <div class="mt-14 flex justify-center gap-8 flex-wrap relative z-10">
+    <div class="w-40 h-40 rounded-full bg-unite-blue/30 backdrop-blur border border-white/10 flex items-center justify-center text-5xl animate-bubble">🦁</div>
+    <div class="w-40 h-40 rounded-full bg-unite-green/30 backdrop-blur border border-white/10 flex items-center justify-center text-5xl animate-bubble" style="animation-delay:.2s">🐾</div>
+    <div class="w-40 h-40 rounded-full bg-unite-yellow/30 backdrop-blur border border-white/10 flex items-center justify-center text-5xl animate-bubble" style="animation-delay:.4s">🦅</div>
+    <div class="w-40 h-40 rounded-full bg-unite-red/30 backdrop-blur border border-white/10 flex items-center justify-center text-5xl animate-bubble" style="animation-delay:.6s">🐺</div>
+  </div>
+</section>
+
+<section class="py-24 px-6">
+  <h2 class="text-4xl font-bold text-center mb-12">Your Team Pages</h2>
+  <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+    <div class="bg-unite-card p-6 rounded-3xl border border-white/10">
+      <img src="home-placeholder.jpg" class="rounded-2xl shadow" />
+      <h4 class="mt-4 font-bold text-xl">Home</h4>
+    </div>
+    <div class="bg-unite-card p-6 rounded-3xl border border-white/10">
+      <img src="scores-placeholder.jpg" class="rounded-2xl shadow" />
+      <h4 class="mt-4 font-bold text-xl">Scores</h4>
+    </div>
+    <div class="bg-unite-card p-6 rounded-3xl border border-white/10">
+      <img src="team-placeholder.jpg" class="rounded-2xl shadow" />
+      <h4 class="mt-4 font-bold text-xl">Teams</h4>
     </div>
   </div>
 </section>
 
-<!-- NEW SECTION: SPLASHY SPORTS GRID -->
-<section class="py-28 px-6 relative">
-  <div class="absolute inset-0 opacity-[0.03] bg-[url('https://i.imgur.com/2YQJZ7v.png')] bg-repeat"></div>
-
-  <div class="max-w-7xl mx-auto">
-    <h2 class="text-5xl font-extrabold text-center mb-16">Your Entire Sports World</h2>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
-
-      <div class="bg-unite-card p-6 rounded-3xl border border-white/5 shadow-xl backdrop-blur animate-bounceUp">
-        <div class="text-5xl mb-4">🏆</div>
-        <h3 class="font-bold text-xl mb-2">Live Scores</h3>
-        <p class="text-neutral-400 text-sm">Fast. Fire. No delays.</p>
-      </div>
-
-      <div class="bg-unite-card p-6 rounded-3xl border border-white/5 shadow-xl backdrop-blur animate-bounceUp" style="animation-delay:.1s">
-        <div class="text-5xl mb-4">📅</div>
-        <h3 class="font-bold text-xl mb-2">Schedules</h3>
-        <p class="text-neutral-400 text-sm">Every game. Every team. Clear AF.</p>
-      </div>
-
-      <div class="bg-unite-card p-6 rounded-3xl border border-white/5 shadow-xl backdrop-blur animate-bonceUp" style="animation-delay:.2s">
-        <div class="text-5xl mb-4">🔥</div>
-        <h3 class="font-bold text-xl mb-2">Team Hype Pages</h3>
-        <p class="text-neutral-400 text-sm">Logos. Colors. Storylines.</p>
-      </div>
-
-      <div class="bg-unite-card p-6 rounded-3xl border border-white/5 shadow-xl backdrop-blur animate-bounceUp" style="animation-delay:.3s">
-        <div class="text-5xl mb-4">📣</div>
-        <h3 class="font-bold text-xl mb-2">Fan Energy</h3>
-        <p class="text-neutral-400 text-sm">Designed loud. Built hype.</p>
-      </div>
-
-    </div>
-  </div>
+<section class="py-20 bg-black/40 backdrop-blur text-center px-6">
+  <h3 class="text-3xl font-bold mb-3">Mascots, Colors, Identity</h3>
+  <p class="text-neutral-400 max-w-xl mx-auto">Unite turns every school into its own vibrant universe—big personality, bold colors, mascots everywhere.</p>
 </section>
 
-<!-- NEW MAIN APP PREVIEW: POSTER STYLE LAYOUT -->
-<section id="app" class="py-32 px-6 relative">
-  <div class="max-w-7xl mx-auto text-center mb-16">
-    <h2 class="text-5xl font-extrabold">The App That Feels Like Game Day</h2>
-    <p class="text-neutral-400 mt-3">Drop your real screenshots in — this layout amplifies them like posters.</p>
-  </div>
-
-  <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
-
-    <!-- HOME -->
-    <div class="rounded-3xl bg-unite-card border border-white/5 p-4 shadow-2xl animate-bounceUp">
-      <img src="home-placeholder.jpg" class="rounded-2xl shadow-xl" />
-      <h4 class="mt-4 text-xl font-bold">Home</h4>
-    </div>
-
-    <!-- SCORES -->
-    <div class="rounded-3xl bg-unite-card border border-white/5 p-4 shadow-2xl animate-bounceUp" style="animation-delay:.15s">
-      <img src="scores-placeholder.jpg" class="rounded-2xl shadow-xl" />
-      <h4 class="mt-4 text-xl font-bold">Scores</h4>
-    </div>
-
-    <!-- TEAM -->
-    <div class="rounded-3xl bg-unite-card border border-white/5 p-4 shadow-2xl animate-bounceUp" style="animation-delay:.3s">
-      <img src="team-placeholder.jpg" class="rounded-2xl shadow-xl" />
-      <h4 class="mt-4 text-xl font-bold">Teams</h4>
-    </div>
-
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="py-28 bg-black/40 backdrop-blur text-center">
-  <h3 class="text-4xl font-extrabold mb-4">One Student. One Vision.</h3>
-  <p class="text-neutral-400 text-lg max-w-2xl mx-auto">Unite is built by a student who was tired of boring, dead-feeling sports coverage. This is a new era — fun, bright, hype-driven sports design.</p>
-</section>
-
-<!-- FOOTER -->
-<footer class="py-10 text-center text-neutral-500 text-sm border-t border-white/10">
-  Logos shown only with permission.<br>
-  © <span id="year"></span> Unite — All Rights Reserved.
-</footer>
-
-<script>
-document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-
+<footer class="py-10 text-center text-neutral-500 text-sm border-t border-white/10">© <span id="year"></span> Unite</footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear()</script>
 </body>
 </html>
 
