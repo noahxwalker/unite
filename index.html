@@ -1,283 +1,143 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Unite — University Sports, United by Fans</title>
-  <meta name="description" content="Scores, standings, and schedules for Canadian university sports. Built by students, united by fans." />
-  <link rel="icon" href="unite-logo.png" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Unite — College Sports, Reimagined</title>
+<link rel="icon" href="unite-logo.png" />
 
-  <!-- Tailwind (CDN) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              green: '#06402B',
-              ink: '#0A0A0A',
-              bg: '#F7F7F7',
-              steel: '#625F5F'
-            }
-          },
-          boxShadow: {
-            'glow': '0 0 0 1px rgba(255,255,255,.06), 0 10px 40px rgba(0,0,0,.25)'
-          },
-          fontFamily: {
-            display: ['SF Pro Display', 'Inter', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'sans-serif']
-          },
-          keyframes: {
-            marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
-            fadeup: {
-              '0%': { opacity: 0, transform: 'translateY(20px)' },
-              '100%': { opacity: 1, transform: 'translateY(0)' }
-            }
-          },
-          animation: {
-            marquee: 'marquee 25s linear infinite',
-            fadeup: 'fadeup .7s ease both'
-          }
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          green: '#06402B',
+          dark: '#0C0C0C',
+          steel: '#625F5F'
         }
+      },
+      fontFamily: {
+        display: ['Inter', 'SF Pro Display', 'ui-sans-serif']
+      },
+      boxShadow: {
+        deep: '0 20px 80px rgba(0,0,0,.65)'
+      },
+      backgroundImage: {
+        'hero-dark': "radial-gradient(circle at 30% 20%, rgba(6,64,43,.45), rgba(0,0,0,0.92))",
+        'card-dark': "linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))"
       }
     }
-  </script>
+  }
+}
+</script>
 
-  <style>
-    /* Subtle noise */
-    .noise { position: relative; }
-    .noise:before { content: ""; position:absolute; inset:0; background-image:url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'160\' height=\'160\'><filter id=\'n\'><feTurbulence type=\'fractalNoise\' baseFrequency=\'.8\' numOctaves=\'2\' stitchTiles=\'stitch\'/></filter><rect width=\'100%\' height=\'100%\' filter=\'url(%23n)\' opacity=\'.015\'/></svg>'); mix-blend-mode: overlay; pointer-events:none; }
-    /* Simple iPhone mock frame */
-    .phone { border-radius: 34px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.06), 0 20px 80px rgba(0,0,0,.45); }
-  </style>
+<style>
+  .noise:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: .04;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'140\' height=\'140\'><filter id=\'n\'><feTurbulence type=\'fractalNoise\' baseFrequency=\'.7\' numOctaves=\'2\'/></filter><rect width=\'100%\' height=\'100%\' filter=\'url(%23n)\' opacity=\'0.8\'/></svg>');
+  }
+  .phone-frame {
+    border-radius: 36px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(255,255,255,.07), 0 25px 80px rgba(0,0,0,.7);
+  }
+</style>
 </head>
-<body class="bg-white text-brand-ink">
-  <!-- Header -->
-  <header class="sticky top-0 z-40 border-b border-black/5 backdrop-blur bg-white/70">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3">
-        <img src="unite-logo.png" alt="Unite" class="w-10 h-10 rounded" />
-        <span class="font-semibold">Unite</span>
-      </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="#screens" class="hover:opacity-80">Screens</a>
-        <a href="#features" class="hover:opacity-80">Features</a>
-        <a href="#partners" class="hover:opacity-80">Partners</a>
-        <a href="#about" class="hover:opacity-80">About</a>
-      </nav>
-      <div class="flex items-center gap-2">
-        <a href="#" class="inline-flex">
-          <button class="rounded-full bg-black text-white hover:bg-neutral-800 px-4 py-2 text-sm flex items-center gap-2">
-            <span></span>
-            Coming Soon
-          </button>
-        </a>
-      </div>
+<body class="bg-brand-dark text-white font-display">
+
+<!-- HEADER -->
+<header class="fixed top-0 left-0 right-0 z-40 bg-black/30 backdrop-blur border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <img src="unite-logo.png" class="w-10 h-10 rounded" />
+      <span class="font-semibold tracking-tight">Unite</span>
     </div>
-  </header>
+    <div>
+      <button class="px-4 py-2 bg-white text-black rounded-full text-sm hover:bg-neutral-200"> Coming Soon</button>
+    </div>
+  </div>
+</header>
 
-  <!-- HERO: Drake vibe x Apple polish -->
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-0 noise"></div>
-    <!-- Gradient wash -->
-    <div class="absolute inset-0 bg-[radial-gradient(1200px_600px_at_70%_-10%,rgba(6,64,43,.25),transparent_60%)]"></div>
-    <div class="absolute inset-x-0 -top-40 h-[520px] bg-gradient-to-b from-brand-green/20 to-transparent"></div>
+<!-- HERO -->
+<section class="relative min-h-screen flex items-center bg-hero-dark pt-32 pb-24 overflow-hidden">
+  <div class="absolute inset-0 noise"></div>
 
-    <div class="max-w-7xl mx-auto px-6 pt-20 pb-16 lg:pb-24 grid lg:grid-cols-2 gap-10 items-center">
-      <div class="relative">
-        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight">
-          Your University Sports —
-          <span class="text-brand-green">United.</span>
-        </h1>
-        <p class="mt-5 text-lg text-neutral-700 max-w-xl">
-          Scores, standings, and schedules for Canadian university sports. Built by students. Made for fans.
-        </p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="#screens" class="rounded-full bg-black text-white px-5 py-3 text-sm hover:bg-neutral-800">See the App</a>
-          <a href="#partners" class="rounded-full border border-black/10 px-5 py-3 text-sm hover:bg-black/5">Licensing & Partners</a>
-        </div>
-        <div class="mt-6 text-xs text-neutral-500">Independent • Privacy‑respecting • Student‑built</div>
-      </div>
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
 
-      <!-- Phone stack (placeholders for now) -->
-      <div class="relative flex justify-center lg:justify-end">
-        <div class="relative w-[280px] sm:w-[320px] aspect-[9/19] bg-black phone overflow-hidden">
-          <!-- Replace these source images with real screenshots when ready -->
-          <img src="/screens/home-placeholder.jpg" alt="Unite Home" class="absolute inset-0 w-full h-full object-cover" />
-        </div>
-        <div class="hidden sm:block absolute -left-8 top-10 w-[200px] aspect-[9/19] bg-black/90 phone overflow-hidden rotate-[-8deg]">
-          <img src="/screens/scores-placeholder.jpg" alt="Scores" class="w-full h-full object-cover opacity-90" />
-        </div>
-        <div class="hidden sm:block absolute -right-8 bottom-8 w-[220px] aspect-[9/19] bg-black/90 phone overflow-hidden rotate-[7deg]">
-          <img src="/screens/team-placeholder.jpg" alt="Team" class="w-full h-full object-cover opacity-90" />
-        </div>
+    <!-- TEXT -->
+    <div class="animate-fadeup">
+      <h1 class="text-5xl sm:text-6xl font-bold leading-[1.1] mb-6">
+        The New Home of
+        <span class="text-brand-green">College Sports.</span>
+      </h1>
+      <p class="text-lg text-neutral-300 max-w-xl leading-relaxed">
+        Scores, standings, teams, and schedules — all in one clean, dark-mode experience. Built for students, athletes, and fans.
+      </p>
+      <div class="mt-8 flex gap-3">
+        <a href="#screens" class="px-6 py-3 rounded-full bg-brand-green text-white text-sm hover:bg-brand-green/80">See the App</a>
+        <a href="#about" class="px-6 py-3 rounded-full border border-white/20 text-sm hover:bg-white/10">About Unite</a>
       </div>
     </div>
 
-    <!-- College vibe: team ticker (marquee) -->
-    <div class="border-y border-black/5 bg-white/70 backdrop-blur">
-      <div class="overflow-hidden whitespace-nowrap">
-        <div class="animate-marquee inline-flex gap-8 py-3 px-6 text-sm font-medium text-neutral-700">
-          <!-- Use Noah's preferred asset names -->
-          <span>Gryphons</span>
-          <span>Mustangs</span>
-          <span>McMaster</span>
-          <span>Laurentian</span>
-          <span>Lancers</span>
-          <span>Lakers</span>
-          <span>OTech</span>
-          <span>RMC</span>
-          <span>Ravens</span>
-          <span>TMU</span>
-          <span>Trent</span>
-          <span>VarsityB</span>
-          <span>Warriors</span>
-          <span>GeeGees</span>
-          <span>Gaels</span>
-          <span>Algoma</span>
-          <span>Brock</span>
-          <!-- duplicate to create seamless marquee -->
-          <span>Gryphons</span>
-          <span>Mustangs</span>
-          <span>McMaster</span>
-          <span>Laurentian</span>
-          <span>Lancers</span>
-          <span>Lakers</span>
-          <span>OTech</span>
-          <span>RMC</span>
-          <span>Ravens</span>
-          <span>TMU</span>
-          <span>Trent</span>
-          <span>VarsityB</span>
-          <span>Warriors</span>
-          <span>GeeGees</span>
-          <span>Gaels</span>
-          <span>Algoma</span>
-          <span>Brock</span>
-        </div>
+    <!-- PHONE PREVIEW -->
+    <div class="relative flex justify-center lg:justify-end animate-fadeup" style="animation-delay:.15s">
+      <div class="phone-frame w-[300px] sm:w-[330px] aspect-[9/19] bg-black">
+        <img src="home-placeholder.jpg" class="w-full h-full object-cover" />
+      </div>
+      <div class="absolute -right-20 bottom-10 w-[200px] phone-frame hidden sm:block rotate-[7deg] opacity-80">
+        <img src="scores-placeholder.jpg" class="w-full h-full object-cover" />
+      </div>
+      <div class="absolute -left-20 top-14 w-[220px] phone-frame hidden sm:block rotate-[-7deg] opacity-80">
+        <img src="team-placeholder.jpg" class="w-full h-full object-cover" />
       </div>
     </div>
-  </section>
 
-  <!-- Screens (real screenshots later) -->
-  <section id="screens" class="bg-white">
-    <div class="max-w-7xl mx-auto px-6 py-24">
-      <div class="text-center max-w-2xl mx-auto">
-        <h2 class="text-3xl sm:text-4xl font-bold">See the UI</h2>
-        <p class="mt-3 text-neutral-600">Clean, fast, and built for game day. Replace these placeholders with real screenshots when you're ready.</p>
-      </div>
+  </div>
 
-      <div class="mt-12 grid md:grid-cols-3 gap-6">
-        <div class="rounded-2xl border border-black/10 p-4 shadow-sm hover:shadow-xl transition">
-          <div class="aspect-[9/19] bg-black rounded-xl overflow-hidden">
-            <img src="/screens/home-placeholder.jpg" alt="Home" class="w-full h-full object-cover" />
-          </div>
-          <h4 class="mt-4 font-semibold">Home</h4>
-          <p class="text-sm text-neutral-600">Personalized feed with your teams up top.</p>
-        </div>
-        <div class="rounded-2xl border border-black/10 p-4 shadow-sm hover:shadow-xl transition">
-          <div class="aspect-[9/19] bg-black rounded-xl overflow-hidden">
-            <img src="/screens/scores-placeholder.jpg" alt="Scores" class="w-full h-full object-cover" />
-          </div>
-          <h4 class="mt-4 font-semibold">Scores</h4>
-          <p class="text-sm text-neutral-600">Live scores and standings, fast and reliable.</p>
-        </div>
-        <div class="rounded-2xl border border-black/10 p-4 shadow-sm hover:shadow-xl transition">
-          <div class="aspect-[9/19] bg-black rounded-xl overflow-hidden">
-            <img src="/screens/team-placeholder.jpg" alt="Team" class="w-full h-full object-cover" />
-          </div>
-          <h4 class="mt-4 font-semibold">Team</h4>
-          <p class="text-sm text-neutral-600">Schedules, rosters, and recent results in one place.</p>
-        </div>
-      </div>
-
-      <div class="mt-12 rounded-2xl bg-gradient-to-r from-brand-green/10 to-transparent border border-brand-green/20 p-6 text-center">
-        <p class="text-sm text-neutral-700">Want to preview your real UI here? Swap the three images in <code class="bg-black/5 px-1 rounded">/screens</code> and you're done.</p>
-      </div>
+  <!-- TEAM TICKER -->
+  <div class="absolute bottom-0 left-0 right-0 bg-black/40 backdrop-blur border-t border-white/10 py-3 whitespace-nowrap overflow-hidden text-sm text-neutral-300">
+    <div class="animate-marquee inline-flex gap-10 px-6">
+      <span>Gryphons</span><span>Mustangs</span><span>McMaster</span><span>Laurentian</span><span>Lancers</span><span>Lakers</span><span>OTech</span><span>RMC</span><span>Ravens</span><span>TMU</span><span>Trent</span><span>VarsityB</span><span>Warriors</span><span>GeeGees</span><span>Gaels</span><span>Algoma</span><span>Brock</span>
+      <span>Gryphons</span><span>Mustangs</span><span>McMaster</span><span>Laurentian</span><span>Lancers</span><span>Lakers</span><span>OTech</span><span>RMC</span><span>Ravens</span><span>TMU</span><span>Trent</span><span>VarsityB</span><span>Warriors</span><span>GeeGees</span><span>Gaels</span><span>Algoma</span><span>Brock</span>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Features (Apple-clean) -->
-  <section id="features" class="bg-[#F6F7F6]">
-    <div class="max-w-7xl mx-auto px-6 py-24">
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="rounded-2xl bg-white border border-black/5 p-6 shadow-sm animate-fadeup">
-          <div class="w-9 h-9 rounded-full flex items-center justify-center mb-4 bg-brand-green/10 text-brand-green">🏆</div>
-          <h4 class="font-semibold text-lg">Scores & Standings</h4>
-          <p class="mt-2 text-neutral-600 text-sm">Live scores and standings with zero clutter.</p>
-        </div>
-        <div class="rounded-2xl bg-white border border-black/5 p-6 shadow-sm animate-fadeup" style="animation-delay:.1s">
-          <div class="w-9 h-9 rounded-full flex items-center justify-center mb-4 bg-brand-green/10 text-brand-green">📅</div>
-          <h4 class="font-semibold text-lg">Full Schedules</h4>
-          <p class="mt-2 text-neutral-600 text-sm">See the week at a glance. Filter by team and sport.</p>
-        </div>
-        <div class="rounded-2xl bg-white border border-black/5 p-6 shadow-sm animate-fadeup" style="animation-delay:.2s">
-          <div class="w-9 h-9 rounded-full flex items-center justify-center mb-4 bg-brand-green/10 text-brand-green">⭐</div>
-          <h4 class="font-semibold text-lg">Favourites</h4>
-          <p class="mt-2 text-neutral-600 text-sm">Pin your teams and get instant updates.</p>
-        </div>
+<!-- SCREENS SECTION -->
+<section id="screens" class="py-28 bg-brand-dark">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h2 class="text-4xl font-bold mb-4">The Unite Interface</h2>
+    <p class="text-neutral-400 max-w-2xl mx-auto">Real screenshots plugged directly into a clean dark-mode layout. This is how your teams should look.</p>
+  </div>
+
+  <div class="mt-14 max-w-6xl mx-auto grid md:grid-cols-3 gap-10 px-6">
+    <div class="bg-card-dark border border-white/10 p-4 rounded-2xl shadow-deep">
+      <div class="phone-frame aspect-[9/19] bg-black">
+        <img src="home-placeholder.jpg" class="w-full h-full object-cover" />
       </div>
+      <h4 class="mt-4 font-semibold">Home</h4>
+      <p class="text-sm text-neutral-400">Your teams. Your feed.</p>
     </div>
-  </section>
-
-  <!-- Partners / Licensing (legitimacy) -->
-  <section id="partners" class="bg-white">
-    <div class="max-w-7xl mx-auto px-6 py-24">
-      <div class="text-center max-w-2xl mx-auto">
-        <h2 class="text-3xl sm:text-4xl font-bold">Licensing & Partners</h2>
-        <p class="mt-3 text-neutral-600">We collaborate with institutions to respectfully showcase team identities. Logos are displayed only with permission.</p>
+    <div class="bg-card-dark border border-white/10 p-4 rounded-2xl shadow-deep">
+      <div class="phone-frame aspect-[9/19] bg-black">
+        <img src="scores-placeholder.jpg" class="w-full h-full object-cover" />
       </div>
-
-      <!-- Placeholder logo grid -->
-      <div class="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 opacity-80">
-        <div class="aspect-[3/2] rounded-xl border border-black/10 bg-neutral-50"></div>
-        <div class="aspect-[3/2] rounded-xl border border-black/10 bg-neutral-50"></div>
-        <div class="aspect-[3/2] rounded-xl border border-black/10 bg-neutral-50"></div>
-        <div class="aspect-[3/2] rounded-xl border border-black/10 bg-neutral-50"></div>
-        <div class="aspect-[3/2] rounded-xl border border-black/10 bg-neutral-50"></div>
-        <div class="aspect-[3/2] rounded-xl border border-black/10 bg-neutral-50"></div>
-      </div>
-
-      <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
-        <a href="mailto:noahxwalker@icloud.com?subject=Unite%20Licensing%20Inquiry" class="rounded-full bg-black text-white px-5 py-3 text-sm hover:bg-neutral-800">Start a Licensing Conversation</a>
-        <a href="#" class="rounded-full border border-black/10 px-5 py-3 text-sm hover:bg-black/5">Download Media Kit (PDF)</a>
-      </div>
+      <h4 class="mt-4 font-semibold">Scores</h4>
+      <p class="text-sm text-neutral-400">Fast. Updated. Clean.</p>
     </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="bg-[#F6F7F6]">
-    <div class="max-w-5xl mx-auto px-6 py-24 text-center">
-      <h3 class="text-3xl font-bold">Built by Students, United by Fans</h3>
-      <p class="mt-4 text-lg text-neutral-700">Unite is a solo project created to fix the lack of coverage for Canadian university sports. The mission is simple: bring scores, schedules, and teams together in a clean, modern place that respects fans and institutions.</p>
-      <div class="mt-8 flex items-center justify-center gap-3">
-        <a href="#screens" class="rounded-full bg-black text-white px-5 py-3 text-sm hover:bg-neutral-800"><span></span> Coming soon on the App Store</a>
-        <a href="mailto:noahxwalker@icloud.com?subject=Unite%20Inquiry" class="rounded-full border border-black/10 px-5 py-3 text-sm">Contact</a>
+    <div class="bg-card-dark border border-white/10 p-4 rounded-2xl shadow-deep">
+      <div class="phone-frame aspect-[9/19] bg-black">
+        <img src="team-placeholder.jpg" class="w-full h-full object-cover" />
       </div>
-      <div class="mt-6 text-neutral-600 italic text-sm">Android version planned</div>
-    </div>
-  </section>
+      <h4 class="mt-4 font-semibold">Team Pages</h4>
+      <p class="text-sm text-neutral-400">Full schedules and rosters.</p>
+    </
 
-  <!-- Footer -->
-  <footer class="border-t border-black/10">
-    <div class="max-w-7xl mx-auto px-6 py-10 text-center text-sm text-neutral-500">
-      <div class="mb-2">Logos will be displayed only with permission from each institution.</div>
-      © <span id="year"></span> Unite. All rights reserved.
-      <div class="mt-1 text-[10px] text-neutral-400">snipes did this</div>
-    </div>
-  </footer>
-
-  <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Simple reveal-on-scroll for features
-    const els = document.querySelectorAll('.animate-fadeup');
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.style.animationPlayState='running'; } });
-    }, { threshold:.2 });
-    els.forEach(el=>{ el.style.animationPlayState='paused'; io.observe(el); });
-  </script>
-</body>
-</html>
 
