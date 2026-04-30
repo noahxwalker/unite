@@ -3,278 +3,109 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Unite</title>
-  <meta name="description" content="University Sports at your Fingers." />
+  <title>Unite — Canadian University Sports Scores, Schedules & Standings</title>
+  <meta name="description" content="Unite is the central hub for Canadian university sports: live scores, schedules, standings, stats, and team pages in one premium app experience." />
   <link rel="icon" href="unite-logo.png">
 
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XQJ89P8SMS"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XQJ89P8SMS');
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XQJ89P8SMS');
   </script>
-
-  <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
-
   <style>
-    :root{
-      --brand-green:#06402B;
-      --brand-text:#0A0A0A;
-      --brand-bg:#F7F7F7;
-    }
-    body{
-      background:var(--brand-bg); 
-      color:var(--brand-text);
-    }
-
-    /* Phone mock */
-    .phone-wrap{
-      width:360px; 
-      height:720px; 
-      border-radius:56px;
-      background:linear-gradient(145deg,#b0b4b8,#d9dddf);
-      box-shadow:0 30px 120px rgba(0,0,0,.35);
-      transform-style:preserve-3d; 
-      perspective:1000px;
-      transition:transform .2s ease-out;
-      position:relative; 
-      isolation:isolate;
-    }
-    .frame{
-      position:absolute; inset:0; 
-      border-radius:56px; 
-      z-index:10;
-      border:3px solid #b0b4b8;
-      box-shadow:inset 0 0 4px rgba(255,255,255,.4),
-                  inset 0 0 8px rgba(0,0,0,.25);
-    }
-    .bezel{
-      position:absolute; inset:4px; 
-      border-radius:52px; 
-      background:#000; 
-      z-index:20;
-      box-shadow:inset 0 0 6px rgba(0,0,0,.6);
-    }
-    .screen{
-      position:absolute; inset:10px; 
-      border-radius:48px; 
-      overflow:hidden; 
-      z-index:30;
-      background:var(--brand-green);
-    }
-    .island{
-      position:absolute;
-      left:50%; transform:translateX(-50%);
-      top:.75rem;
-      width:7rem; height:2.25rem;
-      border-radius:999px;
-      background:rgba(0,0,0,.9);
-      border:1px solid rgba(255,255,255,.1);
-    }
-    /* Static gloss */
-    .screen-gloss{
-      position:absolute; inset:0;
-      border-radius:48px;
-      z-index:40;
-      pointer-events:none;
-      mix-blend-mode:screen;
-      background-image:
-        linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,.05) 30%, rgba(255,255,255,.02) 55%, rgba(255,255,255,0) 70%),
-        radial-gradient(100% 60% at 0% 0%, rgba(255,255,255,.20) 0%, rgba(255,255,255,0) 60%);
-      opacity:.2;
-    }
-    .frame-spec{
-      position:absolute; inset:0;
-      border-radius:56px;
-      z-index:15;
-      pointer-events:none;
-      box-shadow:inset 0 2px 8px rgba(255,255,255,.35),
-                  inset 0 -3px 8px rgba(0,0,0,.25);
-      opacity:.35;
-    }
-    /* Buttons */
-    .btn-side{
-      position:absolute;
-      width:4px; 
-      border-radius:6px;
-      background:linear-gradient(#5e6a78,#3c4654);
-      z-index:20;
-      box-shadow:0 0 0 1px rgba(0,0,0,.35),
-                  0 1px 1px rgba(255,255,255,.25) inset;
-    }
-    .btn-power{ right:-6px; top:200px; height:80px; }
-    .btn-vol-up{ left:-6px; top:160px; height:56px; }
-    .btn-vol-down{ left:-6px; top:240px; height:56px; }
-
-    .tilt:hover{ transition:transform .06s linear; }
+    :root{--green:#06402B;--char:#323231;--ink:#f4f5f4;--muted:#9a9b98;}
+    body{background:#0f100f;color:var(--ink);}
+    .section-line{border-top:1px solid rgba(255,255,255,.08)}
+    .phone{border-radius:36px;border:1px solid rgba(255,255,255,.2);background:#0a0a0a;padding:10px;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+    .screen{border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,.14)}
+    .headline{letter-spacing:-.03em}
   </style>
 </head>
-
 <body>
-
-<!-- Header -->
-<header class="sticky top-0 z-30 backdrop-blur-md bg-white/70 border-b border-black/5">
-  <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <img src="unite-logo.png" alt="Unite" width="70" height="70" class="rounded" />
-    </div>
-
+<header class="sticky top-0 z-50 bg-[#0f100f]/92 border-b border-white/10 backdrop-blur-sm">
+  <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3"><img src="unite-logo.png" alt="Unite logo" width="34" height="34"><span class="font-semibold tracking-wide">UNITE</span></div>
     <div class="flex items-center gap-2">
-      <a href="mailto:noahxwalker@icloud.com" class="hidden sm:block">
-        <button class="rounded-full border border-black/10 px-4 py-2 text-sm">Contact</button>
-      </a>
-      <a href="#" class="inline-flex">
-        <button class="rounded-full bg-black text-white hover:bg-neutral-800 px-4 py-2 text-sm flex items-center gap-2">
-          <span></span> Coming Soon
-        </button>
-      </a>
+      <a href="mailto:noahxwalker@icloud.com" class="px-4 py-2 border border-white/20 text-sm">Contact</a>
+      <a href="#survey" class="px-4 py-2 bg-[var(--green)] text-sm">Join waitlist</a>
     </div>
   </div>
 </header>
 
-<!-- Hero -->
-<section class="relative overflow-hidden bg-white">
-  <div class="absolute inset-0 pointer-events-none">
-    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[120vw] h-[120vw] rounded-full
-                bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.08),transparent_60%)]"></div>
-  </div>
-
-  <div class="max-w-6xl mx-auto px-6 py-24 sm:py-32 text-center">
-    <h1 class="text-black text-5xl sm:text-6xl font-semibold tracking-tight">Unite</h1>
-    <p class="mt-5 text-neutral-700 text-lg sm:text-xl max-w-2xl mx-auto">
-      Built by Students, United by Fans.
-    </p>
-
-    <div class="mt-12 flex justify-center">
-      <div class="phone-wrap tilt" id="phone">
-        <div class="frame"></div>
-        <div class="bezel"></div>
-
-        <div class="screen">
-          <div class="island"></div>
-          <div class="absolute inset-0 flex items-center justify-center">
-            <img src="unite-logo.png" alt="Unite Logo" width="300" height="300"
-                 class="opacity-95" style="filter:brightness(0) invert(1)" />
-          </div>
-          <div class="screen-gloss"></div>
-        </div>
-
-        <div class="frame-spec"></div>
-
-        <!-- Buttons -->
-        <div class="btn-side btn-power"></div>
-        <div class="btn-side btn-vol-up"></div>
-        <div class="btn-side btn-vol-down"></div>
+<section class="max-w-6xl mx-auto px-5 py-16 sm:py-24">
+  <div class="grid lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <p class="text-sm uppercase tracking-[0.18em] text-[#6f877d]">Canadian university sports, unified</p>
+      <h1 class="headline mt-4 text-5xl sm:text-6xl lg:text-7xl font-semibold">Every score. Every standing. One serious app.</h1>
+      <p class="mt-6 text-lg text-[#b7b8b6] max-w-xl">Unite is the fan-first hub for Canadian university sports—live scores, schedules, standings, stats, and team pages designed for fast decisions on game day.</p>
+      <div class="mt-8 flex gap-3">
+        <a href="#product" class="px-5 py-3 bg-[var(--green)] font-medium">See product</a>
+        <a href="#survey" class="px-5 py-3 border border-white/20 text-[#e4e4e3]">Take survey</a>
       </div>
     </div>
-
-    <div class="mt-10 flex items-center justify-center gap-3">
-      <a href="#" class="inline-flex">
-        <button class="rounded-full bg-black text-white hover:bg-neutral-800 px-5 py-3 text-sm flex items-center gap-2">
-          <span></span> Coming soon on the App Store
-        </button>
-      </a>
-    </div>
-  </div>
-
-  <div class="h-px w-full" style="background:linear-gradient(90deg,transparent,rgba(0,0,0,.08),transparent)"></div>
-</section>
-
-<!-- Features -->
-<section class="bg-white">
-  <div class="max-w-6xl mx-auto px-6 py-24">
-    <div class="text-center">
-      <h2 class="text-3xl font-bold">Why fans love Unite</h2>
-      <p class="mt-3 text-neutral-600">Clean, fast, and easy to use. No clutter, no confusion.</p>
-    </div>
-
-    <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <div class="rounded-2xl bg-white border border-black/5 p-6 shadow-sm hover:-translate-y-1 hover:shadow-xl transition">
-        <div class="w-9 h-9 rounded-full flex items-center justify-center mb-4"
-             style="background-color:#06402B11;color:#06402B;">🏆</div>
-        <h4 class="font-semibold text-lg">Scores & Standings</h4>
-        <p class="mt-2 text-neutral-600 text-sm leading-relaxed">Updated scores and standings at your fingertips.</p>
+    <div class="flex justify-center lg:justify-end">
+      <div class="phone max-w-[360px]">
+        <div class="screen"><img src="screens.png" alt="Unite app interface preview showing scores and standings in a dark, high-contrast layout" class="w-full h-auto"></div>
       </div>
-
-      <div class="rounded-2xl bg-white border border-black/5 p-6 shadow-sm hover:-translate-y-1 hover:shadow-xl transition">
-        <div class="w-9 h-9 rounded-full flex items-center justify-center mb-4"
-             style="background-color:#06402B11;color:#06402B;">📅</div>
-        <h4 class="font-semibold text-lg">Full Schedules</h4>
-        <p class="mt-2 text-neutral-600 text-sm leading-relaxed">See the entire season at a glance and plan your week in seconds.</p>
-      </div>
-
-      <div class="rounded-2xl bg-white border border-black/5 p-6 shadow-sm hover:-translate-y-1 hover:shadow-xl transition">
-        <div class="w-9 h-9 rounded-full flex items-center justify-center mb-4"
-             style="background-color:#06402B11;color:#06402B;">⭐</div>
-        <h4 class="font-semibold text-lg">Favourites</h4>
-        <p class="mt-2 text-neutral-600 text-sm leading-relaxed">Follow your teams and get personalized notifications.</p>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- About -->
-<section class="bg-[#F6F7F6]">
-  <div class="max-w-4xl mx-auto px-6 py-24 text-center">
-    <h3 class="text-3xl font-bold">About Unite</h3>
-
-    <p class="mt-4 text-lg text-neutral-700 leading-relaxed">
-      Unite is a solo project built to tackle the lack of coverage for University Sports in Canada.
-      The goal is simple: bring scores, schedules, and teams together in a clean, modern place.
-    </p>
-
-    <div class="mt-8 flex items-center justify-center gap-3">
-      <a href="#" class="inline-flex">
-        <button class="rounded-full bg-black text-white hover:bg-neutral-800 px-5 py-3 text-sm flex items-center gap-2">
-          <span></span> Coming soon on the App Store
-        </button>
-      </a>
-      <a href="mailto:noahxwalker@icloud.com?subject=Unite%20Inquiry">
-        <button class="rounded-full border border-black/10 px-5 py-3 text-sm">Contact</button>
-      </a>
-    </div>
-
-    <div class="mt-6 text-neutral-600 italic text-sm">Coming to Android soon</div>
+<section class="section-line">
+  <div class="max-w-6xl mx-auto px-5 py-16 grid md:grid-cols-2 gap-10">
+    <div><h2 class="text-3xl font-semibold headline">The problem</h2><p class="mt-4 text-[#b7b8b6]">University sports coverage in Canada is fragmented. Fans bounce across school pages, league feeds, and static schedules just to follow one team.</p></div>
+    <div><h2 class="text-3xl font-semibold headline">The solution</h2><p class="mt-4 text-[#b7b8b6]">Unite centralizes the essentials: scores, schedules, standings, stats, and team pages in a single fast interface built for weekly use.</p></div>
   </div>
 </section>
 
-<!-- Footer -->
-<footer class="border-t border-black/10">
-  <div class="max-w-6xl mx-auto px-6 py-10 text-center text-sm text-neutral-500">
-    <div class="mb-2">Logos will be displayed only with permission from each institution.</div>
-    © <span id="year"></span> Unite. All rights reserved.
-    <div style="font-size:6px; margin-top:6px; color:#7d7d7d;">snipes did this</div>
+<section id="product" class="section-line">
+  <div class="max-w-6xl mx-auto px-5 py-16">
+    <h2 class="text-4xl font-semibold headline">Product highlights</h2>
+    <div class="mt-8 grid md:grid-cols-5 gap-4 text-sm">
+      <div class="md:col-span-2 border border-white/10 p-6"><p class="text-[#7a9489] uppercase tracking-[0.14em]">Live context</p><h3 class="mt-3 text-2xl">Scores</h3><p class="mt-2 text-[#b7b8b6]">See final and live outcomes without noise.</p></div>
+      <div class="border border-white/10 p-6"><h3 class="text-xl">Schedules</h3><p class="mt-2 text-[#b7b8b6]">Weekly planning for every team.</p></div>
+      <div class="border border-white/10 p-6"><h3 class="text-xl">Standings</h3><p class="mt-2 text-[#b7b8b6]">Conference tables that are easy to trust.</p></div>
+      <div class="border border-white/10 p-6"><h3 class="text-xl">Team pages</h3><p class="mt-2 text-[#b7b8b6]">Roster context, form, and schedule in one place.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-line">
+  <div class="max-w-6xl mx-auto px-5 py-16">
+    <h2 class="text-4xl font-semibold headline">App screens</h2>
+    <p class="mt-3 text-[#b7b8b6]">Sharper device framing. Real product UI. No generic blocks.</p>
+    <div class="mt-10 grid md:grid-cols-12 gap-5">
+      <article class="md:col-span-6 border border-white/10 p-4"><p class="text-xs uppercase tracking-[0.14em] text-[#7a9489] mb-3">Scores</p><div class="phone"><div class="screen"><img src="screens.png" alt="Unite scores screen in dark mode" class="w-full"></div></div></article>
+      <article class="md:col-span-6 border border-white/10 p-4"><p class="text-xs uppercase tracking-[0.14em] text-[#7a9489] mb-3">Game Details</p><div class="phone"><div class="screen"><img src="screens.png" alt="Unite game details screen with box score" class="w-full"></div></div></article>
+      <article class="md:col-span-5 border border-white/10 p-4"><p class="text-xs uppercase tracking-[0.14em] text-[#7a9489] mb-3">Team Page</p><div class="phone"><div class="screen"><img src="screens.png" alt="Unite team page screen for a university team" class="w-full"></div></div></article>
+      <article class="md:col-span-7 border border-white/10 p-4"><p class="text-xs uppercase tracking-[0.14em] text-[#7a9489] mb-3">Standings</p><div class="phone"><div class="screen"><img src="screens.png" alt="Unite standings table screen" class="w-full"></div></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section-line">
+  <div class="max-w-6xl mx-auto px-5 py-16 grid md:grid-cols-3 gap-8">
+    <div><h3 class="text-xl font-semibold">Who it’s for</h3><p class="mt-2 text-[#b7b8b6]">Fans, students, athletes, alumni, and programs that care about every result.</p></div>
+    <div><h3 class="text-xl font-semibold">Why now</h3><p class="mt-2 text-[#b7b8b6]">Demand for centralized, mobile-first coverage keeps growing while existing sources stay fragmented.</p></div>
+    <div><h3 class="text-xl font-semibold">Validation</h3><p class="mt-2 text-[#b7b8b6]">Built directly from fan pain points and real campus sports behavior.</p></div>
+  </div>
+</section>
+
+<section id="survey" class="section-line">
+  <div class="max-w-4xl mx-auto px-5 py-16 text-center">
+    <h2 class="text-4xl font-semibold headline">Help shape Unite’s launch.</h2>
+    <p class="mt-4 text-[#b7b8b6]">Share what matters most—alerts, stats depth, teams, and leagues.</p>
+    <div class="mt-8"><a href="mailto:noahxwalker@icloud.com?subject=Unite%20Survey" class="px-6 py-3 bg-[var(--green)] inline-block">Open survey</a></div>
+  </div>
+</section>
+
+<footer class="border-t border-white/10">
+  <div class="max-w-6xl mx-auto px-5 py-8 text-sm text-[#8f918d] flex flex-col sm:flex-row justify-between gap-4">
+    <p>Logos will be displayed only with permission from each institution.</p>
+    <p>© <span id="year"></span> Unite</p>
   </div>
 </footer>
-
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Parallax tilt
-  const phone = document.getElementById('phone');
-  phone.addEventListener('mousemove', (e) => {
-    const r = phone.getBoundingClientRect();
-    const cx = r.left + r.width/2;
-    const cy = r.top + r.height/2;
-    const nx = (e.clientX - cx) / (r.width/2);
-    const ny = (e.clientY - cy) / (r.height/2);
-
-    phone.style.transform = `rotateX(${-ny*8}deg) rotateY(${nx*8}deg)`;
-  });
-
-  phone.addEventListener('mouseleave', () => {
-    phone.style.transform = 'rotateX(0deg) rotateY(0deg)';
-  });
-</script>
-
+<script>document.getElementById('year').textContent=new Date().getFullYear()</script>
 </body>
 </html>
-
-
-
-
