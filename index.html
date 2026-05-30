@@ -7,6 +7,11 @@
   <meta name="description" content="Unite is a mobile app for following Canadian university sports — scores, schedules, standings, stats, teams, and game details in one clean experience." />
   <link rel="icon" href="unite-logo.png">
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <!-- Google tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XQJ89P8SMS"></script>
   <script>
@@ -16,6 +21,7 @@
     gtag("config", "G-XQJ89P8SMS");
   </script>
 
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
@@ -43,12 +49,16 @@
       margin: 0;
       background: var(--bg);
       color: var(--black);
-      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif;
-      letter-spacing: -0.03em;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial, sans-serif;
+      letter-spacing: -0.015em;
     }
 
-    p, a, button, li, span {
-      letter-spacing: -0.015em;
+    p,
+    a,
+    button,
+    li,
+    span {
+      letter-spacing: -0.01em;
     }
 
     .nav {
@@ -65,16 +75,18 @@
     }
 
     .hero-title {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
       font-weight: 900;
-      letter-spacing: -0.075em;
-      line-height: .9;
-      color: #1d1d1f;
+      letter-spacing: -0.055em;
+      line-height: .94;
+      color: #171717;
     }
 
     .section-title {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
       font-weight: 900;
-      letter-spacing: -0.06em;
-      line-height: .94;
+      letter-spacing: -0.045em;
+      line-height: .97;
       color: #111;
     }
 
@@ -416,7 +428,7 @@
 
         <div class="mt-4 text-sm font-black">Unite</div>
 
-        <h1 class="hero-title mx-auto mt-10 max-w-6xl text-[88px] md:text-[116px] lg:text-[132px]">
+        <h1 class="hero-title mx-auto mt-10 max-w-6xl text-[72px] md:text-[104px] lg:text-[120px]">
           Canadian University Sports Made Simple
         </h1>
 
@@ -719,7 +731,7 @@
         </div>
       </div>
     </section>
-
+    
     <!-- App Preview / Features -->
     <section id="preview" class="border-t border-black/10 bg-white py-24">
       <div class="container">
@@ -787,7 +799,7 @@
         </div>
       </div>
     </section>
-
+    
     <!-- Why Unite -->
     <section class="dark-section border-t border-black/10 py-24">
       <div class="container">
@@ -824,7 +836,7 @@
         </div>
       </div>
     </section>
-
+    
     <!-- Survey CTA -->
     <section id="survey" class="relative overflow-hidden bg-[#f7f7f4] py-24">
       <div class="container text-center">
