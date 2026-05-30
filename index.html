@@ -46,57 +46,48 @@
     }
 
     body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--black);
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial, sans-serif;
-      letter-spacing: -0.015em;
-    }
+  margin: 0;
+  background: var(--bg);
+  color: var(--black);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.015em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
 
-    p,
-    a,
-    button,
-    li,
-    span {
-      letter-spacing: -0.01em;
-    }
+p,
+a,
+button,
+li,
+span {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.01em;
+}
 
-    .nav {
-      background: rgba(247, 247, 244, .84);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(0, 0, 0, .08);
-    }
+.hero-title {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: .94;
+  color: #171717;
+}
 
-    .container {
-      max-width: 1480px;
-      margin: 0 auto;
-      padding-left: 42px;
-      padding-right: 42px;
-    }
+.section-title {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: .97;
+  color: #111;
+}
 
-    .hero-title {
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-      font-weight: 900;
-      letter-spacing: -0.055em;
-      line-height: .94;
-      color: #171717;
-    }
-
-    .section-title {
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-      font-weight: 900;
-      letter-spacing: -0.045em;
-      line-height: .97;
-      color: #111;
-    }
-
-    .eyebrow {
-      font-size: 12px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .16em;
-      color: rgba(0, 0, 0, .45);
-    }
+.eyebrow {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: rgba(0, 0, 0, .45);
+}
 
     .btn-black {
       display: inline-flex;
