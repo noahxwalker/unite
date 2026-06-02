@@ -203,6 +203,7 @@
     .section-pad { padding: 78px 0; }
     .section-kicker { color: var(--green); font-size: 13px; font-weight: 850; margin-bottom: 14px; }
     .section-head { max-width: 760px; margin-bottom: 32px; }
+    section[id] { scroll-margin-top: 94px; }
 
     .hero-shell {
       position: relative;
@@ -794,6 +795,34 @@
       }
     }
 
+    @media (min-width: 1500px) and (max-height: 980px) {
+      #screens.section-pad {
+        padding-top: 92px;
+        padding-bottom: 82px;
+      }
+
+      #screens .section-head {
+        margin-bottom: 38px;
+      }
+
+      #screens .section-title {
+        font-size: clamp(76px, 4.8vw, 96px) !important;
+      }
+
+      #screens .section-head p {
+        font-size: 20px;
+      }
+
+      .screen-card {
+        grid-template-rows: 32px 42px auto;
+      }
+
+      .screen-card .iphone-15-pro {
+        --phone-width: clamp(204px, 11.35vw, 228px);
+        --phone-height: clamp(440px, 24.45vw, 492px);
+      }
+    }
+
   @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .fade-up { opacity: 1; transform: none; }
@@ -861,6 +890,10 @@
       html, body { width: 100% !important; max-width: 100% !important; overflow-x: hidden !important; }
       .container {
         width: min(calc(100% - 68px), 360px) !important;
+      }
+
+      section[id] {
+        scroll-margin-top: 70px;
       }
 
       .nav-glass .container {
@@ -1400,7 +1433,13 @@
           if (!target) return;
 
           event.preventDefault();
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          const headerOffset = document.querySelector("header")?.offsetHeight || 0;
+          const breathingRoom = window.matchMedia("(min-width: 980px)").matches ? 24 : 12;
+          const top = targetId === "#top"
+            ? 0
+            : target.getBoundingClientRect().top + window.pageYOffset - headerOffset - breathingRoom;
+
+          window.scrollTo({ top: Math.max(0, top), left: 0, behavior: "smooth" });
           history.replaceState(null, "", window.location.pathname + window.location.search);
         });
       });
