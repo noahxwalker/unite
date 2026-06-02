@@ -3,16 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Unite — Canadian University Sports Made Simple</title>
-  <meta name="description" content="Unite is a mobile app for following Canadian university sports — scores, schedules, standings, stats, teams, and game details in one clean experience." />
+  <title>Unite — Canadian University Sports in One Place</title>
+  <meta name="description" content="Unite is a mobile-first app for Canadian university sports, bringing scores, schedules, standings, stats, favourites, game forecasts, team pages, and Live Activities into one premium experience." />
   <link rel="icon" href="Unite Logo.png">
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- Google tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XQJ89P8SMS"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -21,540 +19,457 @@
     gtag("config", "G-XQJ89P8SMS");
   </script>
 
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
     :root {
-      --bg: #f7f7f4;
-      --bg-soft: #eeeeea;
-      --black: #101010;
-      --muted: rgba(0, 0, 0, .55);
-      --line: rgba(0, 0, 0, .10);
-      --green: #06402B;
-      --green-bright: #008A4B;
-      --shadow: 0 30px 75px rgba(0, 0, 0, .18);
-      --shadow-soft: 0 14px 34px rgba(0, 0, 0, .10);
+      --bg: #f7f6f2;
+      --bg-elevated: #fffef9;
+      --ink: #111312;
+      --muted: rgba(17, 19, 18, .58);
+      --faint: rgba(17, 19, 18, .08);
+      --line: rgba(17, 19, 18, .12);
+      --green: #06402b;
+      --green-soft: #e2eee7;
+      --green-bright: #0c8f52;
+      --shadow: 0 26px 70px rgba(17, 19, 18, .12);
+      --shadow-soft: 0 14px 34px rgba(17, 19, 18, .08);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--black);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  letter-spacing: -0.015em;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      letter-spacing: -.018em;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
 
-p,
-a,
-button,
-li,
-span {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  letter-spacing: -0.01em;
-}
+    img { max-width: 100%; }
 
-.hero-title {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.055em;
-  line-height: .94;
-  color: #171717;
-}
+    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
 
-.section-title {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.045em;
-  line-height: .97;
-  color: #111;
-}
+    .nav-glass {
+      background: rgba(247, 246, 242, .82);
+      border-bottom: 1px solid rgba(17, 19, 18, .08);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
 
-.eyebrow {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  color: rgba(0, 0, 0, .45);
-}
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      background: #0b0d0c;
+      border-radius: 10px;
+      box-shadow: 0 12px 24px rgba(0,0,0,.12);
+    }
 
-    .btn-black {
+    .logo-mark img { width: 22px; height: 22px; object-fit: contain; filter: brightness(0) invert(1); }
+
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: 999px;
-      background: #090909;
-      color: white;
-      font-weight: 900;
+      min-height: 46px;
+      border-radius: 14px;
+      padding: 0 20px;
       font-size: 14px;
-      padding: 14px 23px;
-      box-shadow: 0 14px 30px rgba(0, 0, 0, .18);
-      transition: .2s ease;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+      white-space: nowrap;
     }
 
-    .btn-black:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, .25);
-    }
+    .btn:hover { transform: translateY(-2px); }
 
-    .btn-light {
+    .btn-dark { background: #101211; color: #fff; box-shadow: 0 16px 32px rgba(17, 19, 18, .18); }
+    .btn-dark:hover { box-shadow: 0 22px 42px rgba(17, 19, 18, .22); }
+    .btn-light { background: rgba(255,255,255,.68); border: 1px solid var(--line); color: var(--ink); }
+    .btn-light:hover { background: #fff; box-shadow: var(--shadow-soft); }
+
+    .eyebrow {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
+      gap: 9px;
+      color: rgba(17, 19, 18, .62);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: var(--green-bright);
       border-radius: 999px;
-      background: white;
-      color: #101010;
-      border: 1px solid rgba(0, 0, 0, .12);
-      font-weight: 900;
-      font-size: 14px;
-      padding: 14px 23px;
-      transition: .2s ease;
+      box-shadow: 0 0 0 6px rgba(12, 143, 82, .10);
     }
 
-    .btn-light:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 32px rgba(0, 0, 0, .10);
+    .hero-title, .section-title {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Inter, "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      font-weight: 800;
+      line-height: .95;
+      letter-spacing: -.065em;
     }
 
-    .app-icon {
-      width: 88px;
-      height: 88px;
-      border-radius: 24px;
-      background: #080808;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--shadow-soft);
-      margin: 0 auto;
-    }
+    .section-title { letter-spacing: -.055em; }
 
-    .app-icon img {
-      width: 56px;
-      height: 56px;
-      object-fit: contain;
-      filter: brightness(0) invert(1);
-    }
-
-    .phone-row {
-      margin-top: 96px;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      gap: 42px;
-      min-width: 1280px;
-    }
-
-    .phone {
-      width: 268px;
-      height: 548px;
-      border-radius: 44px;
-      background: linear-gradient(145deg, #3b3b3b, #111 48%, #050505);
-      padding: 10px;
+    .hero-shell {
       position: relative;
-      box-shadow:
-        0 30px 70px rgba(0,0,0,.24),
-        inset 0 1px 0 rgba(255,255,255,.18);
-      flex: 0 0 auto;
-    }
-
-    .phone.big {
-      width: 300px;
-      height: 612px;
-    }
-
-    .phone.small {
-      width: 235px;
-      height: 480px;
-      opacity: .96;
-    }
-
-    .screen {
-      height: 100%;
-      border-radius: 35px;
       overflow: hidden;
-      background:
-        radial-gradient(circle at 50% 0%, rgba(6,64,43,.55), transparent 30%),
-        linear-gradient(180deg, #252525, #111);
-      border: 1px solid rgba(255,255,255,.12);
-      position: relative;
+      padding: 156px 0 88px;
     }
 
-    .island {
-      position: absolute;
-      top: 15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 86px;
-      height: 25px;
-      border-radius: 999px;
-      background: #050505;
-      z-index: 5;
-    }
-
-    .real-shot {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .real-shot.is-missing {
-      display: none;
-    }
-
-    .real-shot.is-missing + .mock-screen {
-      display: block;
-    }
-
-    .mock-screen {
-      display: none;
-      height: 100%;
-      padding: 70px 22px 22px;
-      color: white;
-    }
-
-    .mock-screen.always {
-      display: block;
-    }
-
-    .mock-card {
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.07);
-      border-radius: 18px;
-      padding: 14px;
-      box-shadow: 0 12px 22px rgba(0,0,0,.18);
-    }
-
-    .feature-card {
-      background: white;
-      border: 1px solid rgba(0,0,0,.08);
-      border-radius: 26px;
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .sport-card {
-      min-height: 255px;
-      border-radius: 12px;
-      overflow: hidden;
-      position: relative;
-      background: #111;
-      color: white;
-      box-shadow: 0 18px 45px rgba(0,0,0,.13);
-    }
-
-    .sport-card::before {
+    .hero-shell::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.75)),
-        radial-gradient(circle at 20% 10%, rgba(6,64,43,.9), transparent 35%);
-      z-index: 1;
+        radial-gradient(circle at 48% 10%, rgba(6, 64, 43, .11), transparent 36%),
+        linear-gradient(180deg, rgba(255,255,255,.84), rgba(247,246,242,0) 54%);
+      pointer-events: none;
     }
 
-    .sport-card:nth-child(2)::before {
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.75)),
-        radial-gradient(circle at 60% 10%, rgba(79,38,131,.9), transparent 35%);
-    }
-
-    .sport-card:nth-child(3)::before {
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.75)),
-        radial-gradient(circle at 50% 8%, rgba(180,30,45,.9), transparent 35%);
-    }
-
-    .sport-card:nth-child(4)::before {
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.75)),
-        radial-gradient(circle at 50% 8%, rgba(0,45,98,.9), transparent 35%);
-    }
-
-    .sport-card-content {
+    .hero-grid {
       position: relative;
-      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 520px;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-copy { max-width: 680px; }
+
+    .hero-device-stage {
+      min-height: 650px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .device-halo {
+      position: absolute;
+      width: 460px;
+      height: 460px;
+      background: radial-gradient(circle, rgba(6,64,43,.16), transparent 65%);
+      filter: blur(8px);
+    }
+
+    .phone-frame {
+      position: relative;
+      width: 280px;
+      height: 572px;
+      padding: 10px;
+      border-radius: 44px;
+      background: linear-gradient(145deg, #303331, #070908 52%, #0d0f0e);
+      box-shadow: 0 42px 90px rgba(17, 19, 18, .26), inset 0 1px 0 rgba(255,255,255,.24);
+      flex: 0 0 auto;
+    }
+
+    .phone-frame.large { width: 306px; height: 626px; }
+    .phone-frame.small { width: 230px; height: 470px; }
+    .phone-frame.float-back { position: absolute; right: 0; bottom: 16px; transform: rotate(5deg); opacity: .96; }
+    .phone-frame.float-front { transform: translateX(-54px) rotate(-3deg); z-index: 2; }
+
+    .phone-screen {
       height: 100%;
+      border-radius: 35px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(255,255,255,.10);
+      background: radial-gradient(circle at 50% -4%, rgba(12,143,82,.42), transparent 32%), linear-gradient(180deg, #242625, #0d0f0e);
+    }
+
+    .island {
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      z-index: 4;
+      width: 84px;
+      height: 25px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: #050605;
+    }
+
+    .screen-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .screen-img.is-missing { display: none; }
+    .screen-img.is-missing + .screen-fallback { display: flex; }
+
+    .screen-fallback {
+      display: none;
+      height: 100%;
+      padding: 68px 20px 22px;
+      color: #fff;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .screen-fallback.always { display: flex; }
+
+    .mock-row, .mock-card {
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.07);
+      box-shadow: 0 14px 24px rgba(0,0,0,.16);
+    }
+
+    .mock-card { border-radius: 18px; padding: 15px; }
+    .mock-row { border-radius: 14px; padding: 12px; }
+
+    .section-pad { padding: 104px 0; }
+
+    .section-head {
+      max-width: 780px;
+      margin-bottom: 44px;
+    }
+
+    .section-kicker { color: var(--green); font-weight: 850; font-size: 13px; margin-bottom: 15px; }
+
+    .premium-card {
+      background: rgba(255, 254, 249, .86);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .sharp-card {
+      background: #fffef9;
+      border: 1px solid rgba(17,19,18,.10);
+      border-radius: 20px;
+      box-shadow: 0 18px 44px rgba(17, 19, 18, .07);
+    }
+
+    .feature-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: var(--green);
+      background: var(--green-soft);
+      font-weight: 900;
+    }
+
+    .ticker-shell {
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.50);
+    }
+
+    .ticker-shell::before,
+    .ticker-shell::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 2;
+      width: 140px;
+      pointer-events: none;
+    }
+
+    .ticker-shell::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
+    .ticker-shell::after { right: 0; background: linear-gradient(270deg, var(--bg), transparent); }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      gap: 14px;
+      padding: 22px 0;
+      animation: ticker 42s linear infinite;
+    }
+
+    .ticker-shell:hover .ticker-track { animation-play-state: paused; }
+
+    .school-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+      padding: 12px 18px 12px 12px;
+      border: 1px solid rgba(17,19,18,.10);
+      background: rgba(255,254,249,.88);
+      border-radius: 16px;
+      box-shadow: 0 10px 26px rgba(17,19,18,.05);
+      font-size: 14px;
+      font-weight: 850;
+    }
+
+    .school-logo {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .school-logo.is-missing { display: none; }
+    .school-logo.is-missing + .school-fallback { display: grid; }
+
+    .school-fallback {
+      display: none;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 8px;
+      background: #101211;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: -.03em;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .experience-card {
+      min-height: 620px;
+      padding: 24px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      padding: 24px;
+      justify-content: space-between;
+      overflow: hidden;
     }
 
-    .list-row {
-      display: grid;
-      grid-template-columns: 76px 1fr 30px;
-      gap: 18px;
-      align-items: center;
-      padding: 22px 0;
-      border-bottom: 1px solid rgba(0,0,0,.08);
+    .experience-card .phone-frame { margin: 0 auto -82px; transform: scale(.82); transform-origin: top center; }
+
+    .dark-band {
+      background: #0f1210;
+      color: #fff;
     }
 
-    .list-icon {
-      width: 76px;
-      height: 76px;
-      border-radius: 50%;
-      background: #eeeeea;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 24px;
-      color: var(--green);
+    .dark-band .section-title { color: #fff; }
+    .dark-band .premium-card { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.10); box-shadow: none; }
+
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .fade-up.is-visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes ticker { to { transform: translateX(-50%); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .ticker-track { animation: none; }
+      .fade-up { opacity: 1; transform: none; }
+      .btn, .screen-img, .premium-card { transition: none; }
     }
 
-    .green-stat {
-      color: #008A4B;
-      font-weight: 900;
-      font-size: 13px;
-      margin-bottom: 3px;
+    @media (max-width: 1100px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 38px; }
+      .hero-copy { margin: 0 auto; }
+      .hero-copy .flex { justify-content: center; }
+      .hero-device-stage { min-height: 590px; }
+      .experience-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
-    .dark-section {
-      background: #101010;
-      color: white;
-    }
-
-    .dark-card {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 28px;
-    }
-
-    @media (max-width: 1024px) {
-      .container {
-        padding-left: 22px;
-        padding-right: 22px;
-      }
-
-      .phone-row {
-        overflow-x: auto;
-        justify-content: flex-start;
-        padding-bottom: 32px;
-        min-width: 0;
-      }
-
-      .hero-title {
-        font-size: 70px !important;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero-title {
-        font-size: 52px !important;
-      }
-
-      .section-title {
-        font-size: 46px !important;
-      }
-
-      .phone {
-        width: 235px;
-        height: 480px;
-      }
-
-      .phone.big {
-        width: 260px;
-        height: 530px;
-      }
-
-      .phone.small {
-        width: 220px;
-        height: 450px;
-      }
-
-      .list-row {
-        grid-template-columns: 58px 1fr 24px;
-      }
-
-      .list-icon {
-        width: 58px;
-        height: 58px;
-        font-size: 18px;
-      }
+    @media (max-width: 760px) {
+      .container { width: min(100% - 28px, 1180px); }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hero-shell { padding: 118px 0 64px; }
+      .hero-title { font-size: 58px !important; }
+      .section-title { font-size: 44px !important; }
+      .hero-device-stage { min-height: 510px; overflow: hidden; }
+      .phone-frame.large { width: 252px; height: 516px; }
+      .phone-frame.small { width: 198px; height: 405px; }
+      .phone-frame.float-front { transform: translateX(-36px) rotate(-3deg); }
+      .phone-frame.float-back { right: -22px; bottom: 30px; }
+      .section-pad { padding: 76px 0; }
+      .experience-grid { grid-template-columns: 1fr; }
+      .experience-card { min-height: 570px; }
+      .ticker-shell::before, .ticker-shell::after { width: 54px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Header -->
-  <header class="nav fixed left-0 right-0 top-0 z-50">
+  <header class="nav-glass fixed left-0 right-0 top-0 z-50">
     <div class="container flex items-center justify-between py-4">
-      <a href="#" class="flex items-center gap-3">
-        <img src="Unite Logo.png" alt="Unite logo" class="h-7 w-7 object-contain">
-        <span class="text-xl font-black tracking-tight">Unite</span>
+      <a href="#top" class="flex items-center gap-3" aria-label="Unite home">
+        <span class="logo-mark"><img src="Unite Logo.png" alt=""></span>
+        <span class="text-xl font-extrabold tracking-[-.04em]">Unite</span>
       </a>
 
-      <nav class="hidden items-center gap-8 text-sm font-black text-black/60 md:flex">
-        <a href="#sports" class="hover:text-black">Sports</a>
+      <nav class="nav-links flex items-center gap-8 text-sm font-bold text-black/55">
         <a href="#features" class="hover:text-black">Features</a>
-        <a href="#preview" class="hover:text-black">App Preview</a>
-        <a href="#survey" class="hover:text-black">Survey</a>
+        <a href="#experience" class="hover:text-black">Experience</a>
+        <a href="#schools" class="hover:text-black">Schools</a>
+        <a href="#why" class="hover:text-black">Why Unite</a>
+        <a href="#contact" class="hover:text-black">Contact</a>
       </nav>
 
-      <a href="#survey" class="rounded-full bg-black px-5 py-2.5 text-sm font-black text-white">
-        Join Survey
-      </a>
+      <a href="#features" class="nav-cta btn btn-dark min-h-[40px] px-4">Explore App</a>
     </div>
   </header>
 
-  <main>
-    <!-- Hero -->
-    <section class="relative overflow-hidden bg-[#f7f7f4] pt-28">
-      <div class="container text-center">
-        <div class="app-icon">
-          <img src="Unite Logo.png" alt="Unite logo">
+  <main id="top">
+    <section class="hero-shell">
+      <div class="container hero-grid">
+        <div class="hero-copy fade-up">
+          <div class="eyebrow">Built for the OUA. Designed to grow.</div>
+          <h1 class="hero-title mt-7 text-[76px] md:text-[104px]">
+            Follow Canadian university sports in one place.
+          </h1>
+          <p class="mt-7 max-w-2xl text-xl font-semibold leading-8 text-black/60">
+            Unite brings scores, schedules, standings, stats, team pages, favourites, and game details into one mobile-first experience.
+          </p>
+          <div class="mt-9 flex flex-wrap gap-3">
+            <a href="#features" class="btn btn-dark">Explore Features</a>
+            <a href="#experience" class="btn btn-light">View App Screens</a>
+          </div>
         </div>
 
-        <div class="mt-4 text-sm font-black">Unite</div>
-
-        <h1 class="hero-title mx-auto mt-10 max-w-6xl text-[72px] md:text-[104px] lg:text-[120px]">
-          I like big sandwiches
-        </h1>
-
-        <p class="mx-auto mt-7 max-w-2xl text-base font-bold leading-7 text-black/50 md:text-lg">
-          Follow scores, schedules, standings, stats, and teams across U SPORTS in one clean app.
-        </p>
-
-        <div class="mt-8 flex justify-center gap-3">
-          <a href="#preview" class="btn-black">Preview the App →</a>
-          <a href="#features" class="btn-light">View Features</a>
-        </div>
-      </div>
-
-      <div class="overflow-hidden">
-        <div class="phone-row px-8">
-          <!-- Phone 1: Scores -->
-          <div class="phone small">
-            <div class="screen">
+        <div class="hero-device-stage fade-up" style="transition-delay: .12s;">
+          <div class="device-halo"></div>
+          <div class="phone-frame small float-back" aria-hidden="true">
+            <div class="phone-screen">
               <div class="island"></div>
-              <div class="mock-screen always">
-                <div class="text-xs font-black uppercase tracking-[.18em] text-white/45">Today</div>
-                <h3 class="mt-3 text-3xl font-black">Scores</h3>
-
-                <div class="mt-8 space-y-3">
-                  <div class="mock-card">
-                    <div class="flex items-center justify-between text-sm font-black">
-                      <span>Guelph</span>
-                      <span>37</span>
-                    </div>
-                    <div class="mt-2 flex items-center justify-between text-sm font-black text-white/55">
-                      <span>Western</span>
-                      <span>30</span>
-                    </div>
-                    <div class="mt-3 text-[11px] font-black uppercase tracking-[.15em] text-[#00A45A]">Final</div>
-                  </div>
-
-                  <div class="mock-card">
-                    <div class="flex items-center justify-between text-sm font-black">
-                      <span>Queen’s</span>
-                      <span>6:00</span>
-                    </div>
-                    <div class="mt-2 flex items-center justify-between text-sm font-black text-white/55">
-                      <span>Ottawa</span>
-                      <span>PM</span>
-                    </div>
-                    <div class="mt-3 text-[11px] font-black uppercase tracking-[.15em] text-white/35">Upcoming</div>
-                  </div>
+              <img src="public/mockup-scores-home.png" alt="Unite scores home screen" class="screen-img" onerror="this.classList.add('is-missing')">
+              <div class="screen-fallback">
+                <div class="text-xs font-extrabold uppercase tracking-[.16em] text-white/45">Today</div>
+                <h3 class="text-3xl font-extrabold tracking-[-.05em]">Scores</h3>
+                <div class="mock-card mt-5">
+                  <div class="flex items-center justify-between font-extrabold"><span>Guelph</span><span>37</span></div>
+                  <div class="mt-2 flex items-center justify-between font-extrabold text-white/55"><span>Western</span><span>30</span></div>
+                  <div class="mt-4 text-xs font-extrabold uppercase tracking-[.16em] text-[#2bd083]">Final</div>
+                </div>
+                <div class="mock-card">
+                  <div class="flex items-center justify-between font-extrabold"><span>Queen’s</span><span>6:00</span></div>
+                  <div class="mt-2 flex items-center justify-between font-extrabold text-white/55"><span>Ottawa</span><span>PM</span></div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Phone 2: Favourites -->
-          <div class="phone">
-            <div class="screen">
+          <div class="phone-frame large float-front">
+            <div class="phone-screen">
               <div class="island"></div>
-              <img src="app-favourites.png" alt="Unite favourites screen" class="real-shot" onerror="this.classList.add('is-missing')">
-              <div class="mock-screen">
-                <div class="text-xs font-black uppercase tracking-[.18em] text-white/45">Your Teams</div>
-                <h3 class="mt-3 text-3xl font-black">Favourites</h3>
-                <div class="mt-8 space-y-3">
-                  <div class="mock-card">Guelph Gryphons</div>
-                  <div class="mock-card">Western Mustangs</div>
-                  <div class="mock-card">Queen’s Gaels</div>
-                  <div class="mock-card">McMaster Marauders</div>
+              <img src="public/mockup-hero-device.png" alt="Unite mobile app hero screen" class="screen-img" onerror="this.classList.add('is-missing')">
+              <div class="screen-fallback">
+                <div class="text-xs font-extrabold uppercase tracking-[.16em] text-white/45">Unite</div>
+                <h3 class="text-4xl font-extrabold tracking-[-.06em]">Game Center</h3>
+                <div class="mt-5 rounded-[22px] bg-white p-5 text-black shadow-xl">
+                  <div class="text-xs font-extrabold uppercase tracking-[.14em] text-black/40">Football · Final</div>
+                  <div class="mt-5 flex items-center justify-between text-4xl font-black"><span>37</span><span class="text-base text-black/35">—</span><span>30</span></div>
+                  <div class="mt-4 flex justify-between text-sm font-extrabold text-black/55"><span>Guelph</span><span>Western</span></div>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Phone 3: Standings / Leaders -->
-          <div class="phone big">
-            <div class="screen">
-              <div class="island"></div>
-              <img src="app-standings.png" alt="Unite standings screen" class="real-shot" onerror="this.classList.add('is-missing')">
-              <div class="mock-screen">
-                <div class="text-xs font-black uppercase tracking-[.18em] text-white/45">Football</div>
-                <h3 class="mt-3 text-3xl font-black">Standings</h3>
-                <div class="mt-8 space-y-3 text-sm font-black">
-                  <div class="grid grid-cols-[1fr_38px_38px] rounded-2xl bg-white/8 p-4">
-                    <span>Western</span><span>8</span><span>0</span>
-                  </div>
-                  <div class="grid grid-cols-[1fr_38px_38px] rounded-2xl bg-white/8 p-4">
-                    <span>Guelph</span><span>6</span><span>2</span>
-                  </div>
-                  <div class="grid grid-cols-[1fr_38px_38px] rounded-2xl bg-white/8 p-4">
-                    <span>Queen’s</span><span>5</span><span>3</span>
-                  </div>
-                  <div class="grid grid-cols-[1fr_38px_38px] rounded-2xl bg-white/8 p-4">
-                    <span>Ottawa</span><span>5</span><span>3</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Phone 4: Game Details -->
-          <div class="phone">
-            <div class="screen">
-              <div class="island"></div>
-              <img src="app-game-details.png" alt="Unite game details screen" class="real-shot" onerror="this.classList.add('is-missing')">
-              <div class="mock-screen">
-                <div class="text-xs font-black uppercase tracking-[.18em] text-white/45">Game Detail</div>
-                <h3 class="mt-3 text-3xl font-black">Guelph vs Western</h3>
-                <div class="mt-8 rounded-3xl bg-white p-5 text-black">
-                  <div class="flex items-center justify-between text-3xl font-black">
-                    <span>37</span>
-                    <span class="text-sm text-black/35">Final</span>
-                    <span>30</span>
-                  </div>
-                </div>
-                <div class="mt-4 mock-card">Team Stats</div>
-                <div class="mt-3 mock-card">Fan Forecast</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Phone 5: Team Page -->
-          <div class="phone small">
-            <div class="screen">
-              <div class="island"></div>
-              <img src="app-team-page.png" alt="Unite team page screen" class="real-shot" onerror="this.classList.add('is-missing')">
-              <div class="mock-screen">
-                <div class="text-xs font-black uppercase tracking-[.18em] text-white/45">Team Hub</div>
-                <h3 class="mt-3 text-3xl font-black">Guelph Gryphons</h3>
-                <div class="mt-8 grid grid-cols-3 gap-2 text-center text-[11px] font-black">
-                  <div class="rounded-xl bg-white/10 p-3">Team</div>
-                  <div class="rounded-xl bg-white/10 p-3">Schedule</div>
-                  <div class="rounded-xl bg-white/10 p-3">Roster</div>
-                </div>
-                <div class="mt-6 space-y-3">
-                  <div class="mock-card">Football</div>
-                  <div class="mock-card">Basketball</div>
-                  <div class="mock-card">Hockey</div>
-                </div>
+                <div class="mock-card mt-1">Live stats, leaders, and box score</div>
+                <div class="mock-card">Forecast and matchup context</div>
+                <div class="mock-card">Follow with Live Activities</div>
               </div>
             </div>
           </div>
@@ -562,315 +477,234 @@ span {
       </div>
     </section>
 
-    <!-- Featured Sports -->
-    <section id="sports" class="border-t border-black/10 bg-white py-20">
+    <section id="why" class="section-pad border-t border-black/10 bg-white">
       <div class="container">
-        <div class="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <div>
-            <div class="eyebrow">Featured sports</div>
-            <h2 class="section-title mt-4 text-5xl md:text-7xl">Follow the sports that matter on campus.</h2>
-          </div>
-
-          <p class="max-w-xl text-lg font-bold leading-8 text-black/55">
-            Unite gives fans a cleaner way to follow games, teams, results, and standings across Canadian university sports.
+        <div class="section-head fade-up">
+          <div class="section-kicker">Why Unite</div>
+          <h2 class="section-title text-5xl md:text-7xl">Canadian university sports deserves a unified mobile home.</h2>
+          <p class="mt-5 text-lg font-semibold leading-8 text-black/58">
+            Canadian university sports already has the athletes, schools, and fans. Unite brings the experience together on mobile.
           </p>
         </div>
 
-        <div class="grid gap-6 md:grid-cols-4">
-          <article class="sport-card">
-            <div class="sport-card-content">
-              <div class="mb-2 text-xs font-black uppercase tracking-[.16em] text-white/55">Featured</div>
-              <h3 class="text-3xl font-black">Football</h3>
-              <p class="mt-2 text-sm font-bold text-white/65">Scores, standings, schedules, and team hubs.</p>
-            </div>
+        <div class="grid gap-5 md:grid-cols-3">
+          <article class="premium-card fade-up p-7">
+            <div class="feature-icon">01</div>
+            <h3 class="mt-8 text-2xl font-extrabold tracking-[-.04em]">Information is fragmented</h3>
+            <p class="mt-3 text-base font-semibold leading-7 text-black/55">Scores, schedules, standings, stats, team pages, and updates are spread across school, conference, and social platforms.</p>
           </article>
-
-          <article class="sport-card">
-            <div class="sport-card-content">
-              <div class="mb-2 text-xs font-black uppercase tracking-[.16em] text-white/55">Featured</div>
-              <h3 class="text-3xl font-black">Men’s Hockey</h3>
-              <p class="mt-2 text-sm font-bold text-white/65">Game results, upcoming matchups, and team pages.</p>
-            </div>
+          <article class="premium-card fade-up p-7" style="transition-delay:.08s;">
+            <div class="feature-icon">02</div>
+            <h3 class="mt-8 text-2xl font-extrabold tracking-[-.04em]">The mobile experience is inconsistent</h3>
+            <p class="mt-3 text-base font-semibold leading-7 text-black/55">Fans often rely on desktop-style pages instead of a clean app-first experience built for following games.</p>
           </article>
-
-          <article class="sport-card">
-            <div class="sport-card-content">
-              <div class="mb-2 text-xs font-black uppercase tracking-[.16em] text-white/55">Featured</div>
-              <h3 class="text-3xl font-black">Women’s Basketball</h3>
-              <p class="mt-2 text-sm font-bold text-white/65">League leaders, records, schedules, and stats.</p>
-            </div>
-          </article>
-
-          <article class="sport-card">
-            <div class="sport-card-content">
-              <div class="mb-2 text-xs font-black uppercase tracking-[.16em] text-white/55">Featured</div>
-              <h3 class="text-3xl font-black">Men’s Soccer</h3>
-              <p class="mt-2 text-sm font-bold text-white/65">Follow teams, fixtures, standings, and results.</p>
-            </div>
+          <article class="premium-card fade-up p-7" style="transition-delay:.16s;">
+            <div class="feature-icon">03</div>
+            <h3 class="mt-8 text-2xl font-extrabold tracking-[-.04em]">Unite brings it together</h3>
+            <p class="mt-3 text-base font-semibold leading-7 text-black/55">One simple mobile platform helps fans follow teams, check results, and stay connected throughout the season.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Lists Section -->
-    <section id="features" class="border-t border-black/10 bg-[#f7f7f4] py-20">
-      <div class="container">
-        <div class="grid gap-16 lg:grid-cols-2">
-          <!-- Left list -->
-          <div>
-            <div class="mb-5 flex items-center gap-5">
-              <h2 class="text-3xl font-black">What fans can follow</h2>
-              <div class="flex gap-5 text-sm font-black text-black/35">
-                <span>Live</span>
-                <span>Past</span>
-                <span>Stats</span>
-                <span class="rounded-full bg-black px-3 py-1 text-white">Teams</span>
-              </div>
-            </div>
-
-            <div class="border-t border-black/10">
-              <div class="list-row">
-                <div class="list-icon">01</div>
-                <div>
-                  <div class="green-stat">Fast access</div>
-                  <h3 class="text-2xl font-black">Live & Past Games</h3>
-                  <p class="mt-1 text-sm font-bold text-black/45">Game cards for upcoming, live, and completed matchups.</p>
-                </div>
-                <div class="text-3xl text-black/25">›</div>
-              </div>
-
-              <div class="list-row">
-                <div class="list-icon">02</div>
-                <div>
-                  <div class="green-stat">Stats-first</div>
-                  <h3 class="text-2xl font-black">League Leaders</h3>
-                  <p class="mt-1 text-sm font-bold text-black/45">Points, goals, rebounds, assists, and more by sport.</p>
-                </div>
-                <div class="text-3xl text-black/25">›</div>
-              </div>
-
-              <div class="list-row">
-                <div class="list-icon">03</div>
-                <div>
-                  <div class="green-stat">Conference view</div>
-                  <h3 class="text-2xl font-black">Standings</h3>
-                  <p class="mt-1 text-sm font-bold text-black/45">Clean tables for records, rankings, and playoff races.</p>
-                </div>
-                <div class="text-3xl text-black/25">›</div>
-              </div>
-
-              <div class="list-row">
-                <div class="list-icon">04</div>
-                <div>
-                  <div class="green-stat">Personalized</div>
-                  <h3 class="text-2xl font-black">Favourites</h3>
-                  <p class="mt-1 text-sm font-bold text-black/45">Follow schools, sports, and teams in one place.</p>
-                </div>
-                <div class="text-3xl text-black/25">›</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right list -->
-          <div>
-            <div class="mb-5">
-              <h2 class="text-3xl font-black">Popular teams</h2>
-            </div>
-
-            <div class="border-t border-black/10">
-              <div class="list-row">
-                <div class="list-icon" style="color:#B41E2D;">G</div>
-                <div>
-                  <div class="green-stat">OUA</div>
-                  <h3 class="text-2xl font-black">Guelph Gryphons</h3>
-                  <p class="mt-1 text-sm font-bold text-black/45">Football, basketball, hockey, soccer, rugby, and more.</p>
-                </div>
-                <div class="text-3xl text-black/25">›</div>
-              </div>
-
-              <div class="list-row">
-                <div class="list-icon" style="color:#4F2683;">W</div>
-                <div>
-                  <div class="green-stat">OUA</div>
-                  <h3 class="text-2xl font-black">Western Mustangs</h3>
-                  <p class="mt-1 text-sm font-bold text-black/45">Follow one of the strongest university sport brands.</p>
-                </div>
-                <div class="text-3xl text-black/25">›</div>
-              </div>
-
-              <div class="list-row">
-                <div class="list-icon" style="color:#00247D;">Q</div>
-                <div>
-                  <div class="green-stat">OUA</div>
-                  <h3 class="text-2xl font-black">Queen’s Gaels</h3>
-                  <p class="mt-1 text-sm font-bold text-black/45">Team pages, schedules, standings, and game results.</p>
-                </div>
-                <div class="text-3xl text-black/25">›</div>
-              </div>
-
-              <div class="list-row">
-                <div class="list-icon" style="color:#7D002F;">M</div>
-                <div>
-                  <div class="green-stat">OUA</div>
-                  <h3 class="text-2xl font-black">McMaster Marauders</h3>
-                  <p class="mt-1 text-sm font-bold text-black/45">Follow games across varsity sports.</p>
-                </div>
-                <div class="text-3xl text-black/25">›</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- App Preview / Features -->
-    <section id="preview" class="border-t border-black/10 bg-white py-24">
-      <div class="container">
-        <div class="grid gap-14 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
-          <div>
-            <div class="eyebrow">Product experience</div>
-            <h2 class="section-title mt-4 text-5xl md:text-7xl">A real app feel for university sports.</h2>
-            <p class="mt-6 max-w-xl text-lg font-bold leading-8 text-black/55">
-              Unite should feel more like a modern sports app than a school website. Clean pages, quick navigation, favourites, game details, and team hubs.
-            </p>
-
-            <div class="mt-8 grid gap-3 sm:grid-cols-2">
-              <div class="feature-card p-6">
-                <div class="text-sm font-black uppercase tracking-[.14em] text-black/35">01</div>
-                <h3 class="mt-6 text-2xl font-black">Scores</h3>
-                <p class="mt-2 text-sm font-bold leading-6 text-black/50">Quickly check results by sport, date, and team.</p>
-              </div>
-
-              <div class="feature-card p-6">
-                <div class="text-sm font-black uppercase tracking-[.14em] text-black/35">02</div>
-                <h3 class="mt-6 text-2xl font-black">Game Details</h3>
-                <p class="mt-2 text-sm font-bold leading-6 text-black/50">View matchups, stats, records, and game context.</p>
-              </div>
-
-              <div class="feature-card p-6">
-                <div class="text-sm font-black uppercase tracking-[.14em] text-black/35">03</div>
-                <h3 class="mt-6 text-2xl font-black">Team Pages</h3>
-                <p class="mt-2 text-sm font-bold leading-6 text-black/50">Dedicated pages for school teams, schedules, and rosters.</p>
-              </div>
-
-              <div class="feature-card p-6">
-                <div class="text-sm font-black uppercase tracking-[.14em] text-black/35">04</div>
-                <h3 class="mt-6 text-2xl font-black">Favourites</h3>
-                <p class="mt-2 text-sm font-bold leading-6 text-black/50">A personalized home for your schools and teams.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="flex justify-center gap-5 overflow-hidden">
-            <div class="phone">
-              <div class="screen">
-                <div class="island"></div>
-                <img src="app-game-details.png" alt="Unite game detail screen" class="real-shot" onerror="this.classList.add('is-missing')">
-                <div class="mock-screen">
-                  <h3 class="mt-3 text-3xl font-black">Game Detail</h3>
-                  <div class="mt-8 mock-card">Guelph 37</div>
-                  <div class="mt-3 mock-card">Western 30</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="phone big hidden md:block">
-              <div class="screen">
-                <div class="island"></div>
-                <img src="app-team-page.png" alt="Unite team page screen" class="real-shot" onerror="this.classList.add('is-missing')">
-                <div class="mock-screen">
-                  <h3 class="mt-3 text-3xl font-black">Team Page</h3>
-                  <div class="mt-8 mock-card">Schedule</div>
-                  <div class="mt-3 mock-card">Roster</div>
-                  <div class="mt-3 mock-card">Stats</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Why Unite -->
-    <section class="dark-section border-t border-black/10 py-24">
-      <div class="container">
-        <div class="grid gap-14 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
-          <div>
-            <div class="text-xs font-black uppercase tracking-[.18em] text-white/40">Why Unite exists</div>
-            <h2 class="section-title mt-4 text-5xl text-white md:text-7xl" style="color:white;">
-              More access. More attention. Better discovery.
-            </h2>
-          </div>
-
-          <div class="grid gap-5">
-            <div class="dark-card p-7">
-              <h3 class="text-2xl font-black">For fans</h3>
-              <p class="mt-3 text-base font-bold leading-7 text-white/55">
-                Less digging through websites. More instant access to scores, schedules, teams, and standings.
-              </p>
-            </div>
-
-            <div class="dark-card p-7">
-              <h3 class="text-2xl font-black">For athletes</h3>
-              <p class="mt-3 text-base font-bold leading-7 text-white/55">
-                A cleaner way for their games, stats, teams, and seasons to get seen by students, alumni, family, and fans.
-              </p>
-            </div>
-
-            <div class="dark-card p-7">
-              <h3 class="text-2xl font-black">For schools</h3>
-              <p class="mt-3 text-base font-bold leading-7 text-white/55">
-                A fan-first discovery layer that makes existing athletic programs easier to follow.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Survey CTA -->
-    <section id="survey" class="relative overflow-hidden bg-[#f7f7f4] py-24">
+    <section id="schools" class="section-pad overflow-hidden">
       <div class="container text-center">
-        <div class="app-icon">
-          <img src="Unite Logo.png" alt="Unite logo">
+        <div class="mx-auto max-w-3xl fade-up">
+          <div class="section-kicker">Built around the OUA</div>
+          <h2 class="section-title text-5xl md:text-7xl">A focused starting point for Canadian university sports coverage.</h2>
+        </div>
+      </div>
+
+      <div class="ticker-shell mt-12" aria-label="OUA schools ticker">
+        <div class="ticker-track" id="schoolTicker"></div>
+      </div>
+    </section>
+
+    <section id="features" class="section-pad border-y border-black/10 bg-white">
+      <div class="container">
+        <div class="section-head fade-up">
+          <div class="section-kicker">Features</div>
+          <h2 class="section-title text-5xl md:text-7xl">Everything fans need to follow the season.</h2>
         </div>
 
-        <div class="mt-6 text-xs font-black uppercase tracking-[.18em] text-black/40">Survey</div>
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <article class="sharp-card fade-up p-6"><div class="feature-icon">↯</div><h3 class="mt-7 text-xl font-extrabold">Live Scoring & Results</h3><p class="mt-3 text-sm font-semibold leading-6 text-black/55">Track games as they happen and revisit final results in one place.</p></article>
+          <article class="sharp-card fade-up p-6"><div class="feature-icon">⌁</div><h3 class="mt-7 text-xl font-extrabold">Schedules</h3><p class="mt-3 text-sm font-semibold leading-6 text-black/55">Browse upcoming matchups by sport, date, or team.</p></article>
+          <article class="sharp-card fade-up p-6"><div class="feature-icon">▤</div><h3 class="mt-7 text-xl font-extrabold">Standings</h3><p class="mt-3 text-sm font-semibold leading-6 text-black/55">Follow league tables and leaders throughout the season.</p></article>
+          <article class="sharp-card fade-up p-6"><div class="feature-icon">◫</div><h3 class="mt-7 text-xl font-extrabold">Team Pages</h3><p class="mt-3 text-sm font-semibold leading-6 text-black/55">Explore team profiles, records, schedules, and roster information.</p></article>
+          <article class="sharp-card fade-up p-6"><div class="feature-icon">#</div><h3 class="mt-7 text-xl font-extrabold">Team & Game Stats</h3><p class="mt-3 text-sm font-semibold leading-6 text-black/55">View game-level and season-level stats without jumping between sites.</p></article>
+          <article class="sharp-card fade-up p-6"><div class="feature-icon">★</div><h3 class="mt-7 text-xl font-extrabold">Favourites</h3><p class="mt-3 text-sm font-semibold leading-6 text-black/55">Personalize the app around your schools, teams, and sports.</p></article>
+          <article class="sharp-card fade-up p-6"><div class="feature-icon">⌃</div><h3 class="mt-7 text-xl font-extrabold">Game Forecasts</h3><p class="mt-3 text-sm font-semibold leading-6 text-black/55">Non-betting matchup projections designed to create fan engagement.</p></article>
+          <article class="sharp-card fade-up p-6"><div class="feature-icon">▣</div><h3 class="mt-7 text-xl font-extrabold">Live Activities</h3><p class="mt-3 text-sm font-semibold leading-6 text-black/55">Stay updated from the lock screen with glanceable game information.</p></article>
+        </div>
+      </div>
+    </section>
 
-        <h2 class="hero-title mx-auto mt-6 max-w-5xl text-[54px] md:text-[90px]">
-          Help shape the app before launch.
-        </h2>
+    <section id="experience" class="section-pad">
+      <div class="container">
+        <div class="mb-12 grid gap-8 lg:grid-cols-[.8fr_1fr] lg:items-end">
+          <div class="fade-up">
+            <div class="section-kicker">App experience</div>
+            <h2 class="section-title text-5xl md:text-7xl">A cleaner way to follow every game.</h2>
+          </div>
+          <p class="fade-up max-w-2xl text-lg font-semibold leading-8 text-black/58">
+            A premium mobile-first interface for moving from live scores to team context, standings, forecasts, favourites, and lock-screen updates without jumping between platforms.
+          </p>
+        </div>
 
-        <p class="mx-auto mt-6 max-w-2xl text-lg font-bold leading-8 text-black/55">
-          I’m collecting feedback from students, athletes, alumni, and fans to make sure Unite solves the right problems before the full version launches.
-        </p>
+        <div class="experience-grid">
+          <article class="experience-card premium-card fade-up">
+            <div><h3 class="text-2xl font-extrabold">Game Details</h3><p class="mt-2 text-sm font-semibold leading-6 text-black/55">Scores, stats, box scores, and matchup information in one view.</p></div>
+            <div class="phone-frame"><div class="phone-screen"><div class="island"></div><img src="public/mockup-game-detail.png" alt="Unite game details app screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="mt-2 text-3xl font-extrabold">Game Detail</h4><div class="mock-card mt-5">Guelph 37 · Western 30</div><div class="mock-card">Box score</div><div class="mock-card">Team stats</div></div></div></div>
+          </article>
+          <article class="experience-card premium-card fade-up">
+            <div><h3 class="text-2xl font-extrabold">Favourites</h3><p class="mt-2 text-sm font-semibold leading-6 text-black/55">Follow your teams and sports to create a more personal feed.</p></div>
+            <div class="phone-frame"><div class="phone-screen"><div class="island"></div><img src="public/mockup-favourites.png" alt="Unite favourites app screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="mt-2 text-3xl font-extrabold">Favourites</h4><div class="mock-card mt-5">Guelph Gryphons</div><div class="mock-card">Western Mustangs</div><div class="mock-card">Queen’s Gaels</div></div></div></div>
+          </article>
+          <article class="experience-card premium-card fade-up">
+            <div><h3 class="text-2xl font-extrabold">Standings & Leaders</h3><p class="mt-2 text-sm font-semibold leading-6 text-black/55">Track league tables and top performers throughout the season.</p></div>
+            <div class="phone-frame"><div class="phone-screen"><div class="island"></div><img src="public/mockup-standings.png" alt="Unite standings app screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="mt-2 text-3xl font-extrabold">Standings</h4><div class="mock-card mt-5">Western · 8-0</div><div class="mock-card">Guelph · 6-2</div><div class="mock-card">Ottawa · 5-3</div></div></div></div>
+          </article>
+          <article class="experience-card premium-card fade-up">
+            <div><h3 class="text-2xl font-extrabold">Team Pages</h3><p class="mt-2 text-sm font-semibold leading-6 text-black/55">View team identity, schedule, roster information, and season context.</p></div>
+            <div class="phone-frame"><div class="phone-screen"><div class="island"></div><img src="public/mockup-team-page.png" alt="Unite team page app screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="mt-2 text-3xl font-extrabold">Team Page</h4><div class="mock-card mt-5">Schedule</div><div class="mock-card">Roster</div><div class="mock-card">Season stats</div></div></div></div>
+          </article>
+          <article class="experience-card premium-card fade-up">
+            <div><h3 class="text-2xl font-extrabold">Game Forecasts</h3><p class="mt-2 text-sm font-semibold leading-6 text-black/55">Create fan engagement with non-betting pregame predictions.</p></div>
+            <div class="phone-frame"><div class="phone-screen"><div class="island"></div><div class="screen-fallback always" data-expected-image="public/mockup-game-forecast.png"><h4 class="mt-2 text-3xl font-extrabold">Forecast</h4><div class="mock-card mt-5">Win projection</div><div class="mock-card">Matchup trends</div><div class="mock-card">Fan poll</div></div></div></div>
+          </article>
+          <article class="experience-card premium-card fade-up">
+            <div><h3 class="text-2xl font-extrabold">Live Activities</h3><p class="mt-2 text-sm font-semibold leading-6 text-black/55">Keep game information visible right from the lock screen.</p></div>
+            <div class="phone-frame"><div class="phone-screen"><div class="island"></div><div class="screen-fallback always" data-expected-image="public/mockup-live-activity.png"><h4 class="mt-2 text-3xl font-extrabold">Live Activity</h4><div class="mock-card mt-5">Q4 · 02:18</div><div class="mock-card">Guelph 37</div><div class="mock-card">Western 30</div></div></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-        <div class="mt-9 flex justify-center gap-3">
-          <a href="#" class="btn-black">Join the Survey →</a>
-          <a href="mailto:noahxwalker@icloud.com?subject=Unite%20Inquiry" class="btn-light">Contact</a>
+    <section class="section-pad dark-band">
+      <div class="container">
+        <div class="section-head fade-up">
+          <div class="section-kicker text-[#37d486]">Community</div>
+          <h2 class="section-title text-5xl md:text-7xl">Built for every part of the university sports community.</h2>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <article class="premium-card fade-up p-6"><h3 class="text-xl font-extrabold">Student-Athletes</h3><p class="mt-3 text-sm font-semibold leading-6 text-white/58">Follow opponents, standings, and personal/team performance in one place.</p></article>
+          <article class="premium-card fade-up p-6"><h3 class="text-xl font-extrabold">Students</h3><p class="mt-3 text-sm font-semibold leading-6 text-white/58">Stay connected to campus sports through a simple mobile-first experience.</p></article>
+          <article class="premium-card fade-up p-6"><h3 class="text-xl font-extrabold">Alumni</h3><p class="mt-3 text-sm font-semibold leading-6 text-white/58">Reconnect with school pride, athletic culture, and the next generation of athletes.</p></article>
+          <article class="premium-card fade-up p-6"><h3 class="text-xl font-extrabold">Families and Fans</h3><p class="mt-3 text-sm font-semibold leading-6 text-white/58">Check schedules, results, standings, and team updates quickly from anywhere.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad border-b border-black/10 bg-white">
+      <div class="container">
+        <div class="premium-card fade-up grid gap-8 p-8 md:p-12 lg:grid-cols-[.8fr_1fr] lg:items-center">
+          <h2 class="section-title text-5xl md:text-6xl">Built for the OUA. Ready to grow.</h2>
+          <p class="text-lg font-semibold leading-8 text-black/58">
+            Unite is currently built around the OUA conference, creating a focused starting point for a high-quality launch. With the right support and approved data access, the platform can expand nationally across Canadian university sports.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-pad text-center">
+      <div class="container">
+        <div class="mx-auto max-w-4xl fade-up">
+          <div class="logo-mark mx-auto"><img src="Unite Logo.png" alt=""></div>
+          <h2 class="hero-title mt-8 text-[54px] md:text-[88px]">A better way to follow Canadian university sports.</h2>
+          <p class="mx-auto mt-6 max-w-2xl text-lg font-semibold leading-8 text-black/58">
+            Scores, schedules, standings, team pages, stats, favourites, and more — built into one modern mobile experience.
+          </p>
+          <div class="mt-9 flex flex-wrap justify-center gap-3">
+            <a href="#features" class="btn btn-dark">Explore Features</a>
+            <a href="mailto:noahxwalker@icloud.com?subject=Unite%20Inquiry" class="btn btn-light">Contact</a>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="border-t border-black/10 bg-white">
-    <div class="container flex flex-col gap-5 py-9 text-sm font-bold text-black/45 md:flex-row md:items-center md:justify-between">
+    <div class="container flex flex-col gap-8 py-10 md:flex-row md:items-center md:justify-between">
       <div>
-        <div class="text-lg font-black text-black">Unite</div>
-        <div class="mt-1 max-w-2xl">
-          Built to make Canadian university sports easier to follow. Logos and school marks should only be used with permission.
-        </div>
+        <a href="#top" class="inline-flex items-center gap-3">
+          <span class="logo-mark"><img src="Unite Logo.png" alt=""></span>
+          <span class="text-xl font-extrabold tracking-[-.04em]">Unite</span>
+        </a>
+        <p class="mt-3 max-w-xl text-sm font-semibold leading-6 text-black/48">Built to make Canadian university sports easier to follow. School marks should only be used with permission.</p>
       </div>
-
-      <div>© <span id="year"></span> Unite. All rights reserved.</div>
+      <div class="flex flex-col gap-4 text-sm font-bold text-black/50 md:items-end">
+        <div class="flex flex-wrap gap-5">
+          <a href="#features" class="hover:text-black">Features</a>
+          <a href="#experience" class="hover:text-black">Experience</a>
+          <a href="#schools" class="hover:text-black">Schools</a>
+          <a href="mailto:noahxwalker@icloud.com?subject=Unite%20Inquiry" class="hover:text-black">Contact</a>
+        </div>
+        <div>© <span id="year"></span> Unite. All rights reserved.</div>
+      </div>
     </div>
   </footer>
 
   <script>
+    const schools = [
+      ["Guelph", "public/schools/school-guelph.png"],
+      ["Western", "public/schools/school-western.png"],
+      ["McMaster", "public/schools/school-mcmaster.png"],
+      ["Waterloo", "public/schools/school-waterloo.png"],
+      ["Queen’s", "public/schools/school-queens.png"],
+      ["Ottawa", "public/schools/school-ottawa.png"],
+      ["York", "public/schools/school-york.png"],
+      ["Windsor", "public/schools/school-windsor.png"],
+      ["Carleton", "public/schools/school-carleton.png"],
+      ["TMU", "public/schools/school-tmu.png"],
+      ["Brock", "public/schools/school-brock.png"],
+      ["Toronto", "public/schools/school-toronto.png"],
+      ["Laurier", "public/schools/school-laurier.png"],
+      ["Nipissing", "public/schools/school-nipissing.png"],
+      ["Laurentian", "public/schools/school-laurentian.png"],
+      ["Ontario Tech", "public/schools/school-ontariotech.png"],
+      ["RMC", "public/schools/school-rmc.png"],
+      ["Algoma", "public/schools/school-algoma.png"]
+    ];
+
+    function initials(name) {
+      return name.split(/\s+/).map((word) => word[0]).join("").slice(0, 3).toUpperCase();
+    }
+
+    function buildSchoolTicker() {
+      const ticker = document.getElementById("schoolTicker");
+      if (!ticker) return;
+      const doubled = [...schools, ...schools];
+      ticker.innerHTML = doubled.map(([name, src]) => `
+        <div class="school-pill">
+          <img src="${src}" alt="${name} logo" class="school-logo" onerror="this.classList.add('is-missing')">
+          <span class="school-fallback" aria-hidden="true">${initials(name)}</span>
+          <span>${name}</span>
+        </div>
+      `).join("");
+    }
+
+    function revealOnScroll() {
+      const items = document.querySelectorAll(".fade-up");
+      if (!("IntersectionObserver" in window)) {
+        items.forEach((item) => item.classList.add("is-visible"));
+        return;
+      }
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .14 });
+      items.forEach((item) => observer.observe(item));
+    }
+
     document.getElementById("year").textContent = new Date().getFullYear();
+    buildSchoolTicker();
+    revealOnScroll();
   </script>
 </body>
 </html>
-
-
-
