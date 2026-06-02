@@ -199,15 +199,14 @@
     }
 
     .phone-frame {
+      --phone-width: 276px;
+      --phone-height: 564px;
       --device-frame: #18181b;
       --device-edge: rgba(63, 63, 70, .42);
       --device-panel: #09090b;
-      --island-width: 31%;
-      --island-height: 3.7%;
-      --island-top: 1.6%;
       position: relative;
-      width: 276px;
-      height: 564px;
+      width: var(--phone-width);
+      height: var(--phone-height);
       padding: 8px;
       border: 8px solid var(--device-frame);
       border-radius: 45px;
@@ -240,14 +239,10 @@
       pointer-events: none;
     }
 
-    .phone-frame.large {
-      width: 354px;
-      height: 724px;
-    }
-
+    .phone-frame.large,
     .phone-frame.small {
-      width: 232px;
-      height: 474px;
+      width: var(--phone-width);
+      height: var(--phone-height);
     }
 
     .phone-frame.float-front { transform: translateX(-62px) rotate(-2deg); z-index: 2; }
@@ -290,16 +285,7 @@
     }
 
     .island {
-      position: absolute;
-      top: var(--island-top);
-      left: 50%;
-      z-index: 4;
-      width: var(--island-width);
-      height: var(--island-height);
-      transform: translateX(-50%);
-      border-radius: 999px;
-      background: #09090b;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 1px 2px rgba(0,0,0,.34);
+      display: none;
     }
 
     .screen-img { width: 100%; height: 100%; object-fit: contain; background: #08090a; }
@@ -392,8 +378,6 @@
     }
 
     .screen-card .phone-frame {
-      width: 188px;
-      height: 384px;
       margin: 18px auto 0;
       box-shadow:
         0 26px 54px rgba(17, 19, 18, .18),
@@ -573,15 +557,13 @@
       .hero-copy p { font-size: 17px !important; line-height: 1.55; }
       .hero-copy .btn { width: min(100%, 330px); }
       .hero-device-stage { min-height: 450px; margin-top: 32px; overflow: hidden; }
-      .phone-frame.large { width: 226px; height: 462px; }
-      .phone-frame.small { width: 194px; height: 397px; }
+      .phone-frame { --phone-width: 184px; --phone-height: 376px; }
       .phone-frame.float-front { transform: none; }
       .phone-frame.float-back { display: none; }
       .ticker-shell::before, .ticker-shell::after { width: 56px; }
       .screens-rail { margin: 0 -14px; }
       .screens-row { padding: 0 14px; }
       .screen-card { width: min(70vw, 230px); min-height: 488px; }
-      .screen-card .phone-frame { width: 184px; height: 376px; }
       .feature-card { min-height: 0; padding: 18px; }
       #features .grid { gap: 14px; }
       .feature-icon { width: 40px; height: 40px; border-radius: 10px; }
@@ -598,7 +580,7 @@
       .hero-shell { padding-top: 96px; }
       .hero-title { font-size: 39px !important; }
       .section-title { font-size: 32px !important; }
-      .phone-frame.large { width: 214px; height: 438px; }
+      .phone-frame { --phone-width: 176px; --phone-height: 360px; }
       .hero-device-stage { min-height: 424px; }
       .screen-card { width: 74vw; }
     }
@@ -709,8 +691,8 @@
 
       .phone-frame.float-back {
         display: block !important;
-        width: 154px !important;
-        height: 315px !important;
+        width: var(--phone-width) !important;
+        height: var(--phone-height) !important;
         right: -46px !important;
         bottom: 38px !important;
         transform: rotate(4deg) !important;
@@ -723,8 +705,8 @@
       }
 
       .phone-frame.large {
-        width: min(188px, 52vw) !important;
-        height: min(385px, 106vw) !important;
+        width: var(--phone-width) !important;
+        height: var(--phone-height) !important;
       }
 
       .section-pad {
@@ -788,8 +770,8 @@
       }
 
       .screen-card .phone-frame {
-        width: 156px !important;
-        height: 319px !important;
+        width: var(--phone-width) !important;
+        height: var(--phone-height) !important;
       }
     }
   </style>
@@ -840,7 +822,7 @@
           <div class="device-halo"></div>
           <div class="phone-frame small float-back" aria-hidden="true">
             <div class="phone-screen">
-              <div class="island"></div>
+
               <img src="public/mockup-scores-home.png" alt="Unite scores home screen" class="screen-img" onerror="this.classList.add('is-missing')">
               <div class="screen-fallback">
                 <div class="text-xs font-extrabold uppercase tracking-[.16em] text-white/45">Today</div>
@@ -857,7 +839,7 @@
 
           <div class="phone-frame large float-front">
             <div class="phone-screen">
-              <div class="island"></div>
+
               <img src="public/mockup-hero-device.png" alt="Unite mobile app hero screen" class="screen-img" onerror="this.classList.add('is-missing')">
               <div class="screen-fallback">
                 <div class="text-xs font-extrabold uppercase tracking-[.16em] text-white/45">Unite</div>
@@ -892,37 +874,37 @@
             <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Scores</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Live games and final results.</p>
-              <div class="phone-frame"><div class="phone-screen"><div class="island"></div><img src="public/mockup-scores-home.png" alt="Scores screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Scores</h4><div class="mock-card mt-4">Guelph 37</div><div class="mock-card">Western 30</div></div></div></div>
+              <div class="phone-frame"><div class="phone-screen"><img src="public/mockup-scores-home.png" alt="Scores screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Scores</h4><div class="mock-card mt-4">Guelph 37</div><div class="mock-card">Western 30</div></div></div></div>
             </article>
             <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Game Details</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Stats and matchup context.</p>
-              <div class="phone-frame"><div class="phone-screen"><div class="island"></div><img src="public/mockup-game-detail.png" alt="Game details screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Game Detail</h4><div class="mock-card mt-4">Box score</div><div class="mock-card">Team stats</div></div></div></div>
+              <div class="phone-frame"><div class="phone-screen"><img src="public/mockup-game-detail.png" alt="Game details screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Game Detail</h4><div class="mock-card mt-4">Box score</div><div class="mock-card">Team stats</div></div></div></div>
             </article>
             <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Favourites</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Follow teams you care about.</p>
-              <div class="phone-frame"><div class="phone-screen"><div class="island"></div><img src="public/mockup-favourites.png" alt="Favourites screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Favourites</h4><div class="mock-card mt-4">My teams</div><div class="mock-card">My sports</div></div></div></div>
+              <div class="phone-frame"><div class="phone-screen"><img src="public/mockup-favourites.png" alt="Favourites screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Favourites</h4><div class="mock-card mt-4">My teams</div><div class="mock-card">My sports</div></div></div></div>
             </article>
             <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Standings</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Track season progress.</p>
-              <div class="phone-frame"><div class="phone-screen"><div class="island"></div><img src="public/mockup-standings.png" alt="Standings screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Standings</h4><div class="mock-card mt-4">Western 8-0</div><div class="mock-card">Guelph 6-2</div></div></div></div>
+              <div class="phone-frame"><div class="phone-screen"><img src="public/mockup-standings.png" alt="Standings screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Standings</h4><div class="mock-card mt-4">Western 8-0</div><div class="mock-card">Guelph 6-2</div></div></div></div>
             </article>
             <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Forecasts</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Non-betting predictions.</p>
-              <div class="phone-frame"><div class="phone-screen"><div class="island"></div><img src="public/mockup-game-forecast.png" alt="Forecasts screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Forecast</h4><div class="mock-card mt-4">Win projection</div><div class="mock-card">Fan poll</div></div></div></div>
+              <div class="phone-frame"><div class="phone-screen"><img src="public/mockup-game-forecast.png" alt="Forecasts screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Forecast</h4><div class="mock-card mt-4">Win projection</div><div class="mock-card">Fan poll</div></div></div></div>
             </article>
             <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Team Pages</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Schedule, roster, and record.</p>
-              <div class="phone-frame"><div class="phone-screen"><div class="island"></div><img src="public/mockup-team-page.png" alt="Team page screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Team Page</h4><div class="mock-card mt-4">Schedule</div><div class="mock-card">Roster</div></div></div></div>
+              <div class="phone-frame"><div class="phone-screen"><img src="public/mockup-team-page.png" alt="Team page screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Team Page</h4><div class="mock-card mt-4">Schedule</div><div class="mock-card">Roster</div></div></div></div>
             </article>
             <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Live Activity</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Updates from the lock screen.</p>
-              <div class="phone-frame"><div class="phone-screen"><div class="island"></div><img src="public/mockup-live-activity.png" alt="Live Activity screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Live Activity</h4><div class="mock-card mt-4">Q4 02:18</div><div class="mock-card">Guelph 37</div></div></div></div>
+              <div class="phone-frame"><div class="phone-screen"><img src="public/mockup-live-activity.png" alt="Live Activity screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Live Activity</h4><div class="mock-card mt-4">Q4 02:18</div><div class="mock-card">Guelph 37</div></div></div></div>
             </article>
           </div>
         </div>
