@@ -42,12 +42,55 @@
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
       letter-spacing: -.012em;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-text-size-adjust: 100%;
       text-rendering: optimizeLegibility;
     }
 
     img, svg { display: block; max-width: 100%; }
 
     .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+
+    .intro-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: grid;
+      place-items: center;
+      background: #fff;
+      pointer-events: none;
+      animation: introFade .92s cubic-bezier(.22, 1, .36, 1) .18s forwards;
+    }
+
+    .intro-logo {
+      width: 118px;
+      height: 118px;
+      display: grid;
+      place-items: center;
+      border-radius: 27px;
+      background: #0b0d0c;
+      box-shadow: 0 30px 80px rgba(29, 29, 31, .22);
+      animation: introLogoZoom .92s cubic-bezier(.22, 1, .36, 1) forwards;
+      will-change: transform, opacity;
+    }
+
+    .intro-logo img {
+      width: 76px;
+      height: 76px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+
+    @keyframes introFade {
+      0%, 42% { opacity: 1; }
+      100% { opacity: 0; visibility: hidden; }
+    }
+
+    @keyframes introLogoZoom {
+      0% { transform: scale(1.72); opacity: 0; }
+      22% { opacity: 1; }
+      100% { transform: scale(.42); opacity: 0; }
+    }
 
     .nav-glass {
       background: rgba(255, 255, 255, .84);
@@ -212,8 +255,10 @@
       border-radius: 45px;
       background: #18181b;
       box-shadow:
-        0 34px 74px rgba(0, 0, 0, .24),
+        0 48px 100px rgba(0, 0, 0, .26),
+        0 18px 38px rgba(0, 0, 0, .16),
         0 0 2px 2px rgba(255, 255, 255, .1);
+      filter: drop-shadow(0 26px 34px rgba(0, 0, 0, .14));
       flex: 0 0 auto;
     }
 
@@ -423,8 +468,10 @@
     .screen-card .iphone-15-pro {
       margin: 18px auto 0;
       box-shadow:
-        0 26px 54px rgba(17, 19, 18, .18),
+        0 40px 80px rgba(17, 19, 18, .2),
+        0 18px 34px rgba(17, 19, 18, .14),
         0 0 2px 2px rgba(255,255,255,.1);
+      filter: drop-shadow(0 24px 28px rgba(17, 19, 18, .12));
     }
 
     .screen-card .screen-fallback { padding: 46px 14px 16px; gap: 10px; }
@@ -613,8 +660,77 @@
       }
     }
 
+    @media (min-width: 1500px) {
+      .container {
+        width: min(1680px, calc(100% - 144px));
+      }
+
+      .nav-glass .container {
+        width: min(1680px, calc(100% - 160px));
+      }
+
+      .section-pad {
+        padding: 96px 0;
+      }
+
+      #screens.section-pad {
+        padding-top: 112px;
+        padding-bottom: 96px;
+      }
+
+      #screens .section-head {
+        max-width: 940px;
+        margin-bottom: 46px;
+      }
+
+      #screens .section-title {
+        font-size: clamp(74px, 4.7vw, 96px) !important;
+        line-height: .96;
+      }
+
+      #screens .section-head p {
+        font-size: 22px;
+        line-height: 1.45;
+      }
+
+      .screens-row {
+        gap: clamp(14px, 1.6vw, 34px);
+      }
+
+      .screen-card h3 {
+        font-size: clamp(20px, 1.25vw, 25px);
+      }
+
+      .screen-card p {
+        font-size: clamp(14px, .82vw, 16px);
+      }
+
+      .screen-card .iphone-15-pro {
+        --phone-width: clamp(174px, 9.8vw, 202px);
+        --phone-height: clamp(374px, 20.9vw, 432px);
+        --button-width: 5px;
+        --button-offset: -9px;
+        border-width: 5px;
+        border-radius: 31px;
+      }
+
+      .screen-card .iphone-15-pro::before {
+        top: 5px;
+      }
+
+      .screen-card .iphone-15-pro::after {
+        border-radius: 27px;
+      }
+
+      .screen-card .iphone-inner,
+      .screen-card .iphone-screen {
+        border-radius: 27px;
+      }
+    }
+
   @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .intro-loader { display: none; }
   .fade-up { opacity: 1; transform: none; }
   .btn, .premium-card, .feature-card, .screen-card { transition: none; }
 }
@@ -914,6 +1030,10 @@
 </head>
 
 <body>
+  <div class="intro-loader" aria-hidden="true">
+    <div class="intro-logo"><img src="Unite Logo.png" alt=""></div>
+  </div>
+
   <header class="nav-glass fixed left-0 right-0 top-0 z-50">
     <div class="container flex items-center justify-between py-4">
       <a href="#top" class="flex items-center gap-3" aria-label="Unite home">
