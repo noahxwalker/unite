@@ -538,7 +538,7 @@
     @media (max-width: 760px) {
       .container { width: min(100% - 28px, 1180px); }
       .nav-links { display: none; }
-      .nav-cta { display: none; }
+      .nav-cta { display: inline-flex; min-height: 36px; padding: 0 12px; font-size: 13px; }
       .hero-shell { padding: 104px 0 46px; }
       .hero-title { font-size: 56px !important; }
       .section-title { font-size: 42px !important; }
@@ -600,7 +600,7 @@
               <svg class="apple-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.44c-.03-2.44 2-3.61 2.09-3.67-1.14-1.67-2.91-1.9-3.53-1.92-1.5-.15-2.93.88-3.69.88-.77 0-1.95-.86-3.21-.84-1.65.02-3.18.96-4.03 2.44-1.72 2.99-.44 7.41 1.24 9.84.82 1.18 1.8 2.51 3.09 2.46 1.24-.05 1.71-.8 3.2-.8 1.5 0 1.92.8 3.23.78 1.33-.02 2.18-1.2 3-2.39.94-1.38 1.33-2.71 1.35-2.78-.03-.01-2.59-.99-2.62-3zM14.63 5.27c.69-.83 1.15-1.98 1.02-3.13-.98.04-2.17.65-2.87 1.48-.63.73-1.18 1.9-1.03 3.02 1.09.08 2.2-.55 2.88-1.47z"/></svg>
               Coming Soon on the App Store
             </a>
-            <a href="#screens" class="btn btn-light">View App Screens</a>
+            <a href="#screens" class="btn btn-light">View Screens</a>
           </div>
         </div>
 
@@ -872,6 +872,10 @@
     }
 
     function setupHashFreeNavigation() {
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+
       if (window.location.hash) {
         history.replaceState(null, "", window.location.pathname + window.location.search);
         window.scrollTo({ top: 0, left: 0, behavior: "auto" });
