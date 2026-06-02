@@ -138,7 +138,7 @@
     .hero-shell {
       position: relative;
       overflow: hidden;
-      padding: 144px 0 66px;
+      padding: 128px 0 72px;
     }
 
     .hero-shell::before {
@@ -153,16 +153,38 @@
 
     .hero-grid {
       position: relative;
-      display: grid;
-      grid-template-columns: minmax(0, .9fr) minmax(500px, 1fr);
-      gap: 56px;
-      align-items: center;
+      display: block;
+      text-align: center;
     }
 
-    .hero-copy { max-width: 670px; }
+    .hero-copy {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .hero-copy .flex { justify-content: center; }
+
+    .hero-app-icon {
+      width: 88px;
+      height: 88px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto;
+      border-radius: 21px;
+      background: #0b0d0c;
+      box-shadow: 0 22px 48px rgba(29, 29, 31, .2);
+    }
+
+    .hero-app-icon img {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
 
     .hero-device-stage {
-      min-height: 700px;
+      min-height: 660px;
+      margin-top: 42px;
       position: relative;
       display: grid;
       place-items: center;
@@ -177,10 +199,8 @@
     }
 
     .phone-frame {
-      --button-top: 130px;
-      --button-height: 62px;
-      --button-two-top: 212px;
-      --button-two-height: 94px;
+      --button-top: 186px;
+      --button-height: 88px;
       --island-width: 86px;
       --island-height: 26px;
       --island-top: 15px;
@@ -202,8 +222,7 @@
       flex: 0 0 auto;
     }
 
-    .phone-frame::before,
-    .phone-frame::after {
+    .phone-frame::before {
       content: "";
       position: absolute;
       left: 100%;
@@ -214,13 +233,10 @@
     }
 
     .phone-frame::before { top: var(--button-top); height: var(--button-height); }
-    .phone-frame::after { top: var(--button-two-top); height: var(--button-two-height); }
 
     .phone-frame.large {
-      --button-top: 160px;
-      --button-height: 72px;
-      --button-two-top: 258px;
-      --button-two-height: 112px;
+      --button-top: 220px;
+      --button-height: 112px;
       --island-width: 104px;
       --island-height: 30px;
       --island-top: 17px;
@@ -229,10 +245,8 @@
     }
 
     .phone-frame.small {
-      --button-top: 112px;
-      --button-height: 48px;
-      --button-two-top: 176px;
-      --button-two-height: 74px;
+      --button-top: 154px;
+      --button-height: 70px;
       --island-width: 72px;
       --island-height: 21px;
       --island-top: 12px;
@@ -240,8 +254,8 @@
       height: 474px;
     }
 
-    .phone-frame.float-front { transform: translateX(-52px) rotate(-3deg); z-index: 2; }
-    .phone-frame.float-back { position: absolute; right: 8px; bottom: 28px; transform: rotate(5deg); opacity: .96; }
+    .phone-frame.float-front { transform: translateX(-62px) rotate(-2deg); z-index: 2; }
+    .phone-frame.float-back { position: absolute; right: calc(50% - 310px); bottom: 38px; transform: rotate(4deg); opacity: .96; }
 
     .phone-button-left {
       position: absolute;
@@ -252,8 +266,12 @@
       box-shadow: inset -1px 0 0 rgba(255,255,255,.16);
     }
 
-    .phone-button-left.short { top: 104px; height: 32px; }
-    .phone-button-left.long { top: 154px; height: 78px; }
+    .phone-button-left.short { top: 142px; height: 54px; }
+    .phone-button-left.long { top: 218px; height: 54px; }
+    .phone-frame.large .phone-button-left.short { top: 180px; height: 60px; }
+    .phone-frame.large .phone-button-left.long { top: 262px; height: 60px; }
+    .phone-frame.small .phone-button-left.short { top: 116px; height: 44px; }
+    .phone-frame.small .phone-button-left.long { top: 178px; height: 44px; }
 
     .phone-screen {
       height: 100%;
@@ -290,7 +308,7 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 1px 2px rgba(0,0,0,.34);
     }
 
-    .screen-img { width: 100%; height: 100%; object-fit: cover; }
+    .screen-img { width: 100%; height: 100%; object-fit: contain; background: #08090a; }
     .screen-img.is-missing { display: none; }
     .screen-img.is-missing + .screen-fallback { display: flex; }
 
@@ -313,7 +331,7 @@
       box-shadow: 0 14px 24px rgba(0,0,0,.16);
     }
 
-    .premium-card, .feature-card, .screen-card {
+    .premium-card, .feature-card {
       background: rgba(255, 255, 255, .92);
       border: 1px solid var(--line);
       border-radius: 18px;
@@ -346,6 +364,7 @@
     }
 
     .screens-rail {
+      position: relative;
       overflow-x: auto;
       overflow-y: hidden;
       overscroll-behavior-x: contain;
@@ -359,7 +378,7 @@
 
     .screens-row {
       display: flex;
-      gap: 18px;
+      gap: clamp(24px, 4vw, 54px);
       width: max-content;
       min-width: 100%;
       padding: 0 20px;
@@ -367,23 +386,25 @@
 
     .screen-card {
       width: 218px;
-      min-height: 512px;
+      min-height: 492px;
       flex: 0 0 auto;
       scroll-snap-align: center;
       overflow: visible;
-      padding: 18px 16px 0;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      text-align: center;
     }
 
     .screen-card .phone-frame {
       --button-top: 82px;
-      --button-height: 38px;
-      --button-two-top: 132px;
-      --button-two-height: 62px;
+      --button-height: 48px;
       --island-width: 58px;
       --island-height: 18px;
       --island-top: 10px;
-      width: 180px;
-      height: 368px;
+      width: 188px;
+      height: 384px;
       margin: 18px auto 0;
       border-radius: 34px;
       padding: 7px;
@@ -391,10 +412,9 @@
     }
 
     .screen-card .phone-frame::before { width: 2px; }
-    .screen-card .phone-frame::after { width: 2px; }
     .screen-card .phone-button-left { width: 2px; }
-    .screen-card .phone-button-left.short { top: 68px; height: 22px; }
-    .screen-card .phone-button-left.long { top: 102px; height: 48px; }
+    .screen-card .phone-button-left.short { top: 70px; height: 26px; }
+    .screen-card .phone-button-left.long { top: 108px; height: 26px; }
     .screen-card .phone-screen { border-radius: 27px; }
     .screen-card .screen-fallback { padding: 46px 14px 16px; gap: 10px; }
     .screen-card .mock-card { border-radius: 13px; padding: 10px; font-size: 12px; }
@@ -402,7 +422,7 @@
     .ticker-shell {
       position: relative;
       overflow: hidden;
-      height: clamp(104px, 12vw, 142px);
+      height: clamp(108px, 12vw, 144px);
       display: flex;
       align-items: center;
       border-top: 1px solid rgba(210,210,215,.8);
@@ -446,9 +466,9 @@
       align-items: center;
       justify-content: center;
       place-items: center;
-      width: clamp(104px, 10vw, 152px);
-      height: clamp(58px, 7vw, 88px);
-      padding: 6px;
+      width: clamp(96px, 12vw, 152px);
+      height: clamp(58px, 8vw, 88px);
+      padding: 8px;
       flex: 0 0 auto;
     }
 
@@ -488,15 +508,14 @@
 
     @media (min-width: 980px) {
       .screens-row {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 16px;
+        display: flex;
+        justify-content: center;
+        gap: clamp(28px, 3.4vw, 58px);
         width: 100%;
       }
 
       .screen-card {
-        width: auto;
-        min-width: 0;
+        width: 188px;
       }
     }
 
@@ -520,23 +539,26 @@
       .container { width: min(100% - 28px, 1180px); }
       .nav-links { display: none; }
       .nav-cta { display: none; }
-      .hero-shell { padding: 112px 0 46px; }
+      .hero-shell { padding: 104px 0 46px; }
       .hero-title { font-size: 56px !important; }
       .section-title { font-size: 42px !important; }
       .section-pad { padding: 58px 0; }
-      .hero-device-stage { min-height: 468px; overflow: hidden; }
-      .phone-frame.large { width: 258px; height: 528px; }
+      .hero-app-icon { width: 74px; height: 74px; border-radius: 18px; }
+      .hero-app-icon img { width: 48px; height: 48px; }
+      .hero-device-stage { min-height: 438px; margin-top: 34px; overflow: hidden; }
+      .phone-frame.large { width: 238px; height: 487px; }
       .phone-frame.small { width: 194px; height: 397px; }
-      .phone-frame.float-front { transform: translateX(-36px) rotate(-3deg); }
-      .phone-frame.float-back { right: -20px; bottom: 34px; }
+      .phone-frame.float-front { transform: translateX(-26px) rotate(-3deg); }
+      .phone-frame.float-back { right: -28px; bottom: 28px; }
       .ticker-shell::before, .ticker-shell::after { width: 56px; }
       .screens-rail { margin: 0 -14px; }
       .screens-row { padding: 0 14px; }
-      .screen-card { width: min(74vw, 238px); }
+      .screen-card { width: min(70vw, 230px); min-height: 488px; }
+      .screen-card .phone-frame { width: 184px; height: 376px; }
       .feature-card { min-height: 164px; }
-      .ticker-shell { height: 98px; }
+      .ticker-shell { height: 102px; }
       .ticker-group { gap: 24px; padding-right: 24px; }
-      .school-logo-wrap { width: 104px; height: 62px; padding: 7px; }
+      .school-logo-wrap { width: 96px; height: 62px; padding: 8px; }
     }
   </style>
 </head>
@@ -565,12 +587,13 @@
     <section class="hero-shell">
       <div class="container hero-grid">
         <div class="hero-copy fade-up">
-          <div class="eyebrow">Built for fans. Designed for mobile.</div>
+          <div class="hero-app-icon"><img src="Unite Logo.png" alt="Unite app icon"></div>
+          <div class="mt-4 text-sm font-semibold text-black/55">Unite</div>
           <h1 class="hero-title mt-7 text-[76px] md:text-[106px]">
             Follow Canadian university sports in one place.
           </h1>
-          <p class="mt-7 max-w-2xl text-xl font-semibold leading-8 text-black/60">
-            Unite brings scores, schedules, standings, team pages, stats, favourites, and game details into one clean mobile-first experience.
+          <p class="mx-auto mt-7 max-w-2xl text-xl font-semibold leading-8 text-black/60">
+            Scores, schedules, standings, stats, team pages, favourites, and game details — built into one clean mobile-first app.
           </p>
           <div class="mt-9 flex flex-wrap gap-3">
             <a href="#" class="btn app-store-btn" aria-label="Coming Soon on the App Store" onclick="event.preventDefault()">
@@ -626,7 +649,10 @@
       <div class="container">
         <div class="section-head fade-up">
           <div class="section-kicker">App screens</div>
-          <h2 class="section-title text-5xl md:text-7xl">The app experience, built for fans.</h2>
+          <h2 class="section-title text-5xl md:text-7xl">See the app in action.</h2>
+          <p class="mt-5 max-w-2xl text-lg font-medium leading-8 text-black/55">
+            From live scores to team pages, Unite keeps the season easy to follow.
+          </p>
         </div>
 
         <div class="screens-rail fade-up" aria-label="Swipe through Unite app screens">
@@ -668,6 +694,7 @@
             </article>
           </div>
         </div>
+        <div class="mt-2 text-center text-sm font-semibold text-black/45 md:hidden">Swipe to explore screens →</div>
       </div>
     </section>
 
@@ -844,6 +871,27 @@
       `;
     }
 
+    function setupHashFreeNavigation() {
+      if (window.location.hash) {
+        history.replaceState(null, "", window.location.pathname + window.location.search);
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const targetId = link.getAttribute("href");
+          if (!targetId || targetId === "#") return;
+
+          const target = targetId === "#top" ? document.getElementById("top") : document.querySelector(targetId);
+          if (!target) return;
+
+          event.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          history.replaceState(null, "", window.location.pathname + window.location.search);
+        });
+      });
+    }
+
     function addPhoneButtons() {
       document.querySelectorAll(".phone-frame").forEach((phone) => {
         if (phone.querySelector(".phone-button-left")) return;
@@ -878,6 +926,7 @@
     document.getElementById("year").textContent = new Date().getFullYear();
     buildSchoolTicker();
     addPhoneButtons();
+    setupHashFreeNavigation();
     revealOnScroll();
   </script>
 </body>
