@@ -198,107 +198,134 @@
       filter: blur(12px);
     }
 
-    .phone-frame {
+    .iphone-15-pro {
       --phone-width: 276px;
       --phone-height: 564px;
-      --device-frame: #18181b;
-      --device-edge: rgba(63, 63, 70, .42);
-      --device-panel: #09090b;
+      --screen-bg: #050607;
       position: relative;
       width: var(--phone-width);
       height: var(--phone-height);
-      padding: 0;
-      border: 8px solid var(--device-frame);
-      border-radius: 45px;
-      background: var(--device-panel);
+      border-radius: 48px;
+      padding: 7px;
+      background:
+        linear-gradient(145deg, #3a3a3f 0%, #111113 38%, #2b2b30 72%, #09090b 100%);
       box-shadow:
-        0 44px 95px rgba(29, 29, 31, .24),
-        0 0 2px 2px rgba(255,255,255,.1);
+        0 42px 90px rgba(0, 0, 0, .28),
+        inset 0 0 0 1px rgba(255, 255, 255, .14),
+        inset 0 0 0 2px rgba(0, 0, 0, .65);
       flex: 0 0 auto;
     }
 
-    .phone-frame::before {
+    .iphone-15-pro::before {
       content: "";
       position: absolute;
-      left: 100%;
-      top: 23%;
-      width: 6px;
-      height: 12%;
-      border-radius: 0 6px 6px 0;
-      background: var(--device-frame);
-      box-shadow: 0 6px 14px rgba(0,0,0,.24);
-    }
-
-    .phone-frame::after {
-      content: "";
-      position: absolute;
-      inset: -1px;
-      z-index: 3;
-      border: 3px solid var(--device-edge);
-      border-radius: 37px;
+      inset: 2px;
+      border-radius: 46px;
       pointer-events: none;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.22), transparent 22%, transparent 72%, rgba(255,255,255,.08));
+      mix-blend-mode: screen;
+      opacity: .55;
+      z-index: 4;
     }
 
-    .phone-frame.large,
-    .phone-frame.small {
+    .iphone-15-pro.large,
+    .iphone-15-pro.small {
       width: var(--phone-width);
       height: var(--phone-height);
     }
 
-    .phone-frame.float-front { transform: translateX(-62px) rotate(-2deg); z-index: 2; }
-    .phone-frame.float-back { position: absolute; right: calc(50% - 310px); bottom: 38px; transform: rotate(4deg); opacity: .96; }
+    .iphone-15-pro.float-front { transform: translateX(-62px) rotate(-2deg); z-index: 2; }
+    .iphone-15-pro.float-back { position: absolute; right: calc(50% - 310px); bottom: 38px; transform: rotate(4deg); opacity: .96; }
 
-    .phone-button-left {
-      position: absolute;
-      right: 100%;
-      width: 6px;
-      border-radius: 6px 0 0 6px;
-      background: var(--device-frame);
-      box-shadow: 0 6px 14px rgba(0,0,0,.24);
-    }
-
-    .phone-button-left.short { top: 20%; height: 8%; }
-    .phone-button-left.long { top: 32%; height: 12%; }
-    .phone-button-left.mute { top: 11%; height: 5.5%; }
-
-    .phone-screen {
+    .iphone-inner {
       width: 100%;
       height: 100%;
-      padding: 6px;
-      border-radius: 37px;
-      overflow: hidden;
-      position: relative;
-      border: 0;
-      background: #08090a;
+      border-radius: 42px;
+      padding: 4px;
+      background: #050607;
       box-shadow:
         inset 0 0 0 1px rgba(255,255,255,.06),
-        inset 0 0 22px rgba(0,0,0,.35);
+        inset 0 0 24px rgba(0,0,0,.85);
+      overflow: hidden;
     }
 
-    .phone-screen::after {
+    .iphone-screen {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 38px;
+      overflow: hidden;
+      background: var(--screen-bg);
+    }
+
+    .iphone-screen::after {
       content: "";
       position: absolute;
       inset: 0;
       z-index: 3;
       pointer-events: none;
-      background: linear-gradient(115deg, rgba(255,255,255,.18), transparent 22%, transparent 72%, rgba(255,255,255,.05));
+      background:
+        linear-gradient(115deg, rgba(255,255,255,.18), transparent 18%, transparent 78%, rgba(255,255,255,.05));
       mix-blend-mode: screen;
+      opacity: .55;
     }
 
-    .island {
+    .iphone-15-pro.no-island .iphone-screen::before {
       display: none;
     }
 
-    .screen-img {
+    .iphone-screen-img {
       width: 100%;
       height: 100%;
-      border-radius: 31px;
       object-fit: cover;
       object-position: center top;
-      background: #08090a;
+      display: block;
+      background: var(--screen-bg);
     }
-    .screen-img.is-missing { display: none; }
-    .screen-img.is-missing + .screen-fallback { display: flex; }
+
+    .iphone-screen-img.is-missing { display: none; }
+    .iphone-screen-img.is-missing + .screen-fallback { display: flex; }
+
+    .iphone-btn {
+      position: absolute;
+      display: block;
+      background: linear-gradient(180deg, #252529, #0f0f11);
+      box-shadow: 0 6px 14px rgba(0,0,0,.28);
+      z-index: 2;
+    }
+
+    .iphone-btn.action {
+      right: 100%;
+      top: 15%;
+      width: 5px;
+      height: 34px;
+      border-radius: 6px 0 0 6px;
+    }
+
+    .iphone-btn.volume-up {
+      right: 100%;
+      top: 25%;
+      width: 5px;
+      height: 52px;
+      border-radius: 6px 0 0 6px;
+    }
+
+    .iphone-btn.volume-down {
+      right: 100%;
+      top: 36%;
+      width: 5px;
+      height: 52px;
+      border-radius: 6px 0 0 6px;
+    }
+
+    .iphone-btn.power {
+      left: 100%;
+      top: 28%;
+      width: 5px;
+      height: 76px;
+      border-radius: 0 6px 6px 0;
+    }
 
     .screen-fallback {
       display: none;
@@ -385,7 +412,7 @@
       text-align: center;
     }
 
-    .screen-card .phone-frame {
+    .screen-card .iphone-15-pro {
       margin: 18px auto 0;
       box-shadow:
         0 26px 54px rgba(17, 19, 18, .18),
@@ -551,7 +578,7 @@
         white-space: normal;
       }
 
-      .screen-card .phone-frame {
+      .screen-card .iphone-15-pro {
         --phone-width: clamp(128px, 11vw, 166px);
         --phone-height: clamp(262px, 22.5vw, 340px);
         width: var(--phone-width);
@@ -571,8 +598,8 @@
       .hero-copy { margin: 0 auto; }
       .hero-copy .flex { justify-content: center; }
       .hero-device-stage { min-height: 590px; }
-      .phone-frame.float-front { transform: translateX(-50px) rotate(-3deg); }
-      .phone-frame.float-back { right: calc(50% - 270px); }
+      .iphone-15-pro.float-front { transform: translateX(-50px) rotate(-3deg); }
+      .iphone-15-pro.float-back { right: calc(50% - 270px); }
     }
 
     @media (max-width: 920px) {
@@ -595,9 +622,9 @@
       .hero-copy p { font-size: 17px !important; line-height: 1.55; }
       .hero-copy .btn { width: min(100%, 330px); }
       .hero-device-stage { min-height: 450px; margin-top: 32px; overflow: hidden; }
-      .phone-frame { --phone-width: 184px; --phone-height: 376px; }
-      .phone-frame.float-front { transform: none; }
-      .phone-frame.float-back { display: none; }
+      .iphone-15-pro { --phone-width: 184px; --phone-height: 376px; }
+      .iphone-15-pro.float-front { transform: none; }
+      .iphone-15-pro.float-back { display: none; }
       .ticker-shell::before, .ticker-shell::after { width: 56px; }
       .screens-rail { margin: 0 -14px; }
       .screens-row { padding: 0 14px; }
@@ -618,7 +645,7 @@
       .hero-shell { padding-top: 96px; }
       .hero-title { font-size: 39px !important; }
       .section-title { font-size: 32px !important; }
-      .phone-frame { --phone-width: 176px; --phone-height: 360px; }
+      .iphone-15-pro { --phone-width: 176px; --phone-height: 360px; }
       .hero-device-stage { min-height: 424px; }
       .screen-card { width: 74vw; }
     }
@@ -726,12 +753,36 @@
         display: none !important;
       }
 
-      .phone-frame {
+      .iphone-15-pro {
         --phone-width: 158px !important;
         --phone-height: 323px !important;
+        border-radius: 34px !important;
+        padding: 5px !important;
       }
 
-      .phone-frame.float-back {
+      .iphone-inner {
+        border-radius: 30px !important;
+        padding: 3px !important;
+      }
+
+      .iphone-screen {
+        border-radius: 27px !important;
+      }
+
+      .iphone-btn.action {
+        height: 22px !important;
+      }
+
+      .iphone-btn.volume-up,
+      .iphone-btn.volume-down {
+        height: 34px !important;
+      }
+
+      .iphone-btn.power {
+        height: 48px !important;
+      }
+
+      .iphone-15-pro.float-back {
         display: none !important;
         width: var(--phone-width) !important;
         height: var(--phone-height) !important;
@@ -741,12 +792,12 @@
         opacity: .55 !important;
       }
 
-      .phone-frame.float-front {
+      .iphone-15-pro.float-front {
         transform: none !important;
         margin: 0 auto !important;
       }
 
-      .phone-frame.large {
+      .iphone-15-pro.large {
         width: var(--phone-width) !important;
         height: var(--phone-height) !important;
       }
@@ -829,7 +880,7 @@
         font-size: 13px !important;
       }
 
-      .screen-card .phone-frame {
+      .screen-card .iphone-15-pro {
         width: var(--phone-width) !important;
         height: var(--phone-height) !important;
       }
@@ -879,38 +930,48 @@
 
         <div class="hero-device-stage fade-up" style="transition-delay: .12s;">
           <div class="device-halo"></div>
-          <div class="phone-frame small float-back" aria-hidden="true">
-            <div class="phone-screen">
-
-              <img src="public/SLIDE 2 SCORESVIEW.png" alt="Unite scores home screen" class="screen-img" onerror="this.classList.add('is-missing')">
-              <div class="screen-fallback">
-                <div class="text-xs font-extrabold uppercase tracking-[.16em] text-white/45">Today</div>
-                <h3 class="text-3xl font-extrabold tracking-[-.05em]">Scores</h3>
-                <div class="mock-card mt-5">
-                  <div class="flex items-center justify-between font-extrabold"><span>Guelph</span><span>37</span></div>
-                  <div class="mt-2 flex items-center justify-between font-extrabold text-white/55"><span>Western</span><span>30</span></div>
-                  <div class="mt-4 text-xs font-extrabold uppercase tracking-[.16em] text-[#2bd083]">Final</div>
+          <div class="iphone-15-pro no-island small float-back" aria-hidden="true">
+            <span class="iphone-btn action"></span>
+            <span class="iphone-btn volume-up"></span>
+            <span class="iphone-btn volume-down"></span>
+            <span class="iphone-btn power"></span>
+            <div class="iphone-inner">
+              <div class="iphone-screen">
+                <img src="public/SLIDE 2 SCORESVIEW.png" alt="Unite scores home screen" class="iphone-screen-img" onerror="this.classList.add('is-missing')">
+                <div class="screen-fallback">
+                  <div class="text-xs font-extrabold uppercase tracking-[.16em] text-white/45">Today</div>
+                  <h3 class="text-3xl font-extrabold tracking-[-.05em]">Scores</h3>
+                  <div class="mock-card mt-5">
+                    <div class="flex items-center justify-between font-extrabold"><span>Guelph</span><span>37</span></div>
+                    <div class="mt-2 flex items-center justify-between font-extrabold text-white/55"><span>Western</span><span>30</span></div>
+                    <div class="mt-4 text-xs font-extrabold uppercase tracking-[.16em] text-[#2bd083]">Final</div>
+                  </div>
+                  <div class="mock-card">More games today</div>
                 </div>
-                <div class="mock-card">More games today</div>
               </div>
             </div>
           </div>
 
-          <div class="phone-frame large float-front">
-            <div class="phone-screen">
-
-              <img src="public/SLIDE 1 SCORESVIEW.png" alt="Unite mobile app hero screen" class="screen-img" onerror="this.classList.add('is-missing')">
-              <div class="screen-fallback">
-                <div class="text-xs font-extrabold uppercase tracking-[.16em] text-white/45">Unite</div>
-                <h3 class="text-4xl font-extrabold tracking-[-.06em]">Game Center</h3>
-                <div class="mt-5 rounded-[22px] bg-white p-5 text-black shadow-xl">
-                  <div class="text-xs font-extrabold uppercase tracking-[.14em] text-black/40">Final</div>
-                  <div class="mt-5 flex items-center justify-between text-4xl font-black"><span>37</span><span class="text-base text-black/35">vs</span><span>30</span></div>
-                  <div class="mt-4 flex justify-between text-sm font-extrabold text-black/55"><span>Guelph</span><span>Western</span></div>
+          <div class="iphone-15-pro no-island large float-front">
+            <span class="iphone-btn action"></span>
+            <span class="iphone-btn volume-up"></span>
+            <span class="iphone-btn volume-down"></span>
+            <span class="iphone-btn power"></span>
+            <div class="iphone-inner">
+              <div class="iphone-screen">
+                <img src="public/SLIDE 1 SCORESVIEW.png" alt="Unite mobile app hero screen" class="iphone-screen-img" onerror="this.classList.add('is-missing')">
+                <div class="screen-fallback">
+                  <div class="text-xs font-extrabold uppercase tracking-[.16em] text-white/45">Unite</div>
+                  <h3 class="text-4xl font-extrabold tracking-[-.06em]">Game Center</h3>
+                  <div class="mt-5 rounded-[22px] bg-white p-5 text-black shadow-xl">
+                    <div class="text-xs font-extrabold uppercase tracking-[.14em] text-black/40">Final</div>
+                    <div class="mt-5 flex items-center justify-between text-4xl font-black"><span>37</span><span class="text-base text-black/35">vs</span><span>30</span></div>
+                    <div class="mt-4 flex justify-between text-sm font-extrabold text-black/55"><span>Guelph</span><span>Western</span></div>
+                  </div>
+                  <div class="mock-card mt-1">Stats, leaders, and box score</div>
+                  <div class="mock-card">Forecast and matchup context</div>
+                  <div class="mock-card">Follow with Live Activities</div>
                 </div>
-                <div class="mock-card mt-1">Stats, leaders, and box score</div>
-                <div class="mock-card">Forecast and matchup context</div>
-                <div class="mock-card">Follow with Live Activities</div>
               </div>
             </div>
           </div>
@@ -933,37 +994,37 @@
             <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Scores</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Live games and final results.</p>
-              <div class="phone-frame"><div class="phone-screen"><img src="public/SLIDE 2 SCORESVIEW.png" alt="Scores screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Scores</h4><div class="mock-card mt-4">Guelph 37</div><div class="mock-card">Western 30</div></div></div></div>
+              <div class="iphone-15-pro no-island"><span class="iphone-btn action"></span><span class="iphone-btn volume-up"></span><span class="iphone-btn volume-down"></span><span class="iphone-btn power"></span><div class="iphone-inner"><div class="iphone-screen"><img src="public/SLIDE 2 SCORESVIEW.png" alt="Scores screen" class="iphone-screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Scores</h4><div class="mock-card mt-4">Guelph 37</div><div class="mock-card">Western 30</div></div></div></div></div>
             </article>
             <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Game Details</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Stats and matchup context.</p>
-              <div class="phone-frame"><div class="phone-screen"><img src="public/mockup-game-detail.png" alt="Game details screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Game Detail</h4><div class="mock-card mt-4">Box score</div><div class="mock-card">Team stats</div></div></div></div>
+              <div class="iphone-15-pro no-island"><span class="iphone-btn action"></span><span class="iphone-btn volume-up"></span><span class="iphone-btn volume-down"></span><span class="iphone-btn power"></span><div class="iphone-inner"><div class="iphone-screen"><img src="public/mockup-game-detail.png" alt="Game details screen" class="iphone-screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Game Detail</h4><div class="mock-card mt-4">Box score</div><div class="mock-card">Team stats</div></div></div></div></div>
             </article>
             <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Favourites</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Follow teams you care about.</p>
-              <div class="phone-frame"><div class="phone-screen"><img src="public/mockup-favourites.png" alt="Favourites screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Favourites</h4><div class="mock-card mt-4">My teams</div><div class="mock-card">My sports</div></div></div></div>
+              <div class="iphone-15-pro no-island"><span class="iphone-btn action"></span><span class="iphone-btn volume-up"></span><span class="iphone-btn volume-down"></span><span class="iphone-btn power"></span><div class="iphone-inner"><div class="iphone-screen"><img src="public/mockup-favourites.png" alt="Favourites screen" class="iphone-screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Favourites</h4><div class="mock-card mt-4">My teams</div><div class="mock-card">My sports</div></div></div></div></div>
             </article>
             <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Standings</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Track season progress.</p>
-              <div class="phone-frame"><div class="phone-screen"><img src="public/mockup-standings.png" alt="Standings screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Standings</h4><div class="mock-card mt-4">Western 8-0</div><div class="mock-card">Guelph 6-2</div></div></div></div>
+              <div class="iphone-15-pro no-island"><span class="iphone-btn action"></span><span class="iphone-btn volume-up"></span><span class="iphone-btn volume-down"></span><span class="iphone-btn power"></span><div class="iphone-inner"><div class="iphone-screen"><img src="public/mockup-standings.png" alt="Standings screen" class="iphone-screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Standings</h4><div class="mock-card mt-4">Western 8-0</div><div class="mock-card">Guelph 6-2</div></div></div></div></div>
             </article>
             <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Forecasts</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Non-betting predictions.</p>
-              <div class="phone-frame"><div class="phone-screen"><img src="public/mockup-game-forecast.png" alt="Forecasts screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Forecast</h4><div class="mock-card mt-4">Win projection</div><div class="mock-card">Fan poll</div></div></div></div>
+              <div class="iphone-15-pro no-island"><span class="iphone-btn action"></span><span class="iphone-btn volume-up"></span><span class="iphone-btn volume-down"></span><span class="iphone-btn power"></span><div class="iphone-inner"><div class="iphone-screen"><img src="public/mockup-game-forecast.png" alt="Forecasts screen" class="iphone-screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Forecast</h4><div class="mock-card mt-4">Win projection</div><div class="mock-card">Fan poll</div></div></div></div></div>
             </article>
             <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Team Pages</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Schedule, roster, and record.</p>
-              <div class="phone-frame"><div class="phone-screen"><img src="public/mockup-team-page.png" alt="Team page screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Team Page</h4><div class="mock-card mt-4">Schedule</div><div class="mock-card">Roster</div></div></div></div>
+              <div class="iphone-15-pro no-island"><span class="iphone-btn action"></span><span class="iphone-btn volume-up"></span><span class="iphone-btn volume-down"></span><span class="iphone-btn power"></span><div class="iphone-inner"><div class="iphone-screen"><img src="public/mockup-team-page.png" alt="Team page screen" class="iphone-screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Team Page</h4><div class="mock-card mt-4">Schedule</div><div class="mock-card">Roster</div></div></div></div></div>
             </article>
             <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Live Activity</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Updates from the lock screen.</p>
-              <div class="phone-frame"><div class="phone-screen"><img src="public/Simulator Screenshot - iPhone 17 Pro - 2026-06-01 at 16.58.16.png" alt="Live Activity screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Live Activity</h4><div class="mock-card mt-4">Q4 02:18</div><div class="mock-card">Guelph 37</div></div></div></div>
+              <div class="iphone-15-pro no-island"><span class="iphone-btn action"></span><span class="iphone-btn volume-up"></span><span class="iphone-btn volume-down"></span><span class="iphone-btn power"></span><div class="iphone-inner"><div class="iphone-screen"><img src="public/Simulator Screenshot - iPhone 17 Pro - 2026-06-01 at 16.58.16.png" alt="Live Activity screen" class="iphone-screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Live Activity</h4><div class="mock-card mt-4">Q4 02:18</div><div class="mock-card">Guelph 37</div></div></div></div></div>
             </article>
           </div>
         </div>
@@ -1169,24 +1230,6 @@
       });
     }
 
-    function addPhoneButtons() {
-      document.querySelectorAll(".phone-frame").forEach((phone) => {
-        if (phone.querySelector(".phone-button-left")) return;
-        const muteButton = document.createElement("span");
-        const shortButton = document.createElement("span");
-        const longButton = document.createElement("span");
-        muteButton.className = "phone-button-left mute";
-        shortButton.className = "phone-button-left short";
-        longButton.className = "phone-button-left long";
-        muteButton.setAttribute("aria-hidden", "true");
-        shortButton.setAttribute("aria-hidden", "true");
-        longButton.setAttribute("aria-hidden", "true");
-        phone.prepend(longButton);
-        phone.prepend(shortButton);
-        phone.prepend(muteButton);
-      });
-    }
-
     function revealOnScroll() {
       const items = document.querySelectorAll(".fade-up");
       if (!("IntersectionObserver" in window)) {
@@ -1206,7 +1249,6 @@
 
     document.getElementById("year").textContent = new Date().getFullYear();
     buildSchoolTicker();
-    addPhoneButtons();
     setupHashFreeNavigation();
     revealOnScroll();
   </script>
