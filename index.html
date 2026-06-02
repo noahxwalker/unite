@@ -7,10 +7,6 @@
   <meta name="description" content="Unite is a mobile-first app for Canadian university sports, bringing scores, schedules, standings, stats, favourites, forecasts, team pages, and Live Activities into one clean experience." />
   <link rel="icon" href="Unite Logo.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XQJ89P8SMS"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -23,16 +19,15 @@
 
   <style>
     :root {
-      --bg: #f7f6f2;
-      --surface: #fffefa;
-      --ink: #111312;
-      --muted: rgba(17, 19, 18, .58);
-      --line: rgba(17, 19, 18, .12);
-      --green: #06402b;
-      --green-bright: #0c8f52;
-      --green-soft: #e4efe9;
-      --shadow: 0 28px 80px rgba(17, 19, 18, .14);
-      --shadow-soft: 0 16px 42px rgba(17, 19, 18, .08);
+      --bg: #ffffff;
+      --surface: #f5f5f7;
+      --ink: #1d1d1f;
+      --muted: #6e6e73;
+      --line: #d2d2d7;
+      --green: #00bf63;
+      --green-soft: rgba(0, 191, 99, .1);
+      --shadow: 0 32px 90px rgba(29, 29, 31, .16);
+      --shadow-soft: 0 12px 32px rgba(29, 29, 31, .08);
     }
 
     * { box-sizing: border-box; }
@@ -44,8 +39,8 @@
       overflow-x: hidden;
       background: var(--bg);
       color: var(--ink);
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-      letter-spacing: -.018em;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      letter-spacing: -.012em;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
@@ -55,8 +50,8 @@
     .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
 
     .nav-glass {
-      background: rgba(247, 246, 242, .84);
-      border-bottom: 1px solid rgba(17, 19, 18, .08);
+      background: rgba(255, 255, 255, .84);
+      border-bottom: 1px solid rgba(210, 210, 215, .7);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
     }
@@ -67,7 +62,7 @@
       display: grid;
       place-items: center;
       background: #0b0d0c;
-      border-radius: 10px;
+      border-radius: 9px;
       box-shadow: 0 12px 24px rgba(0,0,0,.12);
     }
 
@@ -84,7 +79,7 @@
       justify-content: center;
       gap: 10px;
       min-height: 46px;
-      border-radius: 14px;
+      border-radius: 12px;
       padding: 0 20px;
       font-size: 14px;
       font-weight: 800;
@@ -94,13 +89,13 @@
     }
 
     .btn:hover { transform: translateY(-2px); }
-    .btn-dark { background: #101211; color: #fff; box-shadow: 0 16px 32px rgba(17, 19, 18, .18); }
-    .btn-dark:hover { box-shadow: 0 22px 42px rgba(17, 19, 18, .22); }
+    .btn-dark { background: var(--ink); color: #fff; box-shadow: 0 16px 32px rgba(29, 29, 31, .16); }
+    .btn-dark:hover { box-shadow: 0 22px 42px rgba(29, 29, 31, .2); }
     .btn-light { background: rgba(255,255,255,.72); border: 1px solid var(--line); color: var(--ink); }
     .btn-light:hover { background: #fff; box-shadow: var(--shadow-soft); }
 
     .app-store-btn {
-      background: #101211;
+      background: #1d1d1f;
       color: #fff;
       box-shadow: 0 18px 38px rgba(17, 19, 18, .2);
     }
@@ -111,7 +106,7 @@
       display: inline-flex;
       align-items: center;
       gap: 9px;
-      color: rgba(17, 19, 18, .62);
+      color: var(--muted);
       font-size: 12px;
       font-weight: 850;
       letter-spacing: .12em;
@@ -122,28 +117,28 @@
       content: "";
       width: 7px;
       height: 7px;
-      background: var(--green-bright);
+      background: var(--green);
       border-radius: 999px;
-      box-shadow: 0 0 0 6px rgba(12, 143, 82, .1);
+      box-shadow: 0 0 0 6px rgba(0, 191, 99, .1);
     }
 
     .hero-title, .section-title {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Inter, "Helvetica Neue", Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
       color: var(--ink);
-      font-weight: 850;
+      font-weight: 800;
       line-height: .95;
-      letter-spacing: -.065em;
+      letter-spacing: -.055em;
     }
 
-    .section-title { letter-spacing: -.055em; }
-    .section-pad { padding: 92px 0; }
+    .section-title { letter-spacing: -.045em; }
+    .section-pad { padding: 78px 0; }
     .section-kicker { color: var(--green); font-size: 13px; font-weight: 850; margin-bottom: 14px; }
-    .section-head { max-width: 760px; margin-bottom: 38px; }
+    .section-head { max-width: 760px; margin-bottom: 32px; }
 
     .hero-shell {
       position: relative;
       overflow: hidden;
-      padding: 150px 0 76px;
+      padding: 144px 0 66px;
     }
 
     .hero-shell::before {
@@ -151,15 +146,15 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 72% 20%, rgba(6, 64, 43, .14), transparent 34%),
-        linear-gradient(180deg, rgba(255,255,255,.88), rgba(247,246,242,0) 56%);
+        radial-gradient(circle at 72% 20%, rgba(0, 191, 99, .1), transparent 31%),
+        linear-gradient(180deg, #fff, #f5f5f7 100%);
       pointer-events: none;
     }
 
     .hero-grid {
       position: relative;
       display: grid;
-      grid-template-columns: minmax(0, .95fr) minmax(460px, 1fr);
+      grid-template-columns: minmax(0, .9fr) minmax(500px, 1fr);
       gap: 56px;
       align-items: center;
     }
@@ -167,7 +162,7 @@
     .hero-copy { max-width: 670px; }
 
     .hero-device-stage {
-      min-height: 680px;
+      min-height: 700px;
       position: relative;
       display: grid;
       place-items: center;
@@ -175,38 +170,66 @@
 
     .device-halo {
       position: absolute;
-      width: 520px;
-      height: 520px;
-      background: radial-gradient(circle, rgba(6,64,43,.16), transparent 66%);
-      filter: blur(10px);
+      width: 540px;
+      height: 540px;
+      background: radial-gradient(circle, rgba(0,191,99,.11), transparent 67%);
+      filter: blur(12px);
     }
 
     .phone-frame {
       position: relative;
       width: 276px;
       height: 564px;
-      padding: 9px;
-      border-radius: 42px;
-      background: linear-gradient(145deg, #343735, #070908 52%, #111412);
-      box-shadow: 0 42px 90px rgba(17, 19, 18, .28), inset 0 1px 0 rgba(255,255,255,.24);
+      padding: 10px;
+      border-radius: 46px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.35), transparent 18%),
+        linear-gradient(135deg, #3b3d40, #050506 44%, #18191b);
+      box-shadow:
+        0 42px 90px rgba(29, 29, 31, .28),
+        inset 0 1px 0 rgba(255,255,255,.34),
+        inset 0 -1px 0 rgba(255,255,255,.12);
       flex: 0 0 auto;
     }
 
-    .phone-frame.large { width: 334px; height: 684px; }
+    .phone-frame::before,
+    .phone-frame::after {
+      content: "";
+      position: absolute;
+      left: 100%;
+      width: 3px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #242528, #09090a);
+    }
+
+    .phone-frame::before { top: 132px; height: 58px; }
+    .phone-frame::after { top: 208px; height: 92px; }
+
+    .phone-frame.large { width: 354px; height: 724px; }
     .phone-frame.small { width: 232px; height: 474px; }
     .phone-frame.float-front { transform: translateX(-52px) rotate(-3deg); z-index: 2; }
     .phone-frame.float-back { position: absolute; right: 8px; bottom: 28px; transform: rotate(5deg); opacity: .96; }
 
     .phone-screen {
       height: 100%;
-      border-radius: 34px;
+      border-radius: 37px;
       overflow: hidden;
       position: relative;
       border: 1px solid rgba(255,255,255,.1);
-      background: radial-gradient(circle at 50% -4%, rgba(12,143,82,.42), transparent 32%), linear-gradient(180deg, #242625, #0d0f0e);
+      background: #08090a;
     }
 
-    .phone-frame.large .phone-screen { border-radius: 37px; }
+    .phone-screen::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      background: linear-gradient(115deg, rgba(255,255,255,.18), transparent 22%, transparent 72%, rgba(255,255,255,.05));
+      mix-blend-mode: screen;
+    }
+
+    .phone-frame.large .phone-screen { border-radius: 40px; }
 
     .island {
       position: absolute;
@@ -217,7 +240,7 @@
       height: 24px;
       transform: translateX(-50%);
       border-radius: 999px;
-      background: #050605;
+      background: #050506;
     }
 
     .screen-img { width: 100%; height: 100%; object-fit: cover; }
@@ -244,15 +267,15 @@
     }
 
     .premium-card, .feature-card, .screen-card {
-      background: rgba(255, 254, 250, .9);
+      background: rgba(255, 255, 255, .92);
       border: 1px solid var(--line);
-      border-radius: 20px;
+      border-radius: 18px;
       box-shadow: var(--shadow-soft);
     }
 
     .feature-card {
-      padding: 24px;
-      min-height: 216px;
+      padding: 20px;
+      min-height: 176px;
     }
 
     .feature-icon {
@@ -260,7 +283,7 @@
       height: 42px;
       display: grid;
       place-items: center;
-      border-radius: 12px;
+      border-radius: 11px;
       color: var(--green);
       background: var(--green-soft);
     }
@@ -281,7 +304,7 @@
       overscroll-behavior-x: contain;
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
-      padding: 8px 0 18px;
+      padding: 4px 0 18px;
       margin: 0 -20px;
     }
 
@@ -289,26 +312,26 @@
 
     .screens-row {
       display: flex;
-      gap: 18px;
+      gap: 16px;
       width: max-content;
       min-width: 100%;
       padding: 0 20px;
     }
 
     .screen-card {
-      width: 218px;
-      min-height: 484px;
+      width: 206px;
+      min-height: 458px;
       flex: 0 0 auto;
       scroll-snap-align: center;
       overflow: hidden;
-      padding: 16px 16px 0;
+      padding: 15px 15px 0;
     }
 
     .screen-card .phone-frame {
-      width: 184px;
-      height: 376px;
-      margin: 18px auto -72px;
-      border-radius: 31px;
+      width: 176px;
+      height: 360px;
+      margin: 16px auto -66px;
+      border-radius: 32px;
       padding: 7px;
       box-shadow: 0 26px 54px rgba(17, 19, 18, .2), inset 0 1px 0 rgba(255,255,255,.24);
     }
@@ -321,9 +344,9 @@
     .ticker-shell {
       position: relative;
       overflow: hidden;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background: rgba(255,255,255,.5);
+      border-top: 1px solid rgba(210,210,215,.8);
+      border-bottom: 1px solid rgba(210,210,215,.8);
+      background: #fff;
     }
 
     .ticker-shell::before,
@@ -337,73 +360,51 @@
       pointer-events: none;
     }
 
-    .ticker-shell::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
-    .ticker-shell::after { right: 0; background: linear-gradient(270deg, var(--bg), transparent); }
+    .ticker-shell::before { left: 0; background: linear-gradient(90deg, #fff, transparent); }
+    .ticker-shell::after { right: 0; background: linear-gradient(270deg, #fff, transparent); }
 
     .ticker-track {
       display: flex;
+      align-items: center;
       width: max-content;
-      animation: ticker 38s linear infinite;
+      animation: ticker 34s linear infinite;
+      transform: translate3d(0, 0, 0);
       will-change: transform;
     }
 
-    .ticker-shell:hover .ticker-track { animation-play-state: paused; }
-
     .ticker-group {
       display: flex;
-      gap: 14px;
-      padding: 22px 14px 22px 0;
+      align-items: center;
+      gap: clamp(34px, 5vw, 72px);
+      padding: 30px clamp(34px, 5vw, 72px) 30px 0;
       flex: 0 0 auto;
     }
 
-    .school-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      min-width: max-content;
-      padding: 12px 18px 12px 12px;
-      border: 1px solid rgba(17,19,18,.1);
-      border-radius: 16px;
-      background: rgba(255,254,250,.9);
-      box-shadow: 0 10px 26px rgba(17,19,18,.05);
-      font-size: 14px;
-      font-weight: 850;
+    .school-logo-wrap {
+      display: grid;
+      place-items: center;
+      width: clamp(86px, 8vw, 124px);
+      height: 68px;
+      flex: 0 0 auto;
     }
 
     .school-logo {
-      width: 34px;
-      height: 34px;
+      width: 100%;
+      height: 100%;
       object-fit: contain;
-      border-radius: 8px;
-      background: #fff;
-    }
-
-    .school-logo.is-missing { display: none; }
-    .school-logo.is-missing + .school-fallback { display: grid; }
-
-    .school-fallback {
-      display: none;
-      width: 34px;
-      height: 34px;
-      place-items: center;
-      border-radius: 8px;
-      background: #101211;
-      color: #fff;
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: -.03em;
+      filter: saturate(.95) contrast(1.02);
     }
 
     .dark-band {
-      background: #0f1210;
-      color: #fff;
+      background: var(--surface);
+      color: var(--ink);
     }
 
-    .dark-band .section-title { color: #fff; }
+    .dark-band .section-title { color: var(--ink); }
     .dark-band .premium-card {
-      background: rgba(255,255,255,.06);
-      border-color: rgba(255,255,255,.1);
-      box-shadow: none;
+      background: #fff;
+      border-color: var(--line);
+      box-shadow: var(--shadow-soft);
     }
 
     .fade-up {
@@ -414,12 +415,15 @@
 
     .fade-up.is-visible { opacity: 1; transform: translateY(0); }
 
-    @keyframes ticker { to { transform: translateX(-50%); } }
+    @keyframes ticker {
+      from { transform: translate3d(0, 0, 0); }
+      to { transform: translate3d(-50%, 0, 0); }
+    }
 
     @media (min-width: 980px) {
       .screens-row {
         display: grid;
-        grid-template-columns: repeat(7, minmax(0, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 16px;
         width: 100%;
       }
@@ -450,11 +454,11 @@
       .container { width: min(100% - 28px, 1180px); }
       .nav-links { display: none; }
       .nav-cta { display: none; }
-      .hero-shell { padding: 118px 0 52px; }
+      .hero-shell { padding: 112px 0 46px; }
       .hero-title { font-size: 56px !important; }
       .section-title { font-size: 42px !important; }
-      .section-pad { padding: 66px 0; }
-      .hero-device-stage { min-height: 488px; overflow: hidden; }
+      .section-pad { padding: 58px 0; }
+      .hero-device-stage { min-height: 468px; overflow: hidden; }
       .phone-frame.large { width: 258px; height: 528px; }
       .phone-frame.small { width: 194px; height: 397px; }
       .phone-frame.float-front { transform: translateX(-36px) rotate(-3deg); }
@@ -463,7 +467,9 @@
       .screens-rail { margin: 0 -14px; }
       .screens-row { padding: 0 14px; }
       .screen-card { width: min(74vw, 238px); }
-      .feature-card { min-height: 190px; }
+      .feature-card { min-height: 164px; }
+      .ticker-group { gap: 34px; padding: 24px 34px 24px 0; }
+      .school-logo-wrap { width: 84px; height: 58px; }
     }
   </style>
 </head>
@@ -640,6 +646,11 @@
             <h3 class="mt-7 text-xl font-extrabold">Live Activities</h3>
             <p class="mt-3 text-sm font-semibold leading-6 text-black/55">Keep game updates visible from the lock screen.</p>
           </article>
+          <article class="feature-card fade-up">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7l8-4 8 4-8 4-8-4zM4 12l8 4 8-4M4 17l8 4 8-4"/></svg></div>
+            <h3 class="mt-7 text-xl font-extrabold">Team Pages</h3>
+            <p class="mt-3 text-sm font-semibold leading-6 text-black/55">See team schedules, rosters, records, and context.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -688,10 +699,10 @@
       <div class="container">
         <div class="mx-auto max-w-4xl fade-up">
           <div class="logo-mark mx-auto"><img src="Unite Logo.png" alt=""></div>
-          <h2 class="hero-title mt-8 text-[54px] md:text-[88px]" style="color:#fff;">A better way to follow Canadian university sports.</h2>
-          <p class="mx-auto mt-6 max-w-2xl text-lg font-semibold leading-8 text-white/58">Built by students. United by fans.</p>
+          <h2 class="hero-title mt-8 text-[54px] md:text-[88px]">A better way to follow Canadian university sports.</h2>
+          <p class="mx-auto mt-6 max-w-2xl text-lg font-medium leading-8 text-black/55">Built by students. United by fans.</p>
           <div class="mt-9 flex flex-wrap justify-center gap-3">
-            <a href="#" class="btn app-store-btn border border-white/10" aria-label="Coming Soon on the App Store" onclick="event.preventDefault()">
+            <a href="#" class="btn app-store-btn" aria-label="Coming Soon on the App Store" onclick="event.preventDefault()">
               <svg class="apple-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.44c-.03-2.44 2-3.61 2.09-3.67-1.14-1.67-2.91-1.9-3.53-1.92-1.5-.15-2.93.88-3.69.88-.77 0-1.95-.86-3.21-.84-1.65.02-3.18.96-4.03 2.44-1.72 2.99-.44 7.41 1.24 9.84.82 1.18 1.8 2.51 3.09 2.46 1.24-.05 1.71-.8 3.2-.8 1.5 0 1.92.8 3.23.78 1.33-.02 2.18-1.2 3-2.39.94-1.38 1.33-2.71 1.35-2.78-.03-.01-2.59-.99-2.62-3zM14.63 5.27c.69-.83 1.15-1.98 1.02-3.13-.98.04-2.17.65-2.87 1.48-.63.73-1.18 1.9-1.03 3.02 1.09.08 2.2-.55 2.88-1.47z"/></svg>
               Coming Soon on the App Store
             </a>
@@ -729,41 +740,32 @@
 
   <script>
     const schools = [
-      ["Guelph", "public/schools/school-guelph.png"],
-      ["Western", "public/schools/school-western.png"],
-      ["McMaster", "public/schools/school-mcmaster.png"],
-      ["Waterloo", "public/schools/school-waterloo.png"],
-      ["Queen's", "public/schools/school-queens.png"],
-      ["Ottawa", "public/schools/school-ottawa.png"],
-      ["York", "public/schools/school-york.png"],
-      ["Windsor", "public/schools/school-windsor.png"],
-      ["Carleton", "public/schools/school-carleton.png"],
-      ["TMU", "public/schools/school-tmu.png"],
-      ["Brock", "public/schools/school-brock.png"],
-      ["Toronto", "public/schools/school-toronto.png"],
-      ["Laurier", "public/schools/school-laurier.png"],
-      ["Nipissing", "public/schools/school-nipissing.png"],
-      ["Laurentian", "public/schools/school-laurentian.png"],
-      ["Ontario Tech", "public/schools/school-ontariotech.png"],
-      ["RMC", "public/schools/school-rmc.png"],
       ["Algoma", "public/schools/school-algoma.png"],
-      ["Trent", "public/schools/school-trent.png"],
-      ["Concordia", "public/schools/school-concordia.png"],
       ["Lakehead", "public/schools/school-lakehead.png"],
-      ["McGill", "public/schools/school-mcgill.png"],
-      ["UQTR", "public/schools/school-uqtr.png"]
+      ["Brock", "public/schools/school-brock.png"],
+      ["Carleton", "public/schools/school-carleton.png"],
+      ["Guelph", "public/schools/school-guelph.png"],
+      ["Laurentian", "public/schools/school-laurentian.png"],
+      ["Laurier", "public/schools/school-laurier.png"],
+      ["McMaster", "public/schools/school-mcmaster.png"],
+      ["Nipissing", "public/schools/school-nipissing.png"],
+      ["Ontario Tech", "public/schools/school-ontariotech.png"],
+      ["Ottawa", "public/schools/school-ottawa.png"],
+      ["Queen's", "public/schools/school-queens.png"],
+      ["RMC", "public/schools/school-rmc.png"],
+      ["TMU", "public/schools/school-tmu.png"],
+      ["Toronto", "public/schools/school-toronto.png"],
+      ["Trent", "public/schools/school-trent.png"],
+      ["Waterloo", "public/schools/school-waterloo.png"],
+      ["Western", "public/schools/school-western.png"],
+      ["Windsor", "public/schools/school-windsor.png"],
+      ["York", "public/schools/school-york.png"]
     ];
-
-    function initials(name) {
-      return name.split(/\s+/).map((word) => word[0]).join("").slice(0, 3).toUpperCase();
-    }
 
     function schoolPill([name, src]) {
       return `
-        <div class="school-pill">
-          <img src="${src}" alt="${name} logo" class="school-logo" onerror="this.classList.add('is-missing')">
-          <span class="school-fallback" aria-hidden="true">${initials(name)}</span>
-          <span>${name}</span>
+        <div class="school-logo-wrap">
+          <img src="${src}" alt="${name} logo" class="school-logo" onerror="this.parentElement.remove()">
         </div>
       `;
     }
