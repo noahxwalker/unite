@@ -39,7 +39,7 @@
       overflow-x: hidden;
       background: var(--bg);
       color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
       letter-spacing: -.012em;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -59,7 +59,7 @@
       place-items: center;
       background: #fff;
       pointer-events: none;
-      animation: introFade 1.05s cubic-bezier(.22, 1, .36, 1) .08s forwards;
+      animation: introFade 1.36s cubic-bezier(.22, 1, .36, 1) .1s forwards;
       animation-play-state: paused;
     }
 
@@ -74,7 +74,7 @@
       border-radius: 27px;
       background: #0b0d0c;
       box-shadow: 0 30px 80px rgba(29, 29, 31, .22);
-      animation: introLogoLand 1.05s cubic-bezier(.22, 1, .36, 1) forwards;
+      animation: introLogoLand 1.36s cubic-bezier(.22, 1, .36, 1) forwards;
       animation-play-state: paused;
       transform-origin: center;
       will-change: transform, opacity, border-radius;
@@ -85,6 +85,10 @@
       animation-play-state: running;
     }
 
+    body.intro-ready:not(.intro-complete) #introTargetLogo {
+      opacity: 0;
+    }
+
     .intro-logo img {
       width: 76px;
       height: 76px;
@@ -93,14 +97,20 @@
     }
 
     @keyframes introFade {
-      0%, 72% { opacity: 1; }
+      0%, 82% { opacity: 1; }
       100% { opacity: 0; visibility: hidden; }
     }
 
     @keyframes introLogoLand {
       0% { transform: translate3d(0, 0, 0) scale(1.72); opacity: 0; border-radius: 30px; }
-      18% { opacity: 1; }
-      68% { transform: translate3d(0, 0, 0) scale(1); opacity: 1; }
+      14% { opacity: 1; }
+      36% { transform: translate3d(0, 0, 0) scale(1.12); opacity: 1; }
+      52% { transform: translate3d(0, 0, 0) scale(1.12); opacity: 1; }
+      88% {
+        transform: translate3d(var(--intro-x), var(--intro-y), 0) scale(var(--intro-scale));
+        opacity: 1;
+        border-radius: 21px;
+      }
       100% {
         transform: translate3d(var(--intro-x), var(--intro-y), 0) scale(var(--intro-scale));
         opacity: 1;
@@ -182,7 +192,7 @@
     }
 
     .hero-title, .section-title {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
       color: var(--ink);
       font-weight: 800;
       line-height: .95;
@@ -632,6 +642,9 @@
       }
 
       .screen-card {
+        display: grid;
+        grid-template-rows: 32px 42px auto;
+        justify-items: center;
         width: auto;
         min-width: 0;
         min-height: 0;
@@ -676,13 +689,49 @@
       }
     }
 
+    @media (min-width: 1200px) {
+      .container {
+        width: min(1380px, calc(100% - 80px));
+      }
+
+      #screens .section-head {
+        max-width: 840px;
+        margin-bottom: 40px;
+      }
+
+      #screens .section-title {
+        font-size: clamp(62px, 5.2vw, 84px) !important;
+      }
+
+      .screens-row {
+        gap: clamp(12px, 1.35vw, 24px);
+      }
+
+      .screen-card {
+        grid-template-rows: 34px 44px auto;
+      }
+
+      .screen-card h3 {
+        font-size: clamp(18px, 1.45vw, 23px);
+      }
+
+      .screen-card p {
+        font-size: clamp(13px, .95vw, 15px);
+      }
+
+      .screen-card .iphone-15-pro {
+        --phone-width: clamp(154px, 11.6vw, 188px);
+        --phone-height: clamp(332px, 25vw, 404px);
+      }
+    }
+
     @media (min-width: 1500px) {
       .container {
-        width: min(1680px, calc(100% - 144px));
+        width: min(1820px, calc(100% - 112px));
       }
 
       .nav-glass .container {
-        width: min(1680px, calc(100% - 160px));
+        width: min(1820px, calc(100% - 128px));
       }
 
       .section-pad {
@@ -700,7 +749,7 @@
       }
 
       #screens .section-title {
-        font-size: clamp(74px, 4.7vw, 96px) !important;
+        font-size: clamp(82px, 5vw, 108px) !important;
         line-height: .96;
       }
 
@@ -710,7 +759,7 @@
       }
 
       .screens-row {
-        gap: clamp(14px, 1.6vw, 34px);
+        gap: clamp(16px, 1.55vw, 32px);
       }
 
       .screen-card h3 {
@@ -722,8 +771,8 @@
       }
 
       .screen-card .iphone-15-pro {
-        --phone-width: clamp(174px, 9.8vw, 202px);
-        --phone-height: clamp(374px, 20.9vw, 432px);
+        --phone-width: clamp(196px, 10.6vw, 224px);
+        --phone-height: clamp(420px, 22.8vw, 482px);
         --button-width: 5px;
         --button-offset: -9px;
         border-width: 5px;
@@ -1411,6 +1460,11 @@
       introLogo.style.setProperty("--intro-y", `${y}px`);
       introLogo.style.setProperty("--intro-scale", scale.toFixed(4));
       document.body.classList.add("intro-ready");
+
+      const loader = document.querySelector(".intro-loader");
+      const completeIntro = () => document.body.classList.add("intro-complete");
+      loader?.addEventListener("animationend", completeIntro, { once: true });
+      window.setTimeout(completeIntro, 1700);
     }
 
     document.getElementById("year").textContent = new Date().getFullYear();
