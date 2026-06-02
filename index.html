@@ -177,18 +177,28 @@
     }
 
     .phone-frame {
+      --button-top: 130px;
+      --button-height: 62px;
+      --button-two-top: 212px;
+      --button-two-height: 94px;
+      --island-width: 86px;
+      --island-height: 26px;
+      --island-top: 15px;
       position: relative;
       width: 276px;
       height: 564px;
-      padding: 10px;
-      border-radius: 46px;
+      padding: 9px;
+      border-radius: 48px;
       background:
-        linear-gradient(145deg, rgba(255,255,255,.35), transparent 18%),
-        linear-gradient(135deg, #3b3d40, #050506 44%, #18191b);
+        linear-gradient(145deg, rgba(255,255,255,.45), rgba(255,255,255,0) 18%),
+        linear-gradient(135deg, #44464a, #050506 42%, #191a1d 82%, #2b2d31);
       box-shadow:
-        0 42px 90px rgba(29, 29, 31, .28),
+        0 44px 95px rgba(29, 29, 31, .28),
+        0 10px 24px rgba(29, 29, 31, .14),
         inset 0 1px 0 rgba(255,255,255,.34),
-        inset 0 -1px 0 rgba(255,255,255,.12);
+        inset 0 -1px 0 rgba(255,255,255,.12),
+        inset 1px 0 0 rgba(255,255,255,.1),
+        inset -1px 0 0 rgba(255,255,255,.08);
       flex: 0 0 auto;
     }
 
@@ -199,20 +209,55 @@
       left: 100%;
       width: 3px;
       border-radius: 999px;
-      background: linear-gradient(180deg, #242528, #09090a);
+      background: linear-gradient(180deg, #303236, #09090a);
+      box-shadow: inset 1px 0 0 rgba(255,255,255,.16);
     }
 
-    .phone-frame::before { top: 132px; height: 58px; }
-    .phone-frame::after { top: 208px; height: 92px; }
+    .phone-frame::before { top: var(--button-top); height: var(--button-height); }
+    .phone-frame::after { top: var(--button-two-top); height: var(--button-two-height); }
 
-    .phone-frame.large { width: 354px; height: 724px; }
-    .phone-frame.small { width: 232px; height: 474px; }
+    .phone-frame.large {
+      --button-top: 160px;
+      --button-height: 72px;
+      --button-two-top: 258px;
+      --button-two-height: 112px;
+      --island-width: 104px;
+      --island-height: 30px;
+      --island-top: 17px;
+      width: 354px;
+      height: 724px;
+    }
+
+    .phone-frame.small {
+      --button-top: 112px;
+      --button-height: 48px;
+      --button-two-top: 176px;
+      --button-two-height: 74px;
+      --island-width: 72px;
+      --island-height: 21px;
+      --island-top: 12px;
+      width: 232px;
+      height: 474px;
+    }
+
     .phone-frame.float-front { transform: translateX(-52px) rotate(-3deg); z-index: 2; }
     .phone-frame.float-back { position: absolute; right: 8px; bottom: 28px; transform: rotate(5deg); opacity: .96; }
 
+    .phone-button-left {
+      position: absolute;
+      right: 100%;
+      width: 3px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #32343a, #0b0b0d);
+      box-shadow: inset -1px 0 0 rgba(255,255,255,.16);
+    }
+
+    .phone-button-left.short { top: 104px; height: 32px; }
+    .phone-button-left.long { top: 154px; height: 78px; }
+
     .phone-screen {
       height: 100%;
-      border-radius: 37px;
+      border-radius: 39px;
       overflow: hidden;
       position: relative;
       border: 1px solid rgba(255,255,255,.1);
@@ -229,18 +274,20 @@
       mix-blend-mode: screen;
     }
 
-    .phone-frame.large .phone-screen { border-radius: 40px; }
+    .phone-frame.large .phone-screen { border-radius: 42px; }
+    .phone-frame.small .phone-screen { border-radius: 34px; }
 
     .island {
       position: absolute;
-      top: 14px;
+      top: var(--island-top);
       left: 50%;
       z-index: 4;
-      width: 82px;
-      height: 24px;
+      width: var(--island-width);
+      height: var(--island-height);
       transform: translateX(-50%);
       border-radius: 999px;
       background: #050506;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 1px 2px rgba(0,0,0,.34);
     }
 
     .screen-img { width: 100%; height: 100%; object-fit: cover; }
@@ -312,38 +359,52 @@
 
     .screens-row {
       display: flex;
-      gap: 16px;
+      gap: 18px;
       width: max-content;
       min-width: 100%;
       padding: 0 20px;
     }
 
     .screen-card {
-      width: 206px;
-      min-height: 458px;
+      width: 218px;
+      min-height: 512px;
       flex: 0 0 auto;
       scroll-snap-align: center;
-      overflow: hidden;
-      padding: 15px 15px 0;
+      overflow: visible;
+      padding: 18px 16px 0;
     }
 
     .screen-card .phone-frame {
-      width: 176px;
-      height: 360px;
-      margin: 16px auto -66px;
-      border-radius: 32px;
+      --button-top: 82px;
+      --button-height: 38px;
+      --button-two-top: 132px;
+      --button-two-height: 62px;
+      --island-width: 58px;
+      --island-height: 18px;
+      --island-top: 10px;
+      width: 180px;
+      height: 368px;
+      margin: 18px auto 0;
+      border-radius: 34px;
       padding: 7px;
       box-shadow: 0 26px 54px rgba(17, 19, 18, .2), inset 0 1px 0 rgba(255,255,255,.24);
     }
 
-    .screen-card .phone-screen { border-radius: 25px; }
-    .screen-card .island { top: 10px; width: 58px; height: 17px; }
+    .screen-card .phone-frame::before { width: 2px; }
+    .screen-card .phone-frame::after { width: 2px; }
+    .screen-card .phone-button-left { width: 2px; }
+    .screen-card .phone-button-left.short { top: 68px; height: 22px; }
+    .screen-card .phone-button-left.long { top: 102px; height: 48px; }
+    .screen-card .phone-screen { border-radius: 27px; }
     .screen-card .screen-fallback { padding: 46px 14px 16px; gap: 10px; }
     .screen-card .mock-card { border-radius: 13px; padding: 10px; font-size: 12px; }
 
     .ticker-shell {
       position: relative;
       overflow: hidden;
+      height: clamp(104px, 12vw, 142px);
+      display: flex;
+      align-items: center;
       border-top: 1px solid rgba(210,210,215,.8);
       border-bottom: 1px solid rgba(210,210,215,.8);
       background: #fff;
@@ -375,22 +436,27 @@
     .ticker-group {
       display: flex;
       align-items: center;
-      gap: clamp(34px, 5vw, 72px);
-      padding: 30px clamp(34px, 5vw, 72px) 30px 0;
+      gap: clamp(28px, 4.2vw, 64px);
+      padding: 0 clamp(28px, 4.2vw, 64px) 0 0;
       flex: 0 0 auto;
     }
 
     .school-logo-wrap {
-      display: grid;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       place-items: center;
-      width: clamp(86px, 8vw, 124px);
-      height: 68px;
+      width: clamp(104px, 10vw, 152px);
+      height: clamp(58px, 7vw, 88px);
+      padding: 6px;
       flex: 0 0 auto;
     }
 
     .school-logo {
-      width: 100%;
-      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
       object-fit: contain;
       filter: saturate(.95) contrast(1.02);
     }
@@ -468,8 +534,9 @@
       .screens-row { padding: 0 14px; }
       .screen-card { width: min(74vw, 238px); }
       .feature-card { min-height: 164px; }
-      .ticker-group { gap: 34px; padding: 24px 34px 24px 0; }
-      .school-logo-wrap { width: 84px; height: 58px; }
+      .ticker-shell { height: 98px; }
+      .ticker-group { gap: 24px; padding-right: 24px; }
+      .school-logo-wrap { width: 104px; height: 62px; padding: 7px; }
     }
   </style>
 </head>
@@ -483,9 +550,10 @@
       </a>
 
       <nav class="nav-links flex items-center gap-8 text-sm font-bold text-black/55">
-        <a href="#features" class="hover:text-black">Features</a>
         <a href="#screens" class="hover:text-black">Screens</a>
+        <a href="#features" class="hover:text-black">Features</a>
         <a href="#teams" class="hover:text-black">Teams</a>
+        <a href="#why" class="hover:text-black">Why Unite</a>
         <a href="#contact" class="hover:text-black">Contact</a>
       </nav>
 
@@ -706,7 +774,6 @@
               <svg class="apple-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.44c-.03-2.44 2-3.61 2.09-3.67-1.14-1.67-2.91-1.9-3.53-1.92-1.5-.15-2.93.88-3.69.88-.77 0-1.95-.86-3.21-.84-1.65.02-3.18.96-4.03 2.44-1.72 2.99-.44 7.41 1.24 9.84.82 1.18 1.8 2.51 3.09 2.46 1.24-.05 1.71-.8 3.2-.8 1.5 0 1.92.8 3.23.78 1.33-.02 2.18-1.2 3-2.39.94-1.38 1.33-2.71 1.35-2.78-.03-.01-2.59-.99-2.62-3zM14.63 5.27c.69-.83 1.15-1.98 1.02-3.13-.98.04-2.17.65-2.87 1.48-.63.73-1.18 1.9-1.03 3.02 1.09.08 2.2-.55 2.88-1.47z"/></svg>
               Coming Soon on the App Store
             </a>
-            <a href="mailto:noahxwalker@icloud.com?subject=Unite%20Inquiry" class="btn btn-light">Contact</a>
           </div>
         </div>
       </div>
@@ -723,14 +790,11 @@
         <p class="mt-3 max-w-xl text-sm font-semibold leading-6 text-black/48">Logos displayed only with permission from each institution.</p>
       </div>
       <div class="flex flex-col gap-4 text-sm font-bold text-black/50 md:items-end">
-        <a href="#" class="btn app-store-btn min-h-[40px] px-4" aria-label="Coming Soon on the App Store" onclick="event.preventDefault()">
-          <svg class="apple-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.44c-.03-2.44 2-3.61 2.09-3.67-1.14-1.67-2.91-1.9-3.53-1.92-1.5-.15-2.93.88-3.69.88-.77 0-1.95-.86-3.21-.84-1.65.02-3.18.96-4.03 2.44-1.72 2.99-.44 7.41 1.24 9.84.82 1.18 1.8 2.51 3.09 2.46 1.24-.05 1.71-.8 3.2-.8 1.5 0 1.92.8 3.23.78 1.33-.02 2.18-1.2 3-2.39.94-1.38 1.33-2.71 1.35-2.78-.03-.01-2.59-.99-2.62-3zM14.63 5.27c.69-.83 1.15-1.98 1.02-3.13-.98.04-2.17.65-2.87 1.48-.63.73-1.18 1.9-1.03 3.02 1.09.08 2.2-.55 2.88-1.47z"/></svg>
-          Coming Soon on the App Store
-        </a>
         <div class="flex flex-wrap gap-5">
-          <a href="#features" class="hover:text-black">Features</a>
           <a href="#screens" class="hover:text-black">Screens</a>
+          <a href="#features" class="hover:text-black">Features</a>
           <a href="#teams" class="hover:text-black">Teams</a>
+          <a href="#why" class="hover:text-black">Why Unite</a>
           <a href="mailto:noahxwalker@icloud.com?subject=Unite%20Inquiry" class="hover:text-black">Contact</a>
         </div>
         <div>© <span id="year"></span> Unite. All rights reserved.</div>
@@ -780,6 +844,20 @@
       `;
     }
 
+    function addPhoneButtons() {
+      document.querySelectorAll(".phone-frame").forEach((phone) => {
+        if (phone.querySelector(".phone-button-left")) return;
+        const shortButton = document.createElement("span");
+        const longButton = document.createElement("span");
+        shortButton.className = "phone-button-left short";
+        longButton.className = "phone-button-left long";
+        shortButton.setAttribute("aria-hidden", "true");
+        longButton.setAttribute("aria-hidden", "true");
+        phone.prepend(longButton);
+        phone.prepend(shortButton);
+      });
+    }
+
     function revealOnScroll() {
       const items = document.querySelectorAll(".fade-up");
       if (!("IntersectionObserver" in window)) {
@@ -799,6 +877,7 @@
 
     document.getElementById("year").textContent = new Date().getFullYear();
     buildSchoolTicker();
+    addPhoneButtons();
     revealOnScroll();
   </script>
 </body>
