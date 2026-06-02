@@ -207,7 +207,7 @@
       position: relative;
       width: var(--phone-width);
       height: var(--phone-height);
-      padding: 8px;
+      padding: 0;
       border: 8px solid var(--device-frame);
       border-radius: 45px;
       background: var(--device-panel);
@@ -288,7 +288,7 @@
       display: none;
     }
 
-    .screen-img { width: 100%; height: 100%; object-fit: contain; background: #08090a; }
+    .screen-img { width: 100%; height: 100%; object-fit: cover; background: #08090a; }
     .screen-img.is-missing { display: none; }
     .screen-img.is-missing + .screen-fallback { display: flex; }
 
@@ -509,15 +509,46 @@
     }
 
     @media (min-width: 980px) {
+      .screens-rail {
+        overflow: visible;
+        margin: 0;
+        padding: 4px 0 0;
+      }
+
       .screens-row {
-        display: flex;
-        justify-content: center;
-        gap: clamp(28px, 3.4vw, 58px);
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        align-items: start;
+        gap: clamp(8px, 1.1vw, 18px);
         width: 100%;
+        min-width: 0;
+        padding: 0;
       }
 
       .screen-card {
-        width: 188px;
+        width: auto;
+        min-width: 0;
+        min-height: 0;
+        scroll-snap-align: none;
+      }
+
+      .screen-card h3 {
+        font-size: clamp(15px, 1.15vw, 19px);
+        line-height: 1.1;
+      }
+
+      .screen-card p {
+        font-size: clamp(11px, .82vw, 13px);
+        line-height: 1.35;
+        white-space: normal;
+      }
+
+      .screen-card .phone-frame {
+        --phone-width: clamp(128px, 11vw, 166px);
+        --phone-height: clamp(262px, 22.5vw, 340px);
+        width: var(--phone-width);
+        height: var(--phone-height);
+        margin-top: 14px;
       }
     }
 
@@ -715,19 +746,27 @@
 
       .feature-card {
         min-height: 0 !important;
-        padding: 14px !important;
-        border-radius: 14px !important;
+        display: grid !important;
+        grid-template-columns: 38px 1fr !important;
+        column-gap: 14px !important;
+        align-items: start !important;
+        padding: 2px 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
       }
 
       .feature-card h3 {
-        margin-top: 18px !important;
-        font-size: 20px !important;
+        margin-top: 0 !important;
+        font-size: 17px !important;
         line-height: 1.1 !important;
       }
 
       .feature-card p {
-        font-size: 14px !important;
-        line-height: 1.45 !important;
+        margin-top: 5px !important;
+        font-size: 13px !important;
+        line-height: 1.35 !important;
       }
 
       #features .grid,
@@ -736,9 +775,10 @@
       }
 
       .feature-icon {
-        width: 34px !important;
-        height: 34px !important;
-        border-radius: 9px !important;
+        grid-row: 1 / span 2 !important;
+        width: 38px !important;
+        height: 38px !important;
+        border-radius: 999px !important;
       }
 
       .feature-icon svg {
