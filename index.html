@@ -317,8 +317,8 @@
       height: var(--phone-height);
     }
 
-    .iphone-15-pro.float-front { transform: translateX(-62px) rotate(-2deg); z-index: 2; }
-    .iphone-15-pro.float-back { position: absolute; right: calc(50% - 310px); bottom: 38px; transform: rotate(4deg); opacity: .96; }
+    .iphone-15-pro.float-front { transform: none; z-index: 2; margin: 0 auto; }
+    .iphone-15-pro.float-back { display: none; position: absolute; right: calc(50% - 310px); bottom: 38px; transform: rotate(4deg); opacity: .96; }
 
     .iphone-inner {
       width: 100%;
@@ -597,24 +597,18 @@
         box-shadow .24s ease;
     }
 
-    .screen-card:nth-child(2),
     .feature-card:nth-child(2),
     .premium-card:nth-child(2) { transition-delay: .06s; }
 
-    .screen-card:nth-child(3),
     .feature-card:nth-child(3),
     .premium-card:nth-child(3) { transition-delay: .12s; }
 
-    .screen-card:nth-child(4),
     .feature-card:nth-child(4) { transition-delay: .18s; }
 
-    .screen-card:nth-child(5),
     .feature-card:nth-child(5) { transition-delay: .24s; }
 
-    .screen-card:nth-child(6),
     .feature-card:nth-child(6) { transition-delay: .3s; }
 
-    .screen-card:nth-child(7),
     .feature-card:nth-child(7) { transition-delay: .36s; }
 
     .feature-card:nth-child(8) { transition-delay: .42s; }
@@ -643,8 +637,9 @@
 
       .screen-card {
         display: grid;
-        grid-template-rows: 32px 42px auto;
+        grid-template-rows: 34px 46px auto;
         justify-items: center;
+        align-items: start;
         width: auto;
         min-width: 0;
         min-height: 0;
@@ -654,12 +649,17 @@
       .screen-card h3 {
         font-size: clamp(15px, 1.15vw, 19px);
         line-height: 1.1;
+        margin: 0;
       }
 
       .screen-card p {
         font-size: clamp(11px, .82vw, 13px);
         line-height: 1.35;
         white-space: normal;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        margin: 0;
       }
 
       .screen-card .iphone-15-pro {
@@ -671,7 +671,8 @@
         height: var(--phone-height);
         border-width: 4px;
         border-radius: 26px;
-        margin-top: 14px;
+        margin-top: 0;
+        align-self: start;
       }
 
       .screen-card .iphone-15-pro::before {
@@ -708,7 +709,7 @@
       }
 
       .screen-card {
-        grid-template-rows: 34px 44px auto;
+        grid-template-rows: 36px 48px auto;
       }
 
       .screen-card h3 {
@@ -720,8 +721,8 @@
       }
 
       .screen-card .iphone-15-pro {
-        --phone-width: clamp(154px, 11.6vw, 188px);
-        --phone-height: clamp(332px, 25vw, 404px);
+        --phone-width: clamp(168px, 12.3vw, 202px);
+        --phone-height: clamp(362px, 26.6vw, 436px);
       }
     }
 
@@ -759,7 +760,7 @@
       }
 
       .screens-row {
-        gap: clamp(16px, 1.55vw, 32px);
+        gap: clamp(14px, 1.25vw, 26px);
       }
 
       .screen-card h3 {
@@ -771,8 +772,8 @@
       }
 
       .screen-card .iphone-15-pro {
-        --phone-width: clamp(196px, 10.6vw, 224px);
-        --phone-height: clamp(420px, 22.8vw, 482px);
+        --phone-width: clamp(210px, 11.7vw, 236px);
+        --phone-height: clamp(452px, 25.2vw, 510px);
         --button-width: 5px;
         --button-offset: -9px;
         border-width: 5px;
@@ -795,7 +796,6 @@
 
   @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .intro-loader { display: none; }
   .fade-up { opacity: 1; transform: none; }
   .btn, .premium-card, .feature-card, .screen-card { transition: none; }
 }
@@ -805,7 +805,7 @@
       .hero-copy { margin: 0 auto; }
       .hero-copy .flex { justify-content: center; }
       .hero-device-stage { min-height: 590px; }
-      .iphone-15-pro.float-front { transform: translateX(-50px) rotate(-3deg); }
+      .iphone-15-pro.float-front { transform: none; }
       .iphone-15-pro.float-back { right: calc(50% - 270px); }
     }
 
@@ -1140,28 +1140,6 @@
 
         <div class="hero-device-stage fade-up" style="transition-delay: .12s;">
           <div class="device-halo"></div>
-          <div class="iphone-15-pro no-island small float-back" aria-hidden="true">
-            <span class="iphone-btn action"></span>
-            <span class="iphone-btn volume-up"></span>
-            <span class="iphone-btn volume-down"></span>
-            <span class="iphone-btn power"></span>
-            <div class="iphone-inner">
-              <div class="iphone-screen">
-                <img src="public/SLIDE 2 SCORESVIEW.png" alt="Unite scores home screen" class="iphone-screen-img" onerror="this.classList.add('is-missing')">
-                <div class="screen-fallback">
-                  <div class="text-xs font-extrabold uppercase tracking-[.16em] text-white/45">Today</div>
-                  <h3 class="text-3xl font-extrabold tracking-[-.05em]">Scores</h3>
-                  <div class="mock-card mt-5">
-                    <div class="flex items-center justify-between font-extrabold"><span>Guelph</span><span>37</span></div>
-                    <div class="mt-2 flex items-center justify-between font-extrabold text-white/55"><span>Western</span><span>30</span></div>
-                    <div class="mt-4 text-xs font-extrabold uppercase tracking-[.16em] text-[#2bd083]">Final</div>
-                  </div>
-                  <div class="mock-card">More games today</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div class="iphone-15-pro no-island float-front">
             <span class="iphone-btn action"></span>
             <span class="iphone-btn volume-up"></span>
@@ -1448,7 +1426,10 @@
     function positionIntroLogo() {
       const introLogo = document.querySelector(".intro-logo");
       const targetLogo = document.getElementById("introTargetLogo");
-      if (!introLogo || !targetLogo) return;
+      if (!introLogo || !targetLogo) {
+        document.body.classList.add("intro-ready", "intro-complete");
+        return;
+      }
 
       const introRect = introLogo.getBoundingClientRect();
       const targetRect = targetLogo.getBoundingClientRect();
@@ -1463,12 +1444,13 @@
 
       const loader = document.querySelector(".intro-loader");
       const completeIntro = () => document.body.classList.add("intro-complete");
+      introLogo.addEventListener("animationend", completeIntro, { once: true });
       loader?.addEventListener("animationend", completeIntro, { once: true });
-      window.setTimeout(completeIntro, 1700);
+      window.setTimeout(completeIntro, 1850);
     }
 
     document.getElementById("year").textContent = new Date().getFullYear();
-    positionIntroLogo();
+    requestAnimationFrame(positionIntroLogo);
     buildSchoolTicker();
     setupHashFreeNavigation();
     revealOnScroll();
