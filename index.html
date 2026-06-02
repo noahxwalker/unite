@@ -59,10 +59,14 @@
       place-items: center;
       background: #fff;
       pointer-events: none;
-      animation: introFade .92s cubic-bezier(.22, 1, .36, 1) .18s forwards;
+      animation: introFade 1.05s cubic-bezier(.22, 1, .36, 1) .08s forwards;
+      animation-play-state: paused;
     }
 
     .intro-logo {
+      --intro-x: 0px;
+      --intro-y: 0px;
+      --intro-scale: .42;
       width: 118px;
       height: 118px;
       display: grid;
@@ -70,8 +74,15 @@
       border-radius: 27px;
       background: #0b0d0c;
       box-shadow: 0 30px 80px rgba(29, 29, 31, .22);
-      animation: introLogoZoom .92s cubic-bezier(.22, 1, .36, 1) forwards;
-      will-change: transform, opacity;
+      animation: introLogoLand 1.05s cubic-bezier(.22, 1, .36, 1) forwards;
+      animation-play-state: paused;
+      transform-origin: center;
+      will-change: transform, opacity, border-radius;
+    }
+
+    body.intro-ready .intro-loader,
+    body.intro-ready .intro-logo {
+      animation-play-state: running;
     }
 
     .intro-logo img {
@@ -82,14 +93,19 @@
     }
 
     @keyframes introFade {
-      0%, 42% { opacity: 1; }
+      0%, 72% { opacity: 1; }
       100% { opacity: 0; visibility: hidden; }
     }
 
-    @keyframes introLogoZoom {
-      0% { transform: scale(1.72); opacity: 0; }
-      22% { opacity: 1; }
-      100% { transform: scale(.42); opacity: 0; }
+    @keyframes introLogoLand {
+      0% { transform: translate3d(0, 0, 0) scale(1.72); opacity: 0; border-radius: 30px; }
+      18% { opacity: 1; }
+      68% { transform: translate3d(0, 0, 0) scale(1); opacity: 1; }
+      100% {
+        transform: translate3d(var(--intro-x), var(--intro-y), 0) scale(var(--intro-scale));
+        opacity: 1;
+        border-radius: 21px;
+      }
     }
 
     .nav-glass {
@@ -1057,7 +1073,7 @@
     <section class="hero-shell">
       <div class="container hero-grid">
         <div class="hero-copy fade-up">
-          <div class="hero-app-icon"><img src="Unite Logo.png" alt="Unite app icon"></div>
+          <div class="hero-app-icon" id="introTargetLogo"><img src="Unite Logo.png" alt="Unite app icon"></div>
           <h1 class="hero-title mt-7 text-[76px] md:text-[106px]">
             Follow Canadian university sports in one place.
           </h1>
@@ -1380,7 +1396,25 @@
       items.forEach((item) => observer.observe(item));
     }
 
+    function positionIntroLogo() {
+      const introLogo = document.querySelector(".intro-logo");
+      const targetLogo = document.getElementById("introTargetLogo");
+      if (!introLogo || !targetLogo) return;
+
+      const introRect = introLogo.getBoundingClientRect();
+      const targetRect = targetLogo.getBoundingClientRect();
+      const x = targetRect.left + targetRect.width / 2 - (introRect.left + introRect.width / 2);
+      const y = targetRect.top + targetRect.height / 2 - (introRect.top + introRect.height / 2);
+      const scale = targetRect.width / introRect.width;
+
+      introLogo.style.setProperty("--intro-x", `${x}px`);
+      introLogo.style.setProperty("--intro-y", `${y}px`);
+      introLogo.style.setProperty("--intro-scale", scale.toFixed(4));
+      document.body.classList.add("intro-ready");
+    }
+
     document.getElementById("year").textContent = new Date().getFullYear();
+    positionIntroLogo();
     buildSchoolTicker();
     setupHashFreeNavigation();
     revealOnScroll();
