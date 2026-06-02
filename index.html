@@ -199,34 +199,45 @@
     }
 
     .iphone-15-pro {
-      --phone-width: 276px;
-      --phone-height: 564px;
+      --phone-width: 288px;
+      --phone-height: 600px;
       --screen-bg: #050607;
+      --button-width: 6px;
+      --button-offset: -12px;
       position: relative;
       width: var(--phone-width);
       height: var(--phone-height);
-      border-radius: 48px;
-      padding: 7px;
-      background:
-        linear-gradient(145deg, #3a3a3f 0%, #111113 38%, #2b2b30 72%, #09090b 100%);
+      margin-left: 4px;
+      border: 8px solid #18181b;
+      border-radius: 45px;
+      background: #18181b;
       box-shadow:
-        0 42px 90px rgba(0, 0, 0, .28),
-        inset 0 0 0 1px rgba(255, 255, 255, .14),
-        inset 0 0 0 2px rgba(0, 0, 0, .65);
+        0 34px 74px rgba(0, 0, 0, .24),
+        0 0 2px 2px rgba(255, 255, 255, .1);
       flex: 0 0 auto;
     }
 
     .iphone-15-pro::before {
       content: "";
       position: absolute;
-      inset: 2px;
-      border-radius: 46px;
+      top: 8px;
+      left: 50%;
+      width: 31%;
+      height: 3.7%;
+      border-radius: 999px;
+      background: #18181b;
+      transform: translateX(-50%);
+      z-index: 20;
+    }
+
+    .iphone-15-pro::after {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border: 3px solid rgba(63, 63, 70, .4);
+      border-radius: 37px;
       pointer-events: none;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.22), transparent 22%, transparent 72%, rgba(255,255,255,.08));
-      mix-blend-mode: screen;
-      opacity: .55;
-      z-index: 4;
+      z-index: 5;
     }
 
     .iphone-15-pro.large,
@@ -241,12 +252,9 @@
     .iphone-inner {
       width: 100%;
       height: 100%;
-      border-radius: 42px;
-      padding: 4px;
-      background: #050607;
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,.06),
-        inset 0 0 24px rgba(0,0,0,.85);
+      border-radius: 37px;
+      padding: 0;
+      background: rgba(24, 24, 27, .1);
       overflow: hidden;
     }
 
@@ -254,7 +262,7 @@
       position: relative;
       width: 100%;
       height: 100%;
-      border-radius: 38px;
+      border-radius: 37px;
       overflow: hidden;
       background: var(--screen-bg);
     }
@@ -290,40 +298,40 @@
     .iphone-btn {
       position: absolute;
       display: block;
-      background: linear-gradient(180deg, #252529, #0f0f11);
+      background: #18181b;
       box-shadow: 0 6px 14px rgba(0,0,0,.28);
       z-index: 2;
     }
 
     .iphone-btn.action {
-      right: 100%;
-      top: 15%;
-      width: 5px;
-      height: 34px;
+      left: var(--button-offset);
+      top: 13.3%;
+      width: var(--button-width);
+      height: 5.4%;
       border-radius: 6px 0 0 6px;
     }
 
     .iphone-btn.volume-up {
-      right: 100%;
-      top: 25%;
-      width: 5px;
-      height: 52px;
+      left: var(--button-offset);
+      top: 24%;
+      width: var(--button-width);
+      height: 8%;
       border-radius: 6px 0 0 6px;
     }
 
     .iphone-btn.volume-down {
-      right: 100%;
-      top: 36%;
-      width: 5px;
-      height: 52px;
+      left: var(--button-offset);
+      top: 34.7%;
+      width: var(--button-width);
+      height: 8%;
       border-radius: 6px 0 0 6px;
     }
 
     .iphone-btn.power {
-      left: 100%;
-      top: 28%;
-      width: 5px;
-      height: 76px;
+      right: var(--button-offset);
+      top: 24%;
+      width: var(--button-width);
+      height: 10.7%;
       border-radius: 0 6px 6px 0;
     }
 
@@ -581,9 +589,27 @@
       .screen-card .iphone-15-pro {
         --phone-width: clamp(128px, 11vw, 166px);
         --phone-height: clamp(262px, 22.5vw, 340px);
+        --button-width: 4px;
+        --button-offset: -7px;
         width: var(--phone-width);
         height: var(--phone-height);
+        border-width: 4px;
+        border-radius: 26px;
         margin-top: 14px;
+      }
+
+      .screen-card .iphone-15-pro::before {
+        top: 4px;
+      }
+
+      .screen-card .iphone-15-pro::after {
+        border-width: 2px;
+        border-radius: 22px;
+      }
+
+      .screen-card .iphone-inner,
+      .screen-card .iphone-screen {
+        border-radius: 22px;
       }
     }
 
@@ -756,30 +782,29 @@
       .iphone-15-pro {
         --phone-width: 158px !important;
         --phone-height: 323px !important;
-        border-radius: 34px !important;
-        padding: 5px !important;
+        --button-width: 4px !important;
+        --button-offset: -8px !important;
+        border-width: 5px !important;
+        border-radius: 30px !important;
+        padding: 0 !important;
+      }
+
+      .iphone-15-pro::before {
+        top: 5px !important;
+      }
+
+      .iphone-15-pro::after {
+        border-width: 2px !important;
+        border-radius: 26px !important;
       }
 
       .iphone-inner {
-        border-radius: 30px !important;
-        padding: 3px !important;
+        border-radius: 25px !important;
+        padding: 0 !important;
       }
 
       .iphone-screen {
-        border-radius: 27px !important;
-      }
-
-      .iphone-btn.action {
-        height: 22px !important;
-      }
-
-      .iphone-btn.volume-up,
-      .iphone-btn.volume-down {
-        height: 34px !important;
-      }
-
-      .iphone-btn.power {
-        height: 48px !important;
+        border-radius: 25px !important;
       }
 
       .iphone-15-pro.float-back {
@@ -953,6 +978,10 @@
           </div>
 
           <div class="iphone-15-pro no-island float-front">
+            <span class="iphone-btn action"></span>
+            <span class="iphone-btn volume-up"></span>
+            <span class="iphone-btn volume-down"></span>
+            <span class="iphone-btn power"></span>
             <div class="iphone-inner">
               <div class="iphone-screen">
                 <img src="public/SLIDE 1 SCORESVIEW.png" alt="Unite mobile app hero screen" class="iphone-screen-img">
