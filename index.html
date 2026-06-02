@@ -1112,7 +1112,7 @@
       .screens-rail {
         margin-left: calc((100vw - min(calc(100vw - 68px), 360px)) / -2) !important;
         margin-right: calc((100vw - min(calc(100vw - 68px), 360px)) / -2) !important;
-        padding-bottom: 34px !important;
+        padding-bottom: 82px !important;
         overflow-y: visible !important;
       }
 
@@ -1137,6 +1137,11 @@
       .screen-card .iphone-15-pro {
         width: var(--phone-width) !important;
         height: var(--phone-height) !important;
+        box-shadow:
+          0 34px 78px rgba(17, 19, 18, .16),
+          0 16px 34px rgba(17, 19, 18, .1),
+          0 0 2px 2px rgba(255,255,255,.1) !important;
+        filter: drop-shadow(0 18px 30px rgba(17, 19, 18, .08)) !important;
       }
     }
   </style>
@@ -1248,7 +1253,7 @@
             </article>
           </div>
         </div>
-        <div class="-mt-3 text-center text-sm font-semibold text-black/45 md:hidden">Swipe to explore screens →</div>
+        <div class="-mt-16 text-center text-sm font-semibold text-black/45 md:hidden">Swipe to explore screens →</div>
       </div>
     </section>
 
