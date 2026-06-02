@@ -621,10 +621,14 @@
 
     @media (max-width: 767px) {
       html, body { width: 100% !important; max-width: 100% !important; overflow-x: hidden !important; }
+      .container {
+        width: min(calc(100% - 56px), 390px) !important;
+      }
+
       .nav-glass .container {
-        width: calc(100% - 24px) !important;
+        width: calc(100% - 44px) !important;
         padding: 12px 0 !important;
-        gap: 10px !important;
+        gap: 12px !important;
       }
 
       .nav-links {
@@ -656,8 +660,8 @@
       .nav-cta {
         display: inline-flex !important;
         min-height: 34px !important;
-        max-width: 124px !important;
-        padding: 0 12px !important;
+        max-width: 118px !important;
+        padding: 0 11px !important;
         border-radius: 10px !important;
         font-size: 12px !important;
       }
@@ -668,27 +672,38 @@
       }
 
       .hero-shell {
-        padding: 94px 0 38px !important;
+        padding: 92px 0 34px !important;
       }
 
       .hero-title,
       .hero-title.text-\[76px\] {
-        font-size: clamp(36px, 10vw, 44px) !important;
-        line-height: 1.04 !important;
+        font-size: clamp(32px, 8.8vw, 38px) !important;
+        line-height: 1.06 !important;
         letter-spacing: -.04em !important;
       }
 
       .section-title,
       .section-title.text-5xl {
-        font-size: clamp(30px, 8.5vw, 36px) !important;
-        line-height: 1.08 !important;
+        font-size: clamp(28px, 7.6vw, 32px) !important;
+        line-height: 1.1 !important;
         letter-spacing: -.035em !important;
+      }
+
+      .hero-app-icon {
+        width: 62px !important;
+        height: 62px !important;
+        border-radius: 15px !important;
+      }
+
+      .hero-app-icon img {
+        width: 40px !important;
+        height: 40px !important;
       }
 
       .hero-copy p,
       .section-head p {
-        font-size: 16px !important;
-        line-height: 1.5 !important;
+        font-size: 14px !important;
+        line-height: 1.55 !important;
       }
 
       .hero-copy .mt-9 {
@@ -696,55 +711,101 @@
       }
 
       .hero-copy .btn {
-        width: min(100%, 320px) !important;
-        min-height: 46px !important;
-        font-size: 14px !important;
+        width: min(100%, 292px) !important;
+        min-height: 42px !important;
+        border-radius: 11px !important;
+        font-size: 13px !important;
       }
 
       .hero-device-stage {
-        min-height: 410px !important;
-        margin-top: 28px !important;
+        min-height: 352px !important;
+        margin-top: 26px !important;
         overflow: hidden !important;
       }
 
       .phone-frame.float-back {
-        display: none !important;
+        display: block !important;
+        width: 154px !important;
+        height: 315px !important;
+        right: -46px !important;
+        bottom: 38px !important;
+        transform: rotate(4deg) !important;
+        opacity: .55 !important;
       }
 
       .phone-frame.float-front {
-        transform: none !important;
+        transform: translateX(-18px) rotate(-2deg) !important;
         margin: 0 auto !important;
       }
 
       .phone-frame.large {
-        width: min(214px, 58vw) !important;
-        height: min(438px, 119vw) !important;
+        width: min(188px, 52vw) !important;
+        height: min(385px, 106vw) !important;
       }
 
       .section-pad {
-        padding: 46px 0 !important;
+        padding: 40px 0 !important;
       }
 
       .feature-card {
         min-height: 0 !important;
-        padding: 18px !important;
-        border-radius: 16px !important;
+        padding: 14px !important;
+        border-radius: 14px !important;
       }
 
       .feature-card h3 {
-        margin-top: 22px !important;
-        font-size: 24px !important;
+        margin-top: 18px !important;
+        font-size: 20px !important;
         line-height: 1.1 !important;
       }
 
       .feature-card p {
-        font-size: 16px !important;
+        font-size: 14px !important;
         line-height: 1.45 !important;
       }
 
       #features .grid,
       #why .grid {
-        gap: 14px !important;
+        gap: 12px !important;
+      }
+
+      .feature-icon {
+        width: 34px !important;
+        height: 34px !important;
+        border-radius: 9px !important;
+      }
+
+      .feature-icon svg {
+        width: 18px !important;
+        height: 18px !important;
+      }
+
+      .screens-rail {
+        margin-left: calc((100vw - min(calc(100vw - 56px), 390px)) / -2) !important;
+        margin-right: calc((100vw - min(calc(100vw - 56px), 390px)) / -2) !important;
+      }
+
+      .screens-row {
+        padding-left: calc((100vw - min(calc(100vw - 56px), 390px)) / 2) !important;
+        padding-right: calc((100vw - min(calc(100vw - 56px), 390px)) / 2) !important;
+      }
+
+      .screen-card {
+        width: min(64vw, 200px) !important;
+        min-height: 410px !important;
+      }
+
+      .screen-card h3 {
+        font-size: 19px !important;
+      }
+
+      .screen-card p {
+        font-size: 13px !important;
+      }
+
+      .screen-card .phone-frame {
+        width: 156px !important;
+        height: 319px !important;
       }
     }
   </style>
