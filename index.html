@@ -207,7 +207,7 @@
       position: relative;
       width: 276px;
       height: 564px;
-      padding: 9px;
+      padding: 7px;
       border-radius: 48px;
       background:
         linear-gradient(145deg, rgba(255,255,255,.45), rgba(255,255,255,0) 18%),
@@ -407,7 +407,7 @@
       height: 384px;
       margin: 18px auto 0;
       border-radius: 34px;
-      padding: 7px;
+      padding: 6px;
       box-shadow: 0 26px 54px rgba(17, 19, 18, .2), inset 0 1px 0 rgba(255,255,255,.24);
     }
 
@@ -495,11 +495,45 @@
 
     .fade-up {
       opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .7s ease, transform .7s ease;
+      transform: translate3d(0, 38px, 0) scale(.985);
+      transition:
+        opacity .82s cubic-bezier(.22, 1, .36, 1),
+        transform .82s cubic-bezier(.22, 1, .36, 1);
+      will-change: opacity, transform;
     }
 
-    .fade-up.is-visible { opacity: 1; transform: translateY(0); }
+    .fade-up.is-visible { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+
+    .screen-card,
+    .feature-card,
+    .premium-card {
+      transition:
+        opacity .82s cubic-bezier(.22, 1, .36, 1),
+        transform .82s cubic-bezier(.22, 1, .36, 1),
+        box-shadow .24s ease;
+    }
+
+    .screen-card:nth-child(2),
+    .feature-card:nth-child(2),
+    .premium-card:nth-child(2) { transition-delay: .06s; }
+
+    .screen-card:nth-child(3),
+    .feature-card:nth-child(3),
+    .premium-card:nth-child(3) { transition-delay: .12s; }
+
+    .screen-card:nth-child(4),
+    .feature-card:nth-child(4) { transition-delay: .18s; }
+
+    .screen-card:nth-child(5),
+    .feature-card:nth-child(5) { transition-delay: .24s; }
+
+    .screen-card:nth-child(6),
+    .feature-card:nth-child(6) { transition-delay: .3s; }
+
+    .screen-card:nth-child(7),
+    .feature-card:nth-child(7) { transition-delay: .36s; }
+
+    .feature-card:nth-child(8) { transition-delay: .42s; }
 
     @keyframes ticker {
       from { transform: translate3d(0, 0, 0); }
@@ -523,7 +557,7 @@
       html { scroll-behavior: auto; }
       .ticker-track { animation: none; }
       .fade-up { opacity: 1; transform: none; }
-      .btn, .premium-card { transition: none; }
+      .btn, .premium-card, .feature-card, .screen-card { transition: none; }
     }
 
     @media (max-width: 1100px) {
@@ -594,13 +628,29 @@
       }
 
       .nav-links {
+        display: flex !important;
+        visibility: visible !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex: 1 1 auto !important;
+        width: auto !important;
+        max-width: none !important;
+        height: auto !important;
+        overflow: visible !important;
+        pointer-events: auto !important;
+        gap: 0 !important;
+        font-size: 16px !important;
+        color: var(--ink) !important;
+      }
+
+      .nav-links a {
         display: none !important;
-        visibility: hidden !important;
-        width: 0 !important;
-        max-width: 0 !important;
-        height: 0 !important;
-        overflow: hidden !important;
-        pointer-events: none !important;
+      }
+
+      .nav-links a[href="#screens"] {
+        display: inline-flex !important;
+        font-weight: 700 !important;
+        color: var(--ink) !important;
       }
 
       .nav-cta {
@@ -794,37 +844,37 @@
 
         <div class="screens-rail fade-up" aria-label="Swipe through Unite app screens">
           <div class="screens-row">
-            <article class="screen-card">
+            <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Scores</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Live games and final results.</p>
               <div class="phone-frame"><div class="phone-screen"><div class="island"></div><img src="public/mockup-scores-home.png" alt="Scores screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Scores</h4><div class="mock-card mt-4">Guelph 37</div><div class="mock-card">Western 30</div></div></div></div>
             </article>
-            <article class="screen-card">
+            <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Game Details</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Stats and matchup context.</p>
               <div class="phone-frame"><div class="phone-screen"><div class="island"></div><img src="public/mockup-game-detail.png" alt="Game details screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Game Detail</h4><div class="mock-card mt-4">Box score</div><div class="mock-card">Team stats</div></div></div></div>
             </article>
-            <article class="screen-card">
+            <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Favourites</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Follow teams you care about.</p>
               <div class="phone-frame"><div class="phone-screen"><div class="island"></div><img src="public/mockup-favourites.png" alt="Favourites screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Favourites</h4><div class="mock-card mt-4">My teams</div><div class="mock-card">My sports</div></div></div></div>
             </article>
-            <article class="screen-card">
+            <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Standings</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Track season progress.</p>
               <div class="phone-frame"><div class="phone-screen"><div class="island"></div><img src="public/mockup-standings.png" alt="Standings screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Standings</h4><div class="mock-card mt-4">Western 8-0</div><div class="mock-card">Guelph 6-2</div></div></div></div>
             </article>
-            <article class="screen-card">
+            <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Forecasts</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Non-betting predictions.</p>
               <div class="phone-frame"><div class="phone-screen"><div class="island"></div><img src="public/mockup-game-forecast.png" alt="Forecasts screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Forecast</h4><div class="mock-card mt-4">Win projection</div><div class="mock-card">Fan poll</div></div></div></div>
             </article>
-            <article class="screen-card">
+            <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Team Pages</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Schedule, roster, and record.</p>
               <div class="phone-frame"><div class="phone-screen"><div class="island"></div><img src="public/mockup-team-page.png" alt="Team page screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Team Page</h4><div class="mock-card mt-4">Schedule</div><div class="mock-card">Roster</div></div></div></div>
             </article>
-            <article class="screen-card">
+            <article class="screen-card fade-up">
               <h3 class="text-lg font-extrabold">Live Activity</h3>
               <p class="mt-1 text-xs font-semibold leading-5 text-black/50">Updates from the lock screen.</p>
               <div class="phone-frame"><div class="phone-screen"><div class="island"></div><img src="public/mockup-live-activity.png" alt="Live Activity screen" class="screen-img" onerror="this.classList.add('is-missing')"><div class="screen-fallback"><h4 class="text-2xl font-extrabold">Live Activity</h4><div class="mock-card mt-4">Q4 02:18</div><div class="mock-card">Guelph 37</div></div></div></div>
