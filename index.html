@@ -199,26 +199,25 @@
     }
 
     .phone-frame {
-      --button-top: 186px;
-      --button-height: 88px;
-      --island-width: 86px;
-      --island-height: 26px;
-      --island-top: 15px;
+      --device-metal: #342c3f;
+      --device-metal-dark: #211b28;
+      --device-panel: #010101;
+      --device-highlight: rgba(255,255,255,.42);
+      --island-width: 28%;
+      --island-height: 4%;
+      --island-top: 3.4%;
       position: relative;
       width: 276px;
       height: 564px;
-      padding: 7px;
-      border-radius: 48px;
-      background:
-        linear-gradient(145deg, rgba(255,255,255,.45), rgba(255,255,255,0) 18%),
-        linear-gradient(135deg, #44464a, #050506 42%, #191a1d 82%, #2b2d31);
+      padding: 4.45%;
+      border: 1px solid var(--device-metal-dark);
+      border-radius: 15.9%;
+      background: var(--device-panel);
       box-shadow:
         0 44px 95px rgba(29, 29, 31, .28),
-        0 10px 24px rgba(29, 29, 31, .14),
-        inset 0 1px 0 rgba(255,255,255,.34),
-        inset 0 -1px 0 rgba(255,255,255,.12),
-        inset 1px 0 0 rgba(255,255,255,.1),
-        inset -1px 0 0 rgba(255,255,255,.08);
+        0 12px 26px rgba(29, 29, 31, .14),
+        inset 0 0 4px 2px var(--device-highlight),
+        inset 0 0 0 6px var(--device-metal);
       flex: 0 0 auto;
     }
 
@@ -226,30 +225,33 @@
       content: "";
       position: absolute;
       left: 100%;
+      top: 23%;
       width: 3px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, #303236, #09090a);
+      height: 11.5%;
+      border-radius: 2px;
+      background: var(--device-metal-dark);
       box-shadow: inset 1px 0 0 rgba(255,255,255,.16);
     }
 
-    .phone-frame::before { top: var(--button-top); height: var(--button-height); }
+    .phone-frame::after {
+      content: "";
+      position: absolute;
+      inset: 9.8% 0;
+      z-index: 1;
+      background:
+        linear-gradient(rgba(1,1,1,.24), rgba(1,1,1,.24)) left top / 7px 7px no-repeat,
+        linear-gradient(rgba(1,1,1,.24), rgba(1,1,1,.24)) right top / 7px 7px no-repeat,
+        linear-gradient(rgba(1,1,1,.24), rgba(1,1,1,.24)) left bottom / 7px 7px no-repeat,
+        linear-gradient(rgba(1,1,1,.24), rgba(1,1,1,.24)) right bottom / 7px 7px no-repeat;
+      pointer-events: none;
+    }
 
     .phone-frame.large {
-      --button-top: 220px;
-      --button-height: 112px;
-      --island-width: 104px;
-      --island-height: 30px;
-      --island-top: 17px;
       width: 354px;
       height: 724px;
     }
 
     .phone-frame.small {
-      --button-top: 154px;
-      --button-height: 70px;
-      --island-width: 72px;
-      --island-height: 21px;
-      --island-top: 12px;
       width: 232px;
       height: 474px;
     }
@@ -261,25 +263,25 @@
       position: absolute;
       right: 100%;
       width: 3px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, #32343a, #0b0b0d);
+      border-radius: 2px;
+      background: var(--device-metal-dark);
       box-shadow: inset -1px 0 0 rgba(255,255,255,.16);
     }
 
-    .phone-button-left.short { top: 142px; height: 54px; }
-    .phone-button-left.long { top: 218px; height: 54px; }
-    .phone-frame.large .phone-button-left.short { top: 180px; height: 60px; }
-    .phone-frame.large .phone-button-left.long { top: 262px; height: 60px; }
-    .phone-frame.small .phone-button-left.short { top: 116px; height: 44px; }
-    .phone-frame.small .phone-button-left.long { top: 178px; height: 44px; }
+    .phone-button-left.short { top: 18%; height: 7.1%; }
+    .phone-button-left.long { top: 29%; height: 7.1%; }
 
     .phone-screen {
+      width: 100%;
       height: 100%;
-      border-radius: 39px;
+      border-radius: 11.45%;
       overflow: hidden;
       position: relative;
-      border: 1px solid rgba(255,255,255,.1);
+      border: 0;
       background: #08090a;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.06),
+        inset 0 0 22px rgba(0,0,0,.35);
     }
 
     .phone-screen::after {
@@ -292,9 +294,6 @@
       mix-blend-mode: screen;
     }
 
-    .phone-frame.large .phone-screen { border-radius: 42px; }
-    .phone-frame.small .phone-screen { border-radius: 34px; }
-
     .island {
       position: absolute;
       top: var(--island-top);
@@ -304,7 +303,7 @@
       height: var(--island-height);
       transform: translateX(-50%);
       border-radius: 999px;
-      background: #050506;
+      background: var(--device-panel);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 1px 2px rgba(0,0,0,.34);
     }
 
@@ -398,24 +397,17 @@
     }
 
     .screen-card .phone-frame {
-      --button-top: 82px;
-      --button-height: 48px;
-      --island-width: 58px;
-      --island-height: 18px;
-      --island-top: 10px;
       width: 188px;
       height: 384px;
       margin: 18px auto 0;
-      border-radius: 34px;
-      padding: 6px;
-      box-shadow: 0 26px 54px rgba(17, 19, 18, .2), inset 0 1px 0 rgba(255,255,255,.24);
+      box-shadow:
+        0 26px 54px rgba(17, 19, 18, .2),
+        inset 0 0 4px 2px var(--device-highlight),
+        inset 0 0 0 6px var(--device-metal);
     }
 
     .screen-card .phone-frame::before { width: 2px; }
     .screen-card .phone-button-left { width: 2px; }
-    .screen-card .phone-button-left.short { top: 70px; height: 26px; }
-    .screen-card .phone-button-left.long { top: 108px; height: 26px; }
-    .screen-card .phone-screen { border-radius: 27px; }
     .screen-card .screen-fallback { padding: 46px 14px 16px; gap: 10px; }
     .screen-card .mock-card { border-radius: 13px; padding: 10px; font-size: 12px; }
 
