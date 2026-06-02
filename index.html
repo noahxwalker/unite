@@ -446,6 +446,10 @@
     .screen-card .screen-fallback { padding: 46px 14px 16px; gap: 10px; }
     .screen-card .mock-card { border-radius: 13px; padding: 10px; font-size: 12px; }
 
+    .screens-desktop-summary {
+      display: none;
+    }
+
     .ticker-shell {
       position: relative;
       overflow: hidden;
@@ -570,11 +574,12 @@
 
       .screens-row {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         align-items: start;
-        gap: clamp(32px, 4vw, 56px);
-        width: 100%;
+        gap: clamp(54px, 6vw, 86px);
+        width: min(100%, 1080px);
         min-width: 0;
+        margin: 0 auto;
         padding: 0;
       }
 
@@ -589,14 +594,18 @@
         scroll-snap-align: none;
       }
 
+      .screen-card:nth-child(n + 5) {
+        display: none;
+      }
+
       .screen-card h3 {
-        font-size: clamp(15px, 1.15vw, 19px);
+        font-size: clamp(20px, 1.65vw, 26px);
         line-height: 1.1;
         margin: 0;
       }
 
       .screen-card p {
-        font-size: clamp(11px, .82vw, 13px);
+        font-size: clamp(14px, 1vw, 17px);
         line-height: 1.35;
         white-space: normal;
         display: flex;
@@ -606,14 +615,14 @@
       }
 
       .screen-card .iphone-15-pro {
-        --phone-width: clamp(178px, 18vw, 230px);
-        --phone-height: clamp(384px, 38.8vw, 496px);
-        --button-width: 5px;
-        --button-offset: -9px;
+        --phone-width: clamp(250px, 25vw, 330px);
+        --phone-height: clamp(540px, 54vw, 712px);
+        --button-width: 6px;
+        --button-offset: -11px;
         width: var(--phone-width);
         height: var(--phone-height);
-        border-width: 5px;
-        border-radius: 32px;
+        border-width: 6px;
+        border-radius: 40px;
         margin-top: 0;
         align-self: start;
       }
@@ -624,12 +633,33 @@
 
       .screen-card .iphone-15-pro::after {
         border-width: 2px;
-        border-radius: 28px;
+        border-radius: 36px;
       }
 
       .screen-card .iphone-inner,
       .screen-card .iphone-screen {
-        border-radius: 28px;
+        border-radius: 36px;
+      }
+
+      .screens-desktop-summary {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        max-width: 980px;
+        margin: 54px auto 0;
+      }
+
+      .screens-desktop-summary li {
+        list-style: none;
+        border: 1px solid rgba(210, 210, 215, .9);
+        border-radius: 14px;
+        background: #fff;
+        padding: 14px 16px;
+        color: rgba(29, 29, 31, .68);
+        font-size: 14px;
+        font-weight: 750;
+        line-height: 1.35;
+        box-shadow: 0 12px 30px rgba(29, 29, 31, .06);
       }
     }
 
@@ -648,25 +678,25 @@
       }
 
       .screens-row {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: clamp(32px, 3vw, 52px);
+        gap: clamp(64px, 5vw, 96px);
+        width: min(100%, 1180px);
       }
 
       .screen-card {
-        grid-template-rows: 36px 48px auto;
+        grid-template-rows: 40px 56px auto;
       }
 
       .screen-card h3 {
-        font-size: clamp(18px, 1.45vw, 23px);
+        font-size: clamp(24px, 2vw, 32px);
       }
 
       .screen-card p {
-        font-size: clamp(13px, .95vw, 15px);
+        font-size: clamp(16px, 1.15vw, 19px);
       }
 
       .screen-card .iphone-15-pro {
-        --phone-width: clamp(190px, 15vw, 240px);
-        --phone-height: clamp(410px, 32.5vw, 518px);
+        --phone-width: clamp(300px, 25vw, 380px);
+        --phone-height: clamp(648px, 54vw, 820px);
       }
     }
 
@@ -704,21 +734,22 @@
       }
 
       .screens-row {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: clamp(38px, 3vw, 64px);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: clamp(74px, 5vw, 110px);
+        width: min(100%, 1260px);
       }
 
       .screen-card h3 {
-        font-size: clamp(20px, 1.25vw, 25px);
+        font-size: clamp(28px, 1.85vw, 36px);
       }
 
       .screen-card p {
-        font-size: clamp(14px, .82vw, 16px);
+        font-size: clamp(17px, 1.05vw, 21px);
       }
 
       .screen-card .iphone-15-pro {
-        --phone-width: clamp(228px, 14vw, 286px);
-        --phone-height: clamp(492px, 30.3vw, 618px);
+        --phone-width: clamp(350px, 20vw, 410px);
+        --phone-height: clamp(756px, 43.2vw, 886px);
         --button-width: 6px;
         --button-offset: -11px;
         border-width: 6px;
@@ -762,8 +793,8 @@
       }
 
       .screen-card .iphone-15-pro {
-        --phone-width: clamp(220px, 13.1vw, 260px);
-        --phone-height: clamp(475px, 28.4vw, 562px);
+        --phone-width: clamp(330px, 18vw, 380px);
+        --phone-height: clamp(712px, 39vw, 820px);
       }
     }
 
@@ -1186,6 +1217,15 @@
             </article>
           </div>
         </div>
+
+        <ul class="screens-desktop-summary fade-up" aria-label="Additional Unite app features">
+          <li>Game Forecasts with non-betting matchup predictions.</li>
+          <li>Team Pages with schedule, roster, record, and context.</li>
+          <li>Live Activities for lock-screen game updates.</li>
+          <li>Schedules by sport, date, team, or school.</li>
+          <li>Team, player, and game-level stats.</li>
+          <li>Personalized favourites for schools, teams, and sports.</li>
+        </ul>
         <div class="mt-2 text-center text-sm font-semibold text-black/45 md:hidden">Swipe to explore screens →</div>
       </div>
     </section>
