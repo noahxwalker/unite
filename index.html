@@ -256,13 +256,16 @@
 
     .tour-callout {
       --dot: var(--green);
-      --x: 50%;
-      --y: 50%;
+      --desktop-x: 50%;
+      --desktop-y: 50%;
       position: absolute;
       z-index: 4;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      left: calc(var(--desktop-x) - 12px);
+      top: calc(var(--desktop-y) - 12px);
+      display: grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
       padding: 0;
       border: 0;
       background: transparent;
@@ -286,13 +289,11 @@
     }
 
     .tour-callout[data-side="left"]::before {
-      left: 100%;
-      margin-left: 14px;
-    }
+      right: calc(50% + 13px);
+      }
 
     .tour-callout[data-side="right"]::before {
-      right: 100%;
-      margin-right: 14px;
+      left: calc(50% + 13px);
       background: linear-gradient(90deg, rgba(29,29,31,.3), rgba(29,29,31,.08));
     }
 
@@ -309,10 +310,23 @@
     }
 
     .tour-label {
+      position: absolute;
+      top: calc(50% + var(--label-y, 0px));
       font-size: 15px;
       font-weight: 850;
       letter-spacing: -.025em;
       white-space: nowrap;
+      transform: translateY(-50%);
+    }
+
+    .tour-callout[data-side="left"] .tour-label {
+      right: calc(50% + var(--line-width, 190px) + 28px);
+      text-align: right;
+    }
+
+    .tour-callout[data-side="right"] .tour-label {
+      left: calc(50% + var(--line-width, 190px) + 28px);
+      text-align: left;
     }
 
     .tour-callout:hover .tour-dot,
@@ -369,31 +383,54 @@
     }
 
     .tour-callout[data-feature="search"] {
-      --dot: #00bf63;
-      --line-width: 214px;
-      left: 112px;
-      top: 118px;
+      --dot: #b6ff5c;
+      --line-width: 230px;
+      --desktop-x: 379px;
+      --desktop-y: 68px;
     }
 
     .tour-callout[data-feature="favourites"] {
-      --dot: #39d98a;
-      --line-width: 170px;
-      right: 104px;
-      top: 132px;
+      --dot: #ff8a3d;
+      --line-width: 200px;
+      --desktop-x: 572px;
+      --desktop-y: 74px;
     }
 
     .tour-callout[data-feature="game"] {
-      --dot: #4f7cff;
-      --line-width: 190px;
-      right: 70px;
-      top: 284px;
+      --dot: #ff4fb3;
+      --line-width: 230px;
+      --desktop-x: 490px;
+      --desktop-y: 202px;
     }
 
     .tour-callout[data-feature="scores"] {
-      --dot: #00bf63;
+      --dot: #c65cff;
+      --line-width: 260px;
+      --desktop-x: 452px;
+      --desktop-y: 556px;
+    }
+
+    .tour-callout[data-feature="scroll-date"] {
+      --dot: #ffd84d;
+      --line-width: 236px;
+      --desktop-x: 564px;
+      --desktop-y: 154px;
+    }
+
+    .tour-callout[data-feature="favourites-tab"] {
+      --dot: #65c8ff;
       --line-width: 240px;
-      left: 94px;
-      bottom: 74px;
+      --desktop-x: 492px;
+      --desktop-y: 556px;
+      --label-y: 28px;
+    }
+
+    .tour-callout[data-feature="standings-tab"] {
+      --dot: #ff5959;
+      --line-width: 255px;
+      --desktop-x: 552px;
+      --desktop-y: 556px;
+      --label-y: -30px;
     }
 
     .tour-info-card[data-side="left"] { transform: translate3d(-8px, 8px, 0); }
@@ -1218,7 +1255,7 @@
       .hero-phone-tour {
         width: 100% !important;
         max-width: 258px !important;
-        padding-bottom: 122px !important;
+        padding-bottom: 112px !important;
       }
 
       .hero-phone-wrap {
@@ -1227,12 +1264,12 @@
       }
 
       .tour-callout {
-        left: calc(var(--mobile-x) - 11px) !important;
-        top: calc(var(--mobile-y) - 11px) !important;
+        left: calc(var(--mobile-x) - 9px) !important;
+        top: calc(var(--mobile-y) - 9px) !important;
         right: auto !important;
         bottom: auto !important;
-        width: 22px !important;
-        height: 22px !important;
+        width: 18px !important;
+        height: 18px !important;
         justify-content: center !important;
         gap: 0 !important;
       }
@@ -1243,11 +1280,11 @@
       }
 
       .tour-dot {
-        width: 10px !important;
-        height: 10px !important;
+        width: 8px !important;
+        height: 8px !important;
         box-shadow:
-          0 0 0 5px color-mix(in srgb, var(--dot) 16%, transparent),
-          0 8px 18px rgba(0,0,0,.22) !important;
+          0 0 0 4px color-mix(in srgb, var(--dot) 18%, transparent),
+          0 8px 16px rgba(0,0,0,.2) !important;
       }
 
       .tour-callout.is-active .tour-dot {
@@ -1257,10 +1294,13 @@
           0 10px 22px rgba(0,0,0,.24) !important;
       }
 
-      .tour-callout[data-feature="search"] { --mobile-x: 78px; --mobile-y: 70px; }
-      .tour-callout[data-feature="favourites"] { --mobile-x: 180px; --mobile-y: 62px; }
-      .tour-callout[data-feature="game"] { --mobile-x: 180px; --mobile-y: 142px; }
-      .tour-callout[data-feature="scores"] { --mobile-x: 96px; --mobile-y: 292px; }
+      .tour-callout[data-feature="search"] { --mobile-x: 68px; --mobile-y: 36px; }
+      .tour-callout[data-feature="favourites"] { --mobile-x: 174px; --mobile-y: 40px; }
+      .tour-callout[data-feature="scroll-date"] { --mobile-x: 170px; --mobile-y: 82px; }
+      .tour-callout[data-feature="game"] { --mobile-x: 129px; --mobile-y: 108px; }
+      .tour-callout[data-feature="scores"] { --mobile-x: 108px; --mobile-y: 297px; }
+      .tour-callout[data-feature="favourites-tab"] { --mobile-x: 129px; --mobile-y: 297px; }
+      .tour-callout[data-feature="standings-tab"] { --mobile-x: 162px; --mobile-y: 297px; }
 
       .tour-info-card {
         left: 50% !important;
@@ -1444,6 +1484,10 @@
               <span class="tour-label">Favourites</span>
               <span class="tour-dot" aria-hidden="true"></span>
             </button>
+            <button type="button" class="tour-callout" data-feature="scroll-date" data-side="left" data-title="Scroll Date" data-body="Jump through upcoming and past game dates with a clean sport-specific schedule view." aria-expanded="false">
+              <span class="tour-dot" aria-hidden="true"></span>
+              <span class="tour-label">Scroll Date</span>
+            </button>
             <button type="button" class="tour-callout" data-feature="game" data-side="right" data-title="Game Detail View" data-body="Tap into matchup details, scores, team context, and game-specific information." aria-expanded="false">
               <span class="tour-label">Game Detail View</span>
               <span class="tour-dot" aria-hidden="true"></span>
@@ -1451,6 +1495,14 @@
             <button type="button" class="tour-callout" data-feature="scores" data-side="left" data-title="Scores Tab" data-body="See live games, final results, and upcoming matchups in one central feed." aria-expanded="false">
               <span class="tour-dot" aria-hidden="true"></span>
               <span class="tour-label">Scores Tab</span>
+            </button>
+            <button type="button" class="tour-callout" data-feature="favourites-tab" data-side="right" data-title="Favourites Tab" data-body="Keep your selected teams one tap away." aria-expanded="false">
+              <span class="tour-label">Favourites Tab</span>
+              <span class="tour-dot" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="tour-callout" data-feature="standings-tab" data-side="right" data-title="Standings Tab" data-body="Track league tables, records, and team positioning throughout the season." aria-expanded="false">
+              <span class="tour-label">Standings Tab</span>
+              <span class="tour-dot" aria-hidden="true"></span>
             </button>
             <div class="tour-info-card" id="tourInfoCard" role="status" aria-live="polite" hidden>
               <h3></h3>
