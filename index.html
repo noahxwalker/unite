@@ -391,28 +391,28 @@
       --dot: #c65cff;
       --line-width: 306px;
       left: 92px;
-      bottom: 50px;
+      bottom: 36px;
     }
 
     .tour-callout[data-feature="scroll-date"] {
       --dot: #ffd84d;
       --line-width: 238px;
       left: 202px;
-      top: 138px;
+      top: 132px;
     }
 
     .tour-callout[data-feature="favourites-tab"] {
       --dot: #65c8ff;
       --line-width: 250px;
       right: 100px;
-      bottom: 34px;
+      bottom: 20px;
     }
 
     .tour-callout[data-feature="standings-tab"] {
       --dot: #ff5959;
       --line-width: 254px;
       right: 64px;
-      bottom: 70px;
+      bottom: 56px;
     }
 
     .tour-info-card[data-side="left"] { transform: translate3d(-8px, 8px, 0); }
@@ -1299,11 +1299,18 @@
 
       .tour-callout[data-feature="search"] { --mobile-x: 16px; --mobile-y: 36px; --mobile-line: 62px; }
       .tour-callout[data-feature="favourites"] { --mobile-x: 256px; --mobile-y: 40px; --mobile-line: 62px; }
-      .tour-callout[data-feature="scroll-date"] { --mobile-x: 250px; --mobile-y: 76px; --mobile-line: 58px; }
+      .tour-callout[data-feature="scroll-date"] { --mobile-x: 250px; --mobile-y: 70px; --mobile-line: 58px; }
+      .tour-callout[data-feature="scroll-date"]::before {
+        right: 100% !important;
+        left: auto !important;
+        margin-right: 10px !important;
+        margin-left: 0 !important;
+        background: linear-gradient(90deg, rgba(29,29,31,.28), rgba(29,29,31,.12)) !important;
+      }
       .tour-callout[data-feature="game"] { --mobile-x: 260px; --mobile-y: 108px; --mobile-line: 118px; }
       .tour-callout[data-feature="scores"] { --mobile-x: 18px; --mobile-y: 306px; --mobile-line: 78px; }
-      .tour-callout[data-feature="favourites-tab"] { --mobile-x: 254px; --mobile-y: 304px; --mobile-line: 110px; }
-      .tour-callout[data-feature="standings-tab"] { --mobile-x: 260px; --mobile-y: 326px; --mobile-line: 59px; }
+      .tour-callout[data-feature="favourites-tab"] { --mobile-x: 260px; --mobile-y: 318px; --mobile-line: 110px; }
+      .tour-callout[data-feature="standings-tab"] { --mobile-x: 254px; --mobile-y: 296px; --mobile-line: 59px; }
 
       .tour-info-card {
         left: 50% !important;
