@@ -240,6 +240,167 @@
       filter: blur(12px);
     }
 
+    .hero-phone-tour {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: min(100%, 980px);
+      margin: 0 auto;
+      isolation: isolate;
+    }
+
+    .hero-phone-wrap {
+      position: relative;
+      z-index: 2;
+    }
+
+    .tour-callout {
+      --dot: var(--green);
+      --x: 50%;
+      --y: 50%;
+      position: absolute;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .tour-callout::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: var(--line-width, 190px);
+      height: 1px;
+      background: linear-gradient(90deg, rgba(29,29,31,.08), rgba(29,29,31,.3));
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .tour-callout[data-side="left"]::before {
+      left: 100%;
+      margin-left: 14px;
+    }
+
+    .tour-callout[data-side="right"]::before {
+      right: 100%;
+      margin-right: 14px;
+      background: linear-gradient(90deg, rgba(29,29,31,.3), rgba(29,29,31,.08));
+    }
+
+    .tour-dot {
+      width: 14px;
+      height: 14px;
+      flex: 0 0 auto;
+      border-radius: 999px;
+      background: var(--dot);
+      box-shadow:
+        0 0 0 5px color-mix(in srgb, var(--dot) 14%, transparent),
+        0 12px 24px rgba(29, 29, 31, .14);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .tour-label {
+      font-size: 15px;
+      font-weight: 850;
+      letter-spacing: -.025em;
+      white-space: nowrap;
+    }
+
+    .tour-callout:hover .tour-dot,
+    .tour-callout:focus-visible .tour-dot,
+    .tour-callout.is-active .tour-dot {
+      transform: scale(1.15);
+      box-shadow:
+        0 0 0 7px color-mix(in srgb, var(--dot) 18%, transparent),
+        0 16px 30px rgba(29, 29, 31, .16);
+    }
+
+    .tour-callout:focus-visible .tour-label {
+      color: var(--green);
+    }
+
+    .tour-info-card {
+      position: absolute;
+      z-index: 6;
+      width: min(260px, calc(100vw - 48px));
+      padding: 16px 17px;
+      border: 1px solid rgba(210, 210, 215, .86);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .94);
+      box-shadow: 0 24px 64px rgba(29, 29, 31, .16);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      opacity: 0;
+      pointer-events: none;
+      transform: translate3d(0, 8px, 0);
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .tour-info-card.is-open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .tour-info-card h3 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -.025em;
+    }
+
+    .tour-info-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
+      line-height: 1.42;
+      letter-spacing: -.01em;
+    }
+
+    .tour-callout[data-feature="search"] {
+      --dot: #00bf63;
+      --line-width: 214px;
+      left: 112px;
+      top: 118px;
+    }
+
+    .tour-callout[data-feature="favourites"] {
+      --dot: #39d98a;
+      --line-width: 170px;
+      right: 104px;
+      top: 132px;
+    }
+
+    .tour-callout[data-feature="game"] {
+      --dot: #4f7cff;
+      --line-width: 190px;
+      right: 70px;
+      top: 284px;
+    }
+
+    .tour-callout[data-feature="scores"] {
+      --dot: #00bf63;
+      --line-width: 240px;
+      left: 94px;
+      bottom: 74px;
+    }
+
+    .tour-info-card[data-side="left"] { transform: translate3d(-8px, 8px, 0); }
+    .tour-info-card[data-side="left"].is-open { transform: translate3d(-8px, 0, 0); }
+    .tour-info-card[data-side="right"] { transform: translate3d(8px, 8px, 0); }
+    .tour-info-card[data-side="right"].is-open { transform: translate3d(8px, 0, 0); }
+
     .iphone-15-pro {
       --phone-width: 288px;
       --phone-height: 618px;
@@ -1054,6 +1215,78 @@
         height: var(--phone-height) !important;
       }
 
+      .hero-phone-tour {
+        width: 100% !important;
+        max-width: 258px !important;
+        padding-bottom: 122px !important;
+      }
+
+      .hero-phone-wrap {
+        width: var(--phone-width) !important;
+        height: var(--phone-height) !important;
+      }
+
+      .tour-callout {
+        left: calc(var(--mobile-x) - 11px) !important;
+        top: calc(var(--mobile-y) - 11px) !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: 22px !important;
+        height: 22px !important;
+        justify-content: center !important;
+        gap: 0 !important;
+      }
+
+      .tour-callout::before,
+      .tour-label {
+        display: none !important;
+      }
+
+      .tour-dot {
+        width: 10px !important;
+        height: 10px !important;
+        box-shadow:
+          0 0 0 5px color-mix(in srgb, var(--dot) 16%, transparent),
+          0 8px 18px rgba(0,0,0,.22) !important;
+      }
+
+      .tour-callout.is-active .tour-dot {
+        transform: scale(1.22) !important;
+        box-shadow:
+          0 0 0 7px color-mix(in srgb, var(--dot) 22%, transparent),
+          0 10px 22px rgba(0,0,0,.24) !important;
+      }
+
+      .tour-callout[data-feature="search"] { --mobile-x: 78px; --mobile-y: 70px; }
+      .tour-callout[data-feature="favourites"] { --mobile-x: 180px; --mobile-y: 62px; }
+      .tour-callout[data-feature="game"] { --mobile-x: 180px; --mobile-y: 142px; }
+      .tour-callout[data-feature="scores"] { --mobile-x: 96px; --mobile-y: 292px; }
+
+      .tour-info-card {
+        left: 50% !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: 0 !important;
+        width: min(100%, 252px) !important;
+        padding: 13px 14px !important;
+        border-radius: 14px !important;
+        text-align: left !important;
+        transform: translate3d(-50%, 8px, 0) !important;
+      }
+
+      .tour-info-card.is-open {
+        transform: translate3d(-50%, 0, 0) !important;
+      }
+
+      .tour-info-card h3 {
+        font-size: 13px !important;
+      }
+
+      .tour-info-card p {
+        font-size: 11.5px !important;
+        line-height: 1.38 !important;
+      }
+
       .section-pad {
         padding: 34px 0 !important;
       }
@@ -1189,15 +1422,39 @@
 
         <div class="hero-device-stage">
           <div class="device-halo"></div>
-          <div class="iphone-15-pro no-island float-front">
-            <span class="iphone-btn action"></span>
-            <span class="iphone-btn volume-up"></span>
-            <span class="iphone-btn volume-down"></span>
-            <span class="iphone-btn power"></span>
-            <div class="iphone-inner">
-              <div class="iphone-screen">
-                <img src="public/SLIDE 1 SCORESVIEW.png" alt="Unite mobile app hero screen" class="iphone-screen-img" width="1206" height="2622" decoding="async">
+          <div class="hero-phone-tour" id="heroPhoneTour">
+            <div class="hero-phone-wrap">
+              <div class="iphone-15-pro no-island float-front">
+                <span class="iphone-btn action"></span>
+                <span class="iphone-btn volume-up"></span>
+                <span class="iphone-btn volume-down"></span>
+                <span class="iphone-btn power"></span>
+                <div class="iphone-inner">
+                  <div class="iphone-screen">
+                    <img src="public/SLIDE 1 SCORESVIEW.png" alt="Unite mobile app hero screen" class="iphone-screen-img" width="1206" height="2622" decoding="async">
+                  </div>
+                </div>
               </div>
+            </div>
+            <button type="button" class="tour-callout" data-feature="search" data-side="left" data-title="Search" data-body="Quickly find teams, games, and sports without digging through different sites." aria-expanded="false">
+              <span class="tour-dot" aria-hidden="true"></span>
+              <span class="tour-label">Search</span>
+            </button>
+            <button type="button" class="tour-callout" data-feature="favourites" data-side="right" data-title="Favourites" data-body="Follow the teams that matter most and personalize the app around them." aria-expanded="false">
+              <span class="tour-label">Favourites</span>
+              <span class="tour-dot" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="tour-callout" data-feature="game" data-side="right" data-title="Game Detail View" data-body="Tap into matchup details, scores, team context, and game-specific information." aria-expanded="false">
+              <span class="tour-label">Game Detail View</span>
+              <span class="tour-dot" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="tour-callout" data-feature="scores" data-side="left" data-title="Scores Tab" data-body="See live games, final results, and upcoming matchups in one central feed." aria-expanded="false">
+              <span class="tour-dot" aria-hidden="true"></span>
+              <span class="tour-label">Scores Tab</span>
+            </button>
+            <div class="tour-info-card" id="tourInfoCard" role="status" aria-live="polite" hidden>
+              <h3></h3>
+              <p></p>
             </div>
           </div>
         </div>
@@ -1477,9 +1734,89 @@
       items.forEach((item) => observer.observe(item));
     }
 
+    function setupHeroTour() {
+      const tour = document.getElementById("heroPhoneTour");
+      const card = document.getElementById("tourInfoCard");
+      if (!tour || !card) return;
+
+      const buttons = [...tour.querySelectorAll(".tour-callout")];
+      const title = card.querySelector("h3");
+      const body = card.querySelector("p");
+      const mobileQuery = window.matchMedia("(max-width: 767px)");
+      let activeButton = null;
+
+      function positionCard(button) {
+        if (mobileQuery.matches) {
+          card.style.left = "";
+          card.style.top = "";
+          card.dataset.side = "";
+          return;
+        }
+
+        const tourRect = tour.getBoundingClientRect();
+        const buttonRect = button.getBoundingClientRect();
+        const side = button.dataset.side || "right";
+        const cardWidth = 260;
+        const top = buttonRect.bottom - tourRect.top + 14;
+        const left = side === "left"
+          ? buttonRect.left - tourRect.left
+          : buttonRect.right - tourRect.left - cardWidth;
+
+        card.dataset.side = side;
+        card.style.left = `${Math.max(0, Math.min(left, tourRect.width - cardWidth))}px`;
+        card.style.top = `${Math.max(0, top)}px`;
+      }
+
+      function closeCard() {
+        buttons.forEach((button) => {
+          button.classList.remove("is-active");
+          button.setAttribute("aria-expanded", "false");
+        });
+        activeButton = null;
+        card.classList.remove("is-open");
+        card.hidden = true;
+      }
+
+      function openCard(button) {
+        buttons.forEach((item) => {
+          const isActive = item === button;
+          item.classList.toggle("is-active", isActive);
+          item.setAttribute("aria-expanded", String(isActive));
+        });
+
+        title.textContent = button.dataset.title || "";
+        body.textContent = button.dataset.body || "";
+        activeButton = button;
+        card.hidden = false;
+        positionCard(button);
+        requestAnimationFrame(() => card.classList.add("is-open"));
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          if (activeButton === button) {
+            closeCard();
+            return;
+          }
+          openCard(button);
+        });
+      });
+
+      card.addEventListener("click", (event) => event.stopPropagation());
+      document.addEventListener("click", closeCard);
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeCard();
+      });
+      window.addEventListener("resize", () => {
+        if (activeButton) positionCard(activeButton);
+      });
+    }
+
     document.getElementById("year").textContent = new Date().getFullYear();
     buildSchoolTicker();
     setupHashFreeNavigation();
+    setupHeroTour();
     revealOnScroll();
   </script>
 </body>
